@@ -11,32 +11,38 @@ import { useRef } from 'react'
 import './App.css'
 import { Footer } from './components/Footer'
 import { RoughEase } from 'gsap/EasePack'
+import { SSRSafe } from './components/SSRSafe'
 
-gsap.registerPlugin(
-  ScrollTrigger,
-  SplitText,
-  ScrambleTextPlugin,
-  RoughEase,
-  useGSAP
-)
+// Only register GSAP plugins on client-side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(
+    ScrollTrigger,
+    SplitText,
+    ScrambleTextPlugin,
+    RoughEase,
+    useGSAP
+  )
+}
 
 function App() {
   const ref = useRef<HTMLDivElement>(null)
 
   return (
     <div ref={ref} className="mx-auto w-full antialiased">
-      <GlobalCanvas
-        dpr={[1, 2]}
-        eventSource={ref} // rebind event source to a parent DOM element
-        eventPrefix="client" // use clientX/Y for a scrolling page
-        style={{
-          pointerEvents: 'none', // delegate events to wrapper
-        }}
-        globalRender={false}
-      >
-        <ambientLight intensity={2} />
-      </GlobalCanvas>
-      <SmoothScrollbar />
+      <SSRSafe>
+        <GlobalCanvas
+          dpr={[1, 2]}
+          eventSource={ref} // rebind event source to a parent DOM element
+          eventPrefix="client" // use clientX/Y for a scrolling page
+          style={{
+            pointerEvents: 'none', // delegate events to wrapper
+          }}
+          globalRender={false}
+        >
+          <ambientLight intensity={2} />
+        </GlobalCanvas>
+        <SmoothScrollbar />
+      </SSRSafe>
       <Overlay />
       <div className="mx-auto max-w-[1920px] md:w-full lg:w-2/3">
         <Router />

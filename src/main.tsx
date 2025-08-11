@@ -1,12 +1,28 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { hydrateRoot, createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import { BrowserRouter } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
-)
+const container = document.getElementById('root')!
+
+// Check if the page was pre-rendered (SSG)
+if (container.innerHTML.trim()) {
+  // Hydrate the pre-rendered content
+  hydrateRoot(
+    container,
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>
+  )
+} else {
+  // Regular client-side rendering for development
+  createRoot(container).render(
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>
+  )
+}

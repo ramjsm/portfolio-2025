@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import Logo from '../assets/logo_white.svg?react'
 import Menu from '../assets/menu.svg?react'
 import { useState } from 'react'

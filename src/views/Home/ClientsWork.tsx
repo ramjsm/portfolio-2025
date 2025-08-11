@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { getProjectsByCategory } from '../../config/projects'
 
 export function ClientsWork() {

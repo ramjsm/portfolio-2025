@@ -2,7 +2,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { VideoDialog } from '../components/VideoDialog'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { Info } from './Info'
 import {
   getProjectBySlug,
@@ -10,7 +10,7 @@ import {
   getProjectCategoryLabel,
   type InfoSection,
 } from '../config/projects'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
 import { WebGLVideoWrapper } from '../components/WebGLVideoWrapper'

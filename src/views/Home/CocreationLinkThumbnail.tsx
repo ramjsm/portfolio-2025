@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import type { Project } from '../../config/projects'
 
 interface CocreationLinkThumbnailProps {
