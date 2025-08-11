@@ -46,10 +46,10 @@ export function Services() {
         const scrollWidth = track.scrollWidth / 2 // half because content is duplicated
 
         gsap.to(track, {
-        x: `-=${scrollWidth}`,
-        duration: 25,
-        ease: 'none',
-        repeat: -1,
+          x: `-=${scrollWidth}`,
+          duration: 25,
+          ease: 'none',
+          repeat: -1,
           modifiers: {
             x: gsap.utils.unitize((x) => parseFloat(x) % scrollWidth),
           },
@@ -58,26 +58,22 @@ export function Services() {
     })
   })
   return (
-    <div className="relative flex w-full min-h-dvh items-center justify-center">
-      <p className="text absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-left w-[80%]">
+    <div className="relative flex min-h-dvh w-full items-center justify-center">
+      <p className="text absolute top-1/3 left-1/2 w-[80%] -translate-x-1/2 -translate-y-1/2 transform text-left text-2xl">
         I collaborate with artists and creatives teams to turn ideas into
         digital experiences. Through code, motion and interaction, I explore
         technology as a tool for expression, experimentation and connection.
       </p>
-      <div
-        className="absolute left-1/2 top-2/3 -translate-x-1/2 w-screen overflow-hidden
-                      [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]
-                      [--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
-      >
+      <div className="absolute top-2/3 left-1/2 w-screen -translate-x-1/2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div
           ref={trackRef}
           className="led-text flex whitespace-nowrap will-change-transform"
         >
-          <span className="font-ark-es-dense text-transparent text-stroke-gray-100 text-stroke-1 text-6xl uppercase opacity-70">
+          <span className="font-ark-es-dense text-stroke-gray-100 text-stroke-1 text-6xl text-transparent uppercase opacity-70">
             Web - Motion - Interaction - Design - Web - Motion - Interaction -
             Design -
           </span>
-          <span className="font-ark-es-dense text-transparent text-stroke-gray-100 text-stroke-1 text-6xl uppercase opacity-70">
+          <span className="font-ark-es-dense text-stroke-gray-100 text-stroke-1 text-6xl text-transparent uppercase opacity-70">
             Web - Motion - Interaction - Design - Web - Motion - Interaction -
             Design -
           </span>

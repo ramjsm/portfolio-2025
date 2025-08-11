@@ -38,7 +38,7 @@ function App() {
       </GlobalCanvas>
       <SmoothScrollbar />
       <Overlay />
-      <div className="mx-auto lg:w-2/3 md:w-full max-w-[1920px]">
+      <div className="mx-auto max-w-[1920px] md:w-full lg:w-2/3">
         <Router />
       </div>
       <Footer />

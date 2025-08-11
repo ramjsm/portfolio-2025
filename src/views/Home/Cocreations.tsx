@@ -25,23 +25,23 @@ export function Cocreations() {
   })
 
   return (
-    <div className="relative flex w-full min-h-dvh items-center justify-center">
+    <div className="relative flex min-h-dvh w-full items-center justify-center">
       <a id="co-creations" className="absolute -top-30 left-0"></a>
-      <div className="h-[120dhv] grid grid-cols-[40%_20%_40%] grid-rows-[10%_20%_5%_30%_25%_10%] gap-2 z-10 w-[930px] transform">
-        <div className="flex relative col-span-2 justify justify-items-start">
-          <div id="header1" className="flex-1 relative">
-            <div className="header1 absolute bottom-20 font-syne text-8xl text-transparent text-stroke-gray-100 text-stroke-1">
+      <div className="z-10 grid h-[120dhv] w-[930px] transform grid-cols-[40%_20%_40%] grid-rows-[10%_20%_5%_30%_25%_10%] gap-2">
+        <div className="justify relative col-span-2 flex justify-items-start">
+          <div id="header1" className="relative flex-1">
+            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-20 text-8xl text-transparent">
               CO-
             </div>
-            <div className="header1 absolute bottom-10 font-syne text-8xl text-transparent text-stroke-gray-100 text-stroke-1">
+            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-10 text-8xl text-transparent">
               CO-
             </div>
-            <div className="header1 absolute bottom-0 font-syne text-8xl">
+            <div className="header1 font-syne absolute bottom-0 text-8xl">
               CO-
             </div>
           </div>
-          <div className="flex-1 relative">
-            <img className="w-full h-full" src="codebar.png" />
+          <div className="relative flex-1">
+            <img className="h-full w-full" src="codebar.png" />
             {/* <CodeBar /> */}
           </div>
         </div>
@@ -51,18 +51,18 @@ export function Cocreations() {
             cocreation={cocreation}
           />
         ))}
-        <div className="border-b border-r border-l border-texture row-start-4 row-end-5 col-start-1 col-end-4 -z-1"></div>
+        <div className="border-texture -z-1 col-start-1 col-end-4 row-start-4 row-end-5 border-r border-b border-l"></div>
         <div
           id="header2"
-          className="relative row-start-6 row-end-6 col-start-1 col-end-4"
+          className="relative col-start-1 col-end-4 row-start-6 row-end-6"
         >
-          <div className="header2 absolute top-0 font-syne text-8xl z-3">
+          <div className="header2 font-syne absolute top-0 z-3 text-8xl">
             CREATIONS
           </div>
-          <div className="header2 absolute top-10 font-syne text-8xl text-transparent text-stroke-gray-100 text-stroke-1 z-2">
+          <div className="header2 font-syne text-stroke-gray-100 text-stroke-1 absolute top-10 z-2 text-8xl text-transparent">
             CREATIONS
           </div>
-          <div className="header2 absolute top-20 font-syne text-8xl text-transparent text-stroke-gray-100 text-stroke-1 z-1">
+          <div className="header2 font-syne text-stroke-gray-100 text-stroke-1 absolute top-20 z-1 text-8xl text-transparent">
             CREATIONS
           </div>
         </div>

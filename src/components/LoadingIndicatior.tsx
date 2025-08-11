@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber'
 import { Mesh } from 'three'
 
 interface LoadingIndicatorProps {
-  scale: any;
+  scale: any
 }
 
 export function LoadingIndicator({ scale }: LoadingIndicatorProps) {

@@ -2,8 +2,8 @@ import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
 
 export function TheMagicBox() {
   return (
-    <div className="flex flex-col gap-20 my-20">
-      <div className="flex flex-col gap-2 w-[80%] mx-auto">
+    <div className="my-20 flex flex-col gap-20">
+      <div className="mx-auto flex w-[80%] flex-col gap-2">
         <div>
           <WebGLImageWrapper
             src="/projects/the-magic-box/entrance.webp"
@@ -12,7 +12,7 @@ export function TheMagicBox() {
           />
         </div>
         <div className="flex gap-2">
-          <div className="flex flex-col gap-2 flex-1">
+          <div className="flex flex-1 flex-col gap-2">
             <div>
               <WebGLImageWrapper
                 src="/projects/the-magic-box/instructions.webp"

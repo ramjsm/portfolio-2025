@@ -3,6 +3,6 @@
 
 // CSS module declarations
 declare module '@14islands/r3f-scroll-rig/css' {
-  const content: any;
-  export default content;
+  const content: any
+  export default content
 }

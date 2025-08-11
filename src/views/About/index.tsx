@@ -1,6 +1,6 @@
 export function About() {
   return (
-    <div className="flex flex-col w-full min-h-dvh justify-center text-xl">
+    <div className="flex min-h-dvh w-full flex-col justify-center text-xl">
       <p>
         I'm Ramses Salas, a Freelance Creative Technologist based in Berlin. I
         love mixing code, animation, interactivity, and generative design to

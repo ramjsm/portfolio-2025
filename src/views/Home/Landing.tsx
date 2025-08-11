@@ -28,8 +28,8 @@ export function Landing() {
     { scope: container }
   )
   return (
-    <div ref={container} className="flex w-full min-h-dvh items-end">
-      <h1 className="text-left font-ark-es uppercase text-7xl text-transparent text-stroke-gray-100 text-stroke-1 mb-20">
+    <div ref={container} className="flex min-h-dvh w-full items-end">
+      <h1 className="font-ark-es text-stroke-gray-100 text-stroke-1 mb-20 text-left text-7xl text-transparent uppercase">
         technology <br></br>
         as a medium for <br></br>
         creative expression

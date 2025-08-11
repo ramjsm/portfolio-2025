@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <div className="flex py-5 px-5 uppercase items-end text-xs font-pp-neue-montreal opacity-60">
+    <div className="font-pp-neue-montreal flex items-end px-5 py-5 text-xs uppercase opacity-60">
       <div className="flex-1">
         <ul className="">
           <li>
@@ -43,7 +43,7 @@ export function Footer() {
           <li></li>
         </ul>
       </div>
-      <div className="flex flex-col flex-1 items-center">
+      <div className="flex flex-1 flex-col items-center">
         <span>hello@ramsessalas.com</span>
         <span>Ramses Salas 2025 ©</span>
       </div>

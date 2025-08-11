@@ -36,32 +36,32 @@ export function ClientsWork() {
   })
 
   return (
-    <div className="relative w-full justify-center mt-100">
+    <div className="relative mt-100 w-full justify-center">
       <a id="clients-work" className="absolute -top-30 left-0"></a>
-      <div className="clients-work-header relative h-50 z-10">
-        <div className="absolute right-0 top-10">
-          <div className="client-work-shadow font-syne text-8xl text-transparent text-stroke-gray-100 text-stroke-1 mr-40">
+      <div className="clients-work-header relative z-10 h-50">
+        <div className="absolute top-10 right-0">
+          <div className="client-work-shadow font-syne text-stroke-gray-100 text-stroke-1 mr-40 text-8xl text-transparent">
             CLIENTS
           </div>
-          <div className="client-work-shadow font-syne text-right text-8xl text-transparent text-stroke-gray-100 text-stroke-1">
+          <div className="client-work-shadow font-syne text-stroke-gray-100 text-stroke-1 text-right text-8xl text-transparent">
             WORK
           </div>
         </div>
         <div className="absolute right-0">
-          <div className="client-work font-syne text-8xl mr-40">CLIENTS</div>
+          <div className="client-work font-syne mr-40 text-8xl">CLIENTS</div>
           <div className="client-work font-syne text-right text-8xl">WORK</div>
         </div>
       </div>
-      <div className="flex flex-col gap-4 w-[80%] mx-auto">
+      <div className="mx-auto flex w-[80%] flex-col gap-4">
         {projects.map((project) => (
           <Link
             to="/project/soberania-creativa"
-            className="border-texture relative w-full h-1/2 aspect-video"
+            className="border-texture relative aspect-video h-1/2 w-full"
           >
             <WebGLImageWrapper {...project.thumbnail} />
             <span
               id={project.slug}
-              className={`absolute text-l text-white text-l font-pp-neue-montreal uppercase ${project.thumbnail.labelClass}`}
+              className={`text-l text-l font-pp-neue-montreal absolute text-white uppercase ${project.thumbnail.labelClass}`}
             >{`/${project.title}`}</span>
           </Link>
         ))}

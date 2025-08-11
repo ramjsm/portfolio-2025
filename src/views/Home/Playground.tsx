@@ -9,21 +9,21 @@ export function Playground() {
 
   return (
     <>
-      <div className="relative w-full justify-center mt-100">
+      <div className="relative mt-100 w-full justify-center">
         <div className="relative h-50">
-          <div className="absolute top-20 left-0 font-syne text-right text-8xl text-transparent text-stroke-gray-100 text-stroke-1">
+          <div className="font-syne text-stroke-gray-100 text-stroke-1 absolute top-20 left-0 text-right text-8xl text-transparent">
             PLAY
           </div>
-          <div className="absolute top-10 -left-5 font-syne text-right text-8xl text-transparent text-stroke-gray-100 text-stroke-1">
+          <div className="font-syne text-stroke-gray-100 text-stroke-1 absolute top-10 -left-5 text-right text-8xl text-transparent">
             PLAY
           </div>
-          <div className="absolute top-0 -left-10 font-syne text-8xl">PLAY</div>
-          <div className="absolute top-20 left-100 font-syne text-right text-8xl">
+          <div className="font-syne absolute top-0 -left-10 text-8xl">PLAY</div>
+          <div className="font-syne absolute top-20 left-100 text-right text-8xl">
             GROUND
           </div>
         </div>
-        <div ref={el} className="w-full h-dvh"></div>
-        <div className="border-texture absolute bottom-[50%] left-0 w-1/3 h-1/3">
+        <div ref={el} className="h-dvh w-full"></div>
+        <div className="border-texture absolute bottom-[50%] left-0 h-1/3 w-1/3">
           <WebGLImageWrapper
             src="cocreations/synthara/synthara1.jpg"
             thresholdWhite={0.2}

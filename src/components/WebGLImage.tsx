@@ -7,13 +7,13 @@ import * as THREE from 'three'
 extend({ ThresholdMaterial })
 
 interface WebGLImageProps {
-  imgRef: any;
-  thresholdWhite: number;
-  thresholdGray: number;
-  noise?: number;
-  color?: string;
-  enabled?: boolean;
-  [key: string]: any;
+  imgRef: any
+  thresholdWhite: number
+  thresholdGray: number
+  noise?: number
+  color?: string
+  enabled?: boolean
+  [key: string]: any
 }
 
 export function WebGLImage({ imgRef, ...props }: WebGLImageProps) {

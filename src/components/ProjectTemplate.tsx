@@ -72,35 +72,35 @@ export function ProjectTemplate() {
   }
 
   return (
-    <article className="w-full relative">
-      <div className="relative flex w-full min-h-dvh items-center">
-        <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-[50%] left-[50%] flex flex-col items-center gap-4 z-10 mix-blend-difference">
-          <h1 className="header font-syne uppercase text-7xl drop-shadow-xl/50 text-transparent text-stroke-gray-100 text-stroke-1 whitespace-nowrap">
+    <article className="relative w-full">
+      <div className="relative flex min-h-dvh w-full items-center">
+        <div className="absolute top-[50%] left-[50%] z-10 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center gap-4 mix-blend-difference">
+          <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 text-7xl whitespace-nowrap text-transparent uppercase drop-shadow-xl/50">
             {projectData.title}
           </h1>
         </div>
-        <div className="relative top-[20%] left-0 border-texture aspect-video">
+        <div className="border-texture relative top-[20%] left-0 aspect-video">
           <WebGLVideoWrapper {...projectData.hero} />
           {projectData.videoURL && (
-            <div className="absolute bottom-5 right-5">
+            <div className="absolute right-5 bottom-5">
               <VideoDialog src={projectData.videoURL} />
             </div>
           )}
         </div>
       </div>
-      <div className="relative flex w-full mb-10">
-        <div className="info-wrapper flex flex-col flex-1 gap-4">
+      <div className="relative mb-10 flex w-full">
+        <div className="info-wrapper flex flex-1 flex-col gap-4">
           {projectData.info.map((info: InfoSection) => (
             <Info key={info.header} header={info.header} list={info.list} />
           ))}
         </div>
-        <div className="flex-3 text-xl font-[100] flex flex-col gap-5">
+        <div className="flex flex-3 flex-col gap-5 text-xl font-[100]">
           {projectData.intro}
         </div>
       </div>
       <div className="my-20">{projectData.body}</div>
       {projectData.credits && (
-        <ul className="text-center font-[100] mb-20">
+        <ul className="mb-20 text-center font-[100]">
           {projectData.credits.map((listItem, index: number) => (
             <li key={index} className="text-xl">
               {listItem}
@@ -109,8 +109,8 @@ export function ProjectTemplate() {
         </ul>
       )}
       <div className="flex w-full items-center gap-4">
-        <div className="border-texture-top w-full h-0"></div>
-        <div className="flex flex-1 items-center justify-center gap-3 font-pp-neue-montreal text-sm">
+        <div className="border-texture-top h-0 w-full"></div>
+        <div className="font-pp-neue-montreal flex flex-1 items-center justify-center gap-3 text-sm">
           {projects.map((project, index) => (
             <Link
               key={project.slug}
@@ -123,11 +123,11 @@ export function ProjectTemplate() {
             </Link>
           ))}
         </div>
-        <div className="border-texture-top w-full h-0"></div>
+        <div className="border-texture-top h-0 w-full"></div>
       </div>
-      <div className="flex items-end justify-end mt-4 mb-16 text-right">
+      <div className="mt-4 mb-16 flex items-end justify-end text-right">
         <Link to={`/project/${nextProject.slug}`}>
-          <div className="text-5xl font-syne text-transparent text-stroke-gray-100 text-stroke-1 mb-1">{`/ ${nextProject.title}`}</div>
+          <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`/ ${nextProject.title}`}</div>
           <div className="text-l opacity-50">{`Up Next / ${getProjectCategoryLabel(nextProject.category)}`}</div>
         </Link>
       </div>

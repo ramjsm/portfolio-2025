@@ -2,8 +2,8 @@ import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
 
 export function Synthara() {
   return (
-    <div className="flex flex-col gap-20 mt-20">
-      <div className="flex flex-col gap-2 w-[80%] mx-auto">
+    <div className="mt-20 flex flex-col gap-20">
+      <div className="mx-auto flex w-[80%] flex-col gap-2">
         <div className="flex gap-2">
           <div className="flex-1">
             <WebGLImageWrapper
@@ -28,7 +28,7 @@ export function Synthara() {
           />
         </div>
         <div className="flex gap-2">
-          <div className="flex flex-col flex-1 gap-2">
+          <div className="flex flex-1 flex-col gap-2">
             <div>
               <WebGLImageWrapper
                 src="/projects/synthara/cartography.webp"

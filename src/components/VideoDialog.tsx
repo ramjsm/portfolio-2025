@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import ReactPlayer from 'react-player'
 
 interface VideoDialogProps {
-  src: string;
+  src: string
 }
 
 export function VideoDialog({ src }: VideoDialogProps) {
@@ -34,7 +34,7 @@ export function VideoDialog({ src }: VideoDialogProps) {
       {/* Trigger Button */}
       <button
         onClick={openDialog}
-        className="px-4 py-2 transition text-l font-pp-neue-montreal bg-white/3 hover:cursor-pointer"
+        className="text-l font-pp-neue-montreal bg-white/3 px-4 py-2 transition hover:cursor-pointer"
       >
         /WATCH
       </button>
@@ -43,9 +43,9 @@ export function VideoDialog({ src }: VideoDialogProps) {
       <dialog
         ref={dialogRef}
         onClick={handleClickOutside}
-        className="bg-transparent mx-auto my-auto w-2/3 max-w-[1920px]border-none backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center"
+        className="max-w-[1920px]border-none mx-auto my-auto w-2/3 bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center"
       >
-        <div className="relative shadow-lg px-10 w-full">
+        <div className="relative w-full px-10 shadow-lg">
           {/* Close Button */}
           {/* <button
             onClick={closeDialog}
@@ -56,7 +56,7 @@ export function VideoDialog({ src }: VideoDialogProps) {
           </button> */}
 
           {/* Video Player */}
-          <div className="aspect-video mx-auto">
+          <div className="mx-auto aspect-video">
             <ReactPlayer
               ref={videoRef}
               src={src}

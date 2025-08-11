@@ -16,7 +16,7 @@ export function Home() {
   }, [location, scrollTo])
 
   return (
-    <div className="w-full texture-test">
+    <div className="texture-test w-full">
       <Landing />
       <Services />
       <Cocreations />
