@@ -13,7 +13,6 @@ export function WebGLVideoWrapper({
   thresholdWhite,
   thresholdGray,
   noise,
-  loading = 'eager',
 }) {
   const el = useRef()
   const videoRef = useRef()

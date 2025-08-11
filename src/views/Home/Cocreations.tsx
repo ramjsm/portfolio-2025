@@ -1,13 +1,9 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
-import { Link } from 'react-router'
 import {
-  cocreationsList,
   getProjectsByCategory,
 } from '../../router/cocreations'
 import { CocreationLinkThumbnail } from './CocreationLinkThumbnail'
-import CodeBar from '../../components/Codebar'
 
 export function Cocreations() {
   useGSAP(() => {

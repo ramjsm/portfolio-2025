@@ -1,10 +1,6 @@
 import { ScrollScene, UseCanvas } from '@14islands/r3f-scroll-rig'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import R3fForceGraph from 'r3f-forcegraph'
 import { LoadingIndicator } from '../../components/LoadingIndicatior'
-import { Suspense, useRef, useMemo } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { Suspense, useRef } from 'react'
 import { PlaygroundGraph } from '../../components/PlayGroundGraph'
 import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
 

@@ -1,45 +1,6 @@
 import { shaderMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 
-// GLSL noise function (Classic Perlin)
-const noiseGLSL = `
-  vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-  vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-  vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
-  float snoise(vec2 v)
-  {
-    const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
-                        0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
-                       -0.577350269189626,  // -1.0 + 2.0 * C.x
-                        0.024390243902439); // 1.0 / 41.0
-    vec2 i  = floor(v + dot(v, C.yy) );
-    vec2 x0 = v -   i + dot(i, C.xx);
-    vec2 i1;
-    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-    vec4 x12 = x0.xyxy + C.xxzz;
-    x12.xy -= i1;
-    i = mod289(i);
-    vec3 p = permute( permute(
-                i.y + vec3(0.0, i1.y, 1.0 ))
-              + i.x + vec3(0.0, i1.x, 1.0 ));
-    vec3 x_ = fract(p * C.w) * 2.0 - 1.0;
-    vec3 h = abs(x_) - 0.5;
-    vec3 ox = floor(x_ + 0.5);
-    vec3 a0 = x_ - ox;
-    float m0 = dot(x0, x0);
-    float m1 = dot(x12.xy, x12.xy);
-    float m2 = dot(x12.zw, x12.zw);
-    m0 = max(0.5 - m0, 0.0);
-    m1 = max(0.5 - m1, 0.0);
-    m2 = max(0.5 - m2, 0.0);
-    return 70.0 * (
-      m0*m0*dot(a0.xy, x0) +
-      m1*m1*dot(a0.zw, x12.xy) +
-      m2*m2*dot(a0.zw, x12.zw)
-    );
-  }
-`
-
 const ThresholdMaterial = shaderMaterial(
   {
     uMouse: new THREE.Vector2(0.5, 0.5),

@@ -1,5 +1,4 @@
 import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
-import { WebGLVideoWrapper } from '../../../components/WebGLVideoWrapper'
 
 export function TheMagicBox() {
   return (

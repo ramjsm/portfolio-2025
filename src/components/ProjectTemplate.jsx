@@ -1,10 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-import { ParticlesImageWrapper } from '../components/ParticlesImageWrapper'
-import { WebGLImageWrapper } from '../components/WebGLImageWrapper'
 import { VideoDialog } from '../components/VideoDialog'
-import { BackButton } from '../components/BackButton'
 import { Link } from 'react-router'
 import { Info } from './Info'
 import {
@@ -14,7 +11,7 @@ import {
   getProjectCategoryLabel,
   getProjectsByCategory,
 } from '../router/cocreations'
-import { useParams, useNavigate } from 'react-router'
+import { useParams } from 'react-router'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
 import { WebGLVideoWrapper } from '../components/WebGLVideoWrapper'

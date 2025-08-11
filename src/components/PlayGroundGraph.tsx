@@ -1,9 +1,9 @@
 import { useFrame } from '@react-three/fiber'
 import { useMemo, useRef } from 'react'
 import R3fForceGraph from 'r3f-forcegraph'
-import { OrbitControls, PresentationControls } from '@react-three/drei'
+import { PresentationControls } from '@react-three/drei'
 
-export function PlaygroundGraph({ ...props }) {
+export function PlaygroundGraph() {
   const fgRef = useRef()
   const N = 10
   const gData = useMemo(

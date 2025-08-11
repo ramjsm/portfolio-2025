@@ -1,10 +1,6 @@
-import { useImageAsTexture } from '@14islands/r3f-scroll-rig'
-import { useGSAP } from '@gsap/react'
-import { MeshDistortMaterial } from '@react-three/drei'
-import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
+import { useEffect, useRef } from 'react'
 import ThresholdMaterial from './shaders/thresholdShader'
-import { extend, useFrame, useThree } from '@react-three/fiber'
+import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 extend({ ThresholdMaterial })
@@ -29,7 +25,13 @@ export function WebGLVideo({ src, videoRef, ...props }) {
       materialRef.current.uThresholdWhite = props.thresholdWhite
       materialRef.current.uThresholdGray = props.thresholdGray
     }
-  }, [src, videoTextureRef])
+  }, [
+    src,
+    videoRef,
+    videoTextureRef,
+    props.thresholdWhite,
+    props.thresholdGray,
+  ])
 
   useFrame(() => {
     if (videoTextureRef.current) {

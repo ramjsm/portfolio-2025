@@ -1,8 +1,6 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { SplitText } from 'gsap/SplitText'
 import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
-import { useControls } from 'leva'
 import { Link } from 'react-router'
 import { getProjectsByCategory } from '../../router/cocreations'
 

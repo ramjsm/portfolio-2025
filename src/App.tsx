@@ -6,12 +6,10 @@ import { SplitText } from 'gsap/SplitText'
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 import { useGSAP } from '@gsap/react'
 import '@14islands/r3f-scroll-rig/css'
-import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 import { Overlay } from './components/Overlay'
 import { useRef } from 'react'
 import './App.css'
 import { Footer } from './components/Footer'
-import Cursor from './components/Cursor'
 import { RoughEase } from 'gsap/EasePack'
 
 gsap.registerPlugin(

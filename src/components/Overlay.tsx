@@ -7,6 +7,7 @@ export function Overlay() {
   const [isMenuVisible, setIsMenuVisible] = useState(false)
 
   const toggleMenu = () => setIsMenuVisible(!isMenuVisible)
+
   return (
     <>
       <div className="fixed flex text-xs tracking-wider w-full justify-between py-5 px-5 z-99 bg-linear-to-b from-[#101010] to-transparent font-pp-neue-montreal">
