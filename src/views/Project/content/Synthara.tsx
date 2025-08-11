@@ -10,7 +10,6 @@ export function Synthara() {
               src="/projects/synthara/stairs.webp"
               thresholdWhite={0.3}
               thresholdGray={0.3}
-              noise={1.25}
             />
           </div>
           <div className="flex-1">
@@ -18,7 +17,6 @@ export function Synthara() {
               src="/projects/synthara/kombucha.webp"
               thresholdWhite={0.5}
               thresholdGray={0.3}
-              noise={1.25}
             />
           </div>
         </div>
@@ -27,7 +25,6 @@ export function Synthara() {
             src="/projects/synthara/closeup-wide.webp"
             thresholdWhite={0.6}
             thresholdGray={0.4}
-            noise={1.25}
           />
         </div>
         <div className="flex gap-2">
@@ -37,7 +34,6 @@ export function Synthara() {
                 src="/projects/synthara/cartography.webp"
                 thresholdWhite={0.4}
                 thresholdGray={0.4}
-                noise={1.25}
               />
             </div>
             <div>
@@ -45,7 +41,6 @@ export function Synthara() {
                 src="/projects/synthara/model.webp"
                 thresholdWhite={0.35}
                 thresholdGray={0.35}
-                noise={1.25}
               />
             </div>
           </div>
@@ -54,7 +49,6 @@ export function Synthara() {
               src="/projects/synthara/closeup-portrait.webp"
               thresholdWhite={0.7}
               thresholdGray={0.1}
-              noise={1.25}
             />
           </div>
         </div>

@@ -11,7 +11,6 @@ export function AsBelowSoAbove() {
             src="/projects/as-below-so-above/as-below-so-above-live-cam.webm"
             thresholdWhite={0.13}
             thresholdGray={0.13}
-            noise={1.25}
           />
           <div className="absolute bottom-5 left-5 z-10">
             <VideoDialog src="https://vimeo.com/1014313543" />
@@ -23,7 +22,6 @@ export function AsBelowSoAbove() {
               src="/projects/as-below-so-above/video-mapping.webp"
               thresholdWhite={0.6}
               thresholdGray={0.4}
-              noise={1.25}
             />
           </div>
           <div className="flex-1">
@@ -32,7 +30,6 @@ export function AsBelowSoAbove() {
                 src="/projects/as-below-so-above/sculpture-top.webp"
                 thresholdWhite={0.3}
                 thresholdGray={0.3}
-                noise={1.25}
               />
             </div>
           </div>
@@ -42,7 +39,6 @@ export function AsBelowSoAbove() {
             src="/projects/as-below-so-above/wall-people.webp"
             thresholdWhite={0.5}
             thresholdGray={0.4}
-            noise={1.25}
           />
         </div>
         <div className="flex gap-2">
@@ -51,7 +47,6 @@ export function AsBelowSoAbove() {
               src="/projects/as-below-so-above/sculpture.webp"
               thresholdWhite={0.5}
               thresholdGray={0.5}
-              noise={1.25}
             />
           </div>
           <div className="flex-1">
@@ -60,7 +55,6 @@ export function AsBelowSoAbove() {
                 src="/projects/as-below-so-above/paintings.webp"
                 thresholdWhite={0.35}
                 thresholdGray={0.35}
-                noise={1.25}
               />
             </div>
           </div>
@@ -70,7 +64,6 @@ export function AsBelowSoAbove() {
             src="/projects/as-below-so-above/after-performance.webp"
             thresholdWhite={0.5}
             thresholdGray={0.4}
-            noise={1.25}
           />
         </div>
       </div>

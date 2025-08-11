@@ -9,7 +9,6 @@ export function TheMagicBox() {
             src="/projects/the-magic-box/entrance.webp"
             thresholdWhite={0.3}
             thresholdGray={0.5}
-            noise={1.25}
           />
         </div>
         <div className="flex gap-2">
@@ -19,7 +18,6 @@ export function TheMagicBox() {
                 src="/projects/the-magic-box/instructions.webp"
                 thresholdWhite={0.7}
                 thresholdGray={0.4}
-                noise={1.25}
               />
             </div>
             <div>
@@ -27,7 +25,6 @@ export function TheMagicBox() {
                 src="/projects/the-magic-box/loading.webp"
                 thresholdWhite={0.7}
                 thresholdGray={0.4}
-                noise={1.25}
               />
             </div>
           </div>
@@ -36,7 +33,6 @@ export function TheMagicBox() {
               src="/projects/the-magic-box/background.webp"
               thresholdWhite={0.5}
               thresholdGray={0.4}
-              noise={1.25}
             />
           </div>
         </div>
@@ -45,7 +41,6 @@ export function TheMagicBox() {
             src="/projects/the-magic-box/warped.webp"
             thresholdWhite={0.3}
             thresholdGray={0.3}
-            noise={1.25}
           />
         </div>
       </div>

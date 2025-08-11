@@ -28,7 +28,6 @@ export function Playground() {
             src="cocreations/synthara/synthara1.jpg"
             thresholdWhite={0.2}
             thresholdGray={0.2}
-            noise={1.25}
           />
           <div className="font-teenage-dreams text-4xl">Synthara</div>
           <div className="">#webgl #three.js</div>

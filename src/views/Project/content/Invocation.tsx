@@ -18,7 +18,6 @@ export function Invocation() {
               src="/projects/invocation/invocation-graphics-1.webp"
               thresholdWhite={0.3}
               thresholdGray={0.1}
-              noise={1.25}
             />
           </div>
           <div className="row-start-2 row-end-2 col-start-2 col-end-3">
@@ -26,7 +25,6 @@ export function Invocation() {
               src="/projects/invocation/invocation-graphics-2.webp"
               thresholdWhite={0.65}
               thresholdGray={0.6}
-              noise={1.25}
             />
           </div>
         </div>
@@ -35,7 +33,6 @@ export function Invocation() {
             src="/projects/invocation/invocation-front-side-wide.webp"
             thresholdWhite={0.65}
             thresholdGray={0.6}
-            noise={1.25}
           />
         </div>
       </div>

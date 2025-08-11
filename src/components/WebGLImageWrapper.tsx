@@ -12,7 +12,6 @@ export function WebGLImageWrapper({
   src,
   thresholdWhite,
   thresholdGray,
-  noise,
   loading = 'eager',
 }) {
   const el = useRef()
@@ -39,7 +38,6 @@ export function WebGLImageWrapper({
                   imgRef={img}
                   thresholdWhite={thresholdWhite}
                   thresholdGray={thresholdGray}
-                  noise={noise}
                   {...props}
                 />
               </Suspense>

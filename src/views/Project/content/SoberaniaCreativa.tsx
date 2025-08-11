@@ -9,7 +9,6 @@ export function SoberaniaCreativa() {
             src="/projects/soberania-creativa/sitemap.webp"
             thresholdWhite={0.25}
             thresholdGray={0.25}
-            noise={1.25}
           />
         </div>
         <div>

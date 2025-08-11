@@ -8,12 +8,7 @@ import { Suspense, useRef } from 'react'
 import { LoadingIndicator } from './LoadingIndicatior'
 import { WebGLVideo } from './WebGLVideo'
 
-export function WebGLVideoWrapper({
-  src,
-  thresholdWhite,
-  thresholdGray,
-  noise,
-}) {
+export function WebGLVideoWrapper({ src, thresholdWhite, thresholdGray }) {
   const el = useRef()
   const videoRef = useRef()
   const { hasSmoothScrollbar } = useScrollRig()
@@ -46,7 +41,6 @@ export function WebGLVideoWrapper({
                   src={src}
                   thresholdWhite={thresholdWhite}
                   thresholdGray={thresholdGray}
-                  noise={noise}
                   {...props}
                 />
               </Suspense>

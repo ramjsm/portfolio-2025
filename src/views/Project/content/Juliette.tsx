@@ -9,7 +9,6 @@ export function Juliette() {
             src="/projects/juliette/juliette-ramses.webp"
             thresholdWhite={0.3}
             thresholdGray={0.3}
-            noise={1.25}
           />
         </div>
         <div className="flex gap-2">
@@ -18,7 +17,6 @@ export function Juliette() {
               src="/projects/juliette/juelitte-top-side.webp"
               thresholdWhite={0.3}
               thresholdGray={0.3}
-              noise={1.25}
             />
           </div>
           <div className="flex flex-col flex-1 gap-2">
@@ -27,7 +25,6 @@ export function Juliette() {
                 src="/projects/juliette/juelitte-bottom.webp"
                 thresholdWhite={0.35}
                 thresholdGray={0.35}
-                noise={1.25}
               />
             </div>
             <div className="flex-1">
@@ -35,7 +32,6 @@ export function Juliette() {
                 src="/projects/juliette/juelitte-bottom-hair.webp"
                 thresholdWhite={0.3}
                 thresholdGray={0.3}
-                noise={1.25}
               />
             </div>
           </div>
@@ -45,7 +41,6 @@ export function Juliette() {
             src="/projects/juliette/juliette-iria.webp"
             thresholdWhite={0.3}
             thresholdGray={0.3}
-            noise={1.25}
           />
         </div>
       </div>
