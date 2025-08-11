@@ -4,7 +4,7 @@ import { SplitText } from 'gsap/SplitText'
 import { useRef } from 'react'
 
 export function Landing() {
-  const container = useRef()
+  const container = useRef<HTMLDivElement>(null)
 
   useGSAP(
     () => {

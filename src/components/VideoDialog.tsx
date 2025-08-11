@@ -1,25 +1,29 @@
 import { useRef } from 'react'
 import ReactPlayer from 'react-player'
 
-export function VideoDialog({ src }) {
-  const dialogRef = useRef(null)
-  const videoRef = useRef(null)
+interface VideoDialogProps {
+  src: string;
+}
+
+export function VideoDialog({ src }: VideoDialogProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const videoRef = useRef<any>(null)
 
   const openDialog = () => {
     if (dialogRef.current) {
       dialogRef.current.showModal()
-      videoRef.current.play()
+      if (videoRef.current) videoRef.current.getInternalPlayer()?.play()
     }
   }
 
   const closeDialog = () => {
     if (dialogRef.current) {
       dialogRef.current.close()
-      videoRef.current.pause()
+      if (videoRef.current) videoRef.current.getInternalPlayer()?.pause()
     }
   }
 
-  const handleClickOutside = (e) => {
+  const handleClickOutside = (e: React.MouseEvent<HTMLDialogElement>) => {
     if (e.currentTarget === e.target) {
       closeDialog()
     }

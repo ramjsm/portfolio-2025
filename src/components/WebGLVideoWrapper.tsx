@@ -7,10 +7,17 @@ import {
 import { Suspense, useRef } from 'react'
 import { LoadingIndicator } from './LoadingIndicatior'
 import { WebGLVideo } from './WebGLVideo'
+import type { MediaAsset } from '../config/projects'
 
-export function WebGLVideoWrapper({ src, thresholdWhite, thresholdGray }) {
-  const el = useRef()
-  const videoRef = useRef()
+interface WebGLVideoWrapperProps extends MediaAsset {}
+
+export function WebGLVideoWrapper({
+  src,
+  thresholdWhite,
+  thresholdGray,
+}: WebGLVideoWrapperProps) {
+  const el = useRef<HTMLDivElement>(null!)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const { hasSmoothScrollbar } = useScrollRig()
 
   return (

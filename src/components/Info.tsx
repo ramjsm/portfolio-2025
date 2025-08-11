@@ -1,4 +1,10 @@
-export function Info({ header, list, children }) {
+import type { InfoSection } from '../config/projects'
+
+type InfoProps = InfoSection & {
+  children?: React.ReactNode
+}
+
+export function Info({ header, list, children }: InfoProps) {
   return (
     <div>
       <h3 className="info font-ark-es-dense text-4xl">{header}</h3>

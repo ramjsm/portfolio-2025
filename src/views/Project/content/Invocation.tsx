@@ -9,7 +9,6 @@ export function Invocation() {
             src="/projects/invocation/invocation-front-wide.webp"
             thresholdWhite={0.1}
             thresholdGray={0.1}
-            noise={2}
           />
         </div>
         <div className="flex gap-2">

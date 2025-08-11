@@ -5,7 +5,7 @@ import { PlaygroundGraph } from '../../components/PlayGroundGraph'
 import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
 
 export function Playground() {
-  const el = useRef()
+  const el = useRef<HTMLDivElement>(null!)
 
   return (
     <>

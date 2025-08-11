@@ -5,20 +5,52 @@ import { Juliette } from '../views/Project/content/Juliette'
 import { Invocation } from '../views/Project/content/Invocation'
 import { Irmajoanne } from '../views/Project/content/Irmajoanne'
 import { SoberaniaCreativa } from '../views/Project/content/SoberaniaCreativa'
+import type { ReactNode } from 'react'
 
-export const cocreationsList = [
+export interface MediaAsset {
+  src: string
+  thresholdWhite: number
+  thresholdGray: number
+}
+
+export interface ThumbnailAsset extends MediaAsset {
+  noise: number
+  labelClass: string
+  className: string
+}
+
+export interface InfoSection {
+  header: string
+  list: Array<string | ReactNode>
+}
+
+export type ProjectCategory = 'cocreation' | 'client'
+
+export interface Project {
+  slug: string
+  category: ProjectCategory
+  title: string
+  thumbnail: ThumbnailAsset
+  hero: MediaAsset
+  videoURL?: string
+  intro: ReactNode
+  info: InfoSection[]
+  body: ReactNode
+  credits?: Array<ReactNode>
+}
+
+export const projectsList: Project[] = [
   {
     slug: 'the-magic-box',
     category: 'cocreation',
     title: 'The Magic Box',
-    thumbnailClass:
-      'border-texture row-start-2 row-end-4 col-start-1 col-end-3',
     thumbnail: {
       src: '/projects/the-magic-box/thumbnail.webp',
       thresholdWhite: 0.5,
       thresholdGray: 0.2,
       noise: 1.25,
       labelClass: 'label bottom-3 left-3',
+      className: 'border-texture row-start-2 row-end-4 col-start-1 col-end-3',
     },
     hero: {
       src: '/projects/the-magic-box/hero.webm',
@@ -26,7 +58,6 @@ export const cocreationsList = [
       thresholdGray: 0.2,
     },
     videoURL: 'https://vimeo.com/908160267',
-    heroImage: '/projects/the_magic_box_preview.jpg',
     intro: (
       <>
         <p>
@@ -94,21 +125,20 @@ export const cocreationsList = [
     slug: 'juliette',
     category: 'cocreation',
     title: 'Juliette',
-    thumbnailClass:
-      'border-texture row-start-1 row-end-4 col-start-3 col-end-3',
     thumbnail: {
       src: '/projects/juliette/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.5,
       noise: 1.25,
       labelClass: 'label top-3 left-3',
+      className: 'border-texture row-start-1 row-end-4 col-start-3 col-end-3',
     },
-    videoURL: 'https://vimeo.com/371266714',
     hero: {
       src: '/projects/juliette/Juliette_hero_animation.webm',
       thresholdWhite: 0.2,
       thresholdGray: 0.2,
     },
+    videoURL: 'https://vimeo.com/371266714',
     intro: (
       <>
         <p>
@@ -202,13 +232,13 @@ export const cocreationsList = [
     slug: 'synthara',
     category: 'cocreation',
     title: 'Synthara',
-    thumbnailClass: 'row-start-3 row-end-5 col-start-1 col-end-4',
     thumbnail: {
       src: '/projects/synthara/thumbnail.webp',
       thresholdWhite: 0.6,
       thresholdGray: 0.4,
       noise: 1.25,
       labelClass: 'label top-24 right-4',
+      className: 'row-start-3 row-end-5 col-start-1 col-end-4',
     },
     hero: {
       src: '/projects/synthara/hero.webm',
@@ -216,7 +246,6 @@ export const cocreationsList = [
       thresholdGray: 0.25,
     },
     videoURL: 'https://vimeo.com/864873849',
-    heroImage: '/projects/synthara_preview.png',
     intro: (
       <>
         <p>
@@ -298,20 +327,20 @@ export const cocreationsList = [
     slug: 'as-below-so-above',
     category: 'cocreation',
     title: 'As Below So Above',
-    thumbnailClass: 'border-texture row-start-5 col-start-1 row-span-2',
     thumbnail: {
       src: '/projects/as-below-so-above/thumbnail.webp',
       thresholdWhite: 0.5,
       thresholdGray: 0.4,
       noise: 1.25,
       labelClass: 'label top-3 left-3',
+      className: 'border-texture row-start-5 col-start-1 row-span-2',
     },
-    videoURL: 'https://vimeo.com/791477640',
     hero: {
       src: '/projects/as-below-so-above/hero.webm',
       thresholdWhite: 0.4,
       thresholdGray: 0.4,
     },
+    videoURL: 'https://vimeo.com/791477640',
     intro: (
       <>
         <p>
@@ -431,21 +460,20 @@ export const cocreationsList = [
     slug: 'invocation',
     category: 'cocreation',
     title: 'Invocation',
-    thumbnailClass: 'border-texture row-start-5 col-span-2',
     thumbnail: {
       src: '/projects/invocation/thumbnail.webp',
       thresholdWhite: 0.16,
       thresholdGray: 0.8,
       noise: 1.25,
       labelClass: 'label bottom-3 left-3',
+      className: 'border-texture row-start-5 col-span-2',
     },
-    videoURL: 'https://vimeo.com/377457311',
-    heroImage: '/projects/invocation_preview.jpg',
     hero: {
       src: '/projects/invocation/invocation_hero_animation.webm',
       thresholdWhite: 0.2,
       thresholdGray: 0.2,
     },
+    videoURL: 'https://vimeo.com/377457311',
     intro: (
       <>
         <p>
@@ -512,13 +540,13 @@ export const cocreationsList = [
     slug: 'soberania-creativa',
     category: 'client',
     title: 'Soberania Creativa',
-    thumbnailClass: 'border-texture row-start-5 col-span-2',
     thumbnail: {
       src: '/projects/soberania-creativa/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.5,
       noise: 1.25,
       labelClass: 'top-3 left-5',
+      className: 'border-texture row-start-5 col-span-2',
     },
     hero: {
       src: '/projects/soberania-creativa/hero.webm',
@@ -600,13 +628,13 @@ export const cocreationsList = [
     slug: 'irmajoanne',
     category: 'client',
     title: 'Irmajoanne',
-    thumbnailClass: 'border-texture row-start-5 col-span-2',
     thumbnail: {
       src: '/projects/irmajoanne/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.2,
       noise: 1.25,
       labelClass: 'top-3 right-5',
+      className: 'border-texture row-start-5 col-span-2',
     },
     hero: {
       src: '/projects/irmajoanne/hero.webm',
@@ -685,10 +713,10 @@ export const cocreationsList = [
   },
 ]
 
-export const getProjectsByCategory = (category: string) =>
-  cocreationsList.filter((project) => project.category === category)
+export const getProjectsByCategory = (category: ProjectCategory): Project[] =>
+  projectsList.filter((project) => project.category === category)
 
-export const getProjectCategoryLabel = (category: string) => {
+export const getProjectCategoryLabel = (category: ProjectCategory): string => {
   switch (category) {
     case 'cocreation':
       return 'Co-Creation'
@@ -699,22 +727,24 @@ export const getProjectCategoryLabel = (category: string) => {
   }
 }
 
-export const getCocreationBySlug = (slug: string) =>
-  cocreationsList.find((cocreation) => cocreation.slug === slug)
+export const getProjectBySlug = (slug: string): Project | undefined =>
+  projectsList.find((project) => project.slug === slug)
 
-export const getNextCocreationBySlug = (slug: string) => {
-  const currentIndex = cocreationsList.findIndex(
-    (cocreation) => cocreation.slug === slug
+export const getNextProjectBySlug = (slug: string): Project | undefined => {
+  const currentIndex = projectsList.findIndex(
+    (project) => project.slug === slug
   )
-  if (currentIndex + 1 < cocreationsList.length)
-    return cocreationsList[currentIndex + 1]
-  return cocreationsList[0]
+  if (currentIndex === -1) return undefined
+  if (currentIndex + 1 < projectsList.length)
+    return projectsList[currentIndex + 1]
+  return projectsList[0]
 }
 
-export const getPreviousCocreationBySlug = (slug: string) => {
-  const currentIndex = cocreationsList.findIndex(
-    (cocreation) => cocreation.slug === slug
+export const getPreviousProjectBySlug = (slug: string): Project | undefined => {
+  const currentIndex = projectsList.findIndex(
+    (project) => project.slug === slug
   )
-  if (currentIndex - 1 >= 0) return cocreationsList[currentIndex - 1]
-  return cocreationsList[cocreationsList.length - 1]
+  if (currentIndex === -1) return undefined
+  if (currentIndex - 1 >= 0) return projectsList[currentIndex - 1]
+  return projectsList[projectsList.length - 1]
 }

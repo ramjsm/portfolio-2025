@@ -21,7 +21,7 @@ gsap.registerPlugin(
 )
 
 function App() {
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement>(null)
 
   return (
     <div ref={ref} className="mx-auto w-full antialiased">
@@ -35,11 +35,6 @@ function App() {
         globalRender={false}
       >
         <ambientLight intensity={2} />
-        {/* <color attach="background" args={['#151515']} /> */}
-        {/* <EffectComposer>
-          <Noise opacity={0.05} />
-          <Vignette eskil darkness={1.1} />
-        </EffectComposer> */}
       </GlobalCanvas>
       <SmoothScrollbar />
       <Overlay />

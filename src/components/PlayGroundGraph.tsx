@@ -4,7 +4,7 @@ import R3fForceGraph from 'r3f-forcegraph'
 import { PresentationControls } from '@react-three/drei'
 
 export function PlaygroundGraph() {
-  const fgRef = useRef()
+  const fgRef = useRef<any>(null)
   const N = 10
   const gData = useMemo(
     () => ({
@@ -19,7 +19,11 @@ export function PlaygroundGraph() {
     [N]
   )
 
-  useFrame(() => fgRef.current.tickFrame())
+  useFrame(() => {
+    if (fgRef.current) {
+      fgRef.current.tickFrame()
+    }
+  })
   // TODO: MAYBE CHANGE TO TRACKBALL REVIEW
   return (
     <PresentationControls>

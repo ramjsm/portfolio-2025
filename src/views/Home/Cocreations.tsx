@@ -1,6 +1,6 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { getProjectsByCategory } from '../../router/cocreations'
+import { getProjectsByCategory } from '../../config/projects'
 import { CocreationLinkThumbnail } from './CocreationLinkThumbnail'
 
 export function Cocreations() {

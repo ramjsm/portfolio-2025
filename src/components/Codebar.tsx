@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 
 const CodeBar = () => {
   const barRef = useRef(null)
-  const linesRef = useRef([])
+  const linesRef = useRef<Array<HTMLDivElement | null>>([])
 
   useEffect(() => {
     // Prepare lines ref array length
@@ -49,10 +49,12 @@ const CodeBar = () => {
       {[...Array(32)].map((_, i) => (
         <div
           key={i}
-          ref={(el) => (linesRef.current[i] = el)}
+          ref={(el: HTMLDivElement | null) => {
+            if (linesRef.current) linesRef.current[i] = el
+          }}
           style={{
             height: '100%',
-            width: Math.random(2, 5),
+            width: Math.random() * 3 + 2,
             background: '#f1f1f1',
             borderRadius: 1,
             // marginRight: 2

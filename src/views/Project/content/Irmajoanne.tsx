@@ -9,7 +9,6 @@ export function Irmajoanne() {
             src="/projects/irmajoanne/design_system.png"
             thresholdWhite={0.25}
             thresholdGray={0.25}
-            noise={2}
           />
         </div>
         <div>
@@ -17,7 +16,6 @@ export function Irmajoanne() {
             src="/projects/irmajoanne/landing.webp"
             thresholdWhite={0.9}
             thresholdGray={0.6}
-            noise={2}
           />
         </div>
         <div>
@@ -25,7 +23,6 @@ export function Irmajoanne() {
             src="/projects/irmajoanne/projects.webp"
             thresholdWhite={0.3}
             thresholdGray={0.3}
-            noise={2}
           />
         </div>
         <div>
@@ -33,7 +30,6 @@ export function Irmajoanne() {
             src="/projects/irmajoanne/project.webp"
             thresholdWhite={0.17}
             thresholdGray={0.17}
-            noise={2}
           />
         </div>
         <div>
@@ -41,7 +37,6 @@ export function Irmajoanne() {
             src="/projects/irmajoanne/gallery.webp"
             thresholdWhite={0.17}
             thresholdGray={0.17}
-            noise={2}
           />
         </div>
       </div>

@@ -4,7 +4,7 @@ import { SplitText } from 'gsap/SplitText'
 import { useRef } from 'react'
 
 export function Services() {
-  const trackRef = useRef()
+  const trackRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
     document.fonts.ready.then(() => {
@@ -42,17 +42,19 @@ export function Services() {
       })
 
       const track = trackRef.current
-      const scrollWidth = track.scrollWidth / 2 // half because content is duplicated
+      if (track) {
+        const scrollWidth = track.scrollWidth / 2 // half because content is duplicated
 
-      gsap.to(track, {
+        gsap.to(track, {
         x: `-=${scrollWidth}`,
         duration: 25,
         ease: 'none',
         repeat: -1,
-        modifiers: {
-          x: gsap.utils.unitize((x) => parseFloat(x) % scrollWidth),
-        },
-      })
+          modifiers: {
+            x: gsap.utils.unitize((x) => parseFloat(x) % scrollWidth),
+          },
+        })
+      }
     })
   })
   return (

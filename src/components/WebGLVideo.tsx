@@ -5,22 +5,31 @@ import * as THREE from 'three'
 
 extend({ ThresholdMaterial })
 
-export function WebGLVideo({ src, videoRef, ...props }) {
-  // const videoRef = useRef(document.createElement('video'))
-  const materialRef = useRef()
-  const videoTextureRef = useRef()
+interface WebGLVideoProps {
+  src: string
+  videoRef: any
+  thresholdWhite: number
+  thresholdGray: number
+  [key: string]: any
+}
+
+export function WebGLVideo({ src, videoRef, ...props }: WebGLVideoProps) {
+  const materialRef = useRef<any>(null)
+  const videoTextureRef = useRef<THREE.VideoTexture | null>(null)
 
   useEffect(() => {
     const video = videoRef.current
 
-    // Create the video texture once the video element is ready
-    videoTextureRef.current = new THREE.VideoTexture(video)
-    videoTextureRef.current.minFilter = THREE.LinearFilter
-    videoTextureRef.current.magFilter = THREE.LinearFilter
-    videoTextureRef.current.format = THREE.RGBAFormat
+    if (video) {
+      videoTextureRef.current = new THREE.VideoTexture(video)
+      if (videoTextureRef.current) {
+        videoTextureRef.current.minFilter = THREE.LinearFilter
+        videoTextureRef.current.magFilter = THREE.LinearFilter
+        videoTextureRef.current.format = THREE.RGBAFormat
+      }
+    }
 
     if (materialRef.current) {
-      // console.log(props.thresholdWhite)
       // materialRef.current.uResolution.set(videoTextureRef.image.width, videoTextureRef.image.height)
       materialRef.current.uThresholdWhite = props.thresholdWhite
       materialRef.current.uThresholdGray = props.thresholdGray
@@ -36,7 +45,7 @@ export function WebGLVideo({ src, videoRef, ...props }) {
   useFrame(() => {
     if (videoTextureRef.current) {
       videoTextureRef.current.needsUpdate = true
-      if (materialRef.current) {
+      if (materialRef.current && materialRef.current.uniforms) {
         materialRef.current.uniforms.uImage.value = videoTextureRef.current
       }
     }

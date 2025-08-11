@@ -1,8 +1,6 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-
-gsap.registerPlugin(useGSAP)
 
 const Cursor = () => {
   const verticalRef = useRef(null)
@@ -12,7 +10,7 @@ const Cursor = () => {
   useGSAP(() => {
     const fadeDistance = 100
 
-    const moveCursor = (e) => {
+    const moveCursor = (e: MouseEvent) => {
       const { clientX, clientY } = e
 
       // Move vertical line

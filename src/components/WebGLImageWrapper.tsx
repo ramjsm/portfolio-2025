@@ -7,15 +7,22 @@ import {
 import { Suspense, useRef } from 'react'
 import { WebGLImage } from './WebGLImage'
 import { LoadingIndicator } from './LoadingIndicatior'
+import type { MediaAsset } from '../config/projects'
+
+interface WebGLImageWrapperProps extends MediaAsset {
+  loading?: 'eager' | 'lazy'
+  noise?: number
+  labelClass?: string
+}
 
 export function WebGLImageWrapper({
   src,
   thresholdWhite,
   thresholdGray,
   loading = 'eager',
-}) {
-  const el = useRef()
-  const img = useRef()
+}: WebGLImageWrapperProps) {
+  const el = useRef<HTMLDivElement>(null!)
+  const img = useRef<HTMLImageElement>(null)
   const { hasSmoothScrollbar } = useScrollRig()
 
   return (

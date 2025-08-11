@@ -6,11 +6,21 @@ import * as THREE from 'three'
 
 extend({ ThresholdMaterial })
 
-export function WebGLImage({ imgRef, ...props }) {
+interface WebGLImageProps {
+  imgRef: any;
+  thresholdWhite: number;
+  thresholdGray: number;
+  noise?: number;
+  color?: string;
+  enabled?: boolean;
+  [key: string]: any;
+}
+
+export function WebGLImage({ imgRef, ...props }: WebGLImageProps) {
   // Load texture from the <img/> and suspend until its ready
   const texture = useImageAsTexture(imgRef)
-  const materialRef = useRef()
-  const meshRef = useRef()
+  const materialRef = useRef<any>(null)
+  const meshRef = useRef<any>(null)
   const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
@@ -33,7 +43,7 @@ export function WebGLImage({ imgRef, ...props }) {
   ])
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!isActive) return
       const x = e.clientX / window.innerWidth
       const y = 1.0 - e.clientY / window.innerHeight // flip Y for UV space

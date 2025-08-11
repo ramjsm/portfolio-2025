@@ -2,8 +2,15 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
 import { Link } from 'react-router'
+import type { Project } from '../../config/projects'
 
-export function CocreationLinkThumbnail({ cocreation }) {
+interface CocreationLinkThumbnailProps {
+  cocreation: Project
+}
+
+export function CocreationLinkThumbnail({
+  cocreation,
+}: CocreationLinkThumbnailProps) {
   useGSAP(() => {
     gsap.to(`#${cocreation.slug}`, {
       duration: 2,
@@ -21,7 +28,7 @@ export function CocreationLinkThumbnail({ cocreation }) {
   return (
     <Link
       to={`/project/${cocreation.slug}`}
-      className={`relative text-[#909090] hover:text-white transition ${cocreation.thumbnailClass}`}
+      className={`relative text-[#909090] hover:text-white transition ${cocreation.thumbnail.className}`}
     >
       <WebGLImageWrapper {...cocreation.thumbnail} />
       <span

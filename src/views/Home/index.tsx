@@ -12,7 +12,7 @@ export function Home() {
 
   useEffect(() => {
     if (location.hash) scrollTo(location.hash)
-    else scrollTo(0, { inmediate: true })
+    else scrollTo(0)
   }, [location, scrollTo])
 
   return (
