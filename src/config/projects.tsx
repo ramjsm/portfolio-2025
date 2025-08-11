@@ -14,7 +14,6 @@ export interface MediaAsset {
 }
 
 export interface ThumbnailAsset extends MediaAsset {
-  noise: number
   labelClass: string
   className: string
 }
@@ -48,7 +47,6 @@ export const projectsList: Project[] = [
       src: '/projects/the-magic-box/thumbnail.webp',
       thresholdWhite: 0.5,
       thresholdGray: 0.2,
-      noise: 1.25,
       labelClass: 'label bottom-3 left-3',
       className: 'border-texture row-start-2 row-end-4 col-start-1 col-end-3',
     },
@@ -129,7 +127,6 @@ export const projectsList: Project[] = [
       src: '/projects/juliette/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.5,
-      noise: 1.25,
       labelClass: 'label top-3 left-3',
       className: 'border-texture row-start-1 row-end-4 col-start-3 col-end-3',
     },
@@ -236,7 +233,6 @@ export const projectsList: Project[] = [
       src: '/projects/synthara/thumbnail.webp',
       thresholdWhite: 0.6,
       thresholdGray: 0.4,
-      noise: 1.25,
       labelClass: 'label top-24 right-4',
       className: 'row-start-3 row-end-5 col-start-1 col-end-4',
     },
@@ -331,7 +327,6 @@ export const projectsList: Project[] = [
       src: '/projects/as-below-so-above/thumbnail.webp',
       thresholdWhite: 0.5,
       thresholdGray: 0.4,
-      noise: 1.25,
       labelClass: 'label top-3 left-3',
       className: 'border-texture row-start-5 col-start-1 row-span-2',
     },
@@ -464,7 +459,6 @@ export const projectsList: Project[] = [
       src: '/projects/invocation/thumbnail.webp',
       thresholdWhite: 0.16,
       thresholdGray: 0.8,
-      noise: 1.25,
       labelClass: 'label bottom-3 left-3',
       className: 'border-texture row-start-5 col-span-2',
     },
@@ -544,7 +538,6 @@ export const projectsList: Project[] = [
       src: '/projects/soberania-creativa/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.5,
-      noise: 1.25,
       labelClass: 'top-3 left-5',
       className: 'border-texture row-start-5 col-span-2',
     },
@@ -632,7 +625,6 @@ export const projectsList: Project[] = [
       src: '/projects/irmajoanne/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.2,
-      noise: 1.25,
       labelClass: 'top-3 right-5',
       className: 'border-texture row-start-5 col-span-2',
     },
