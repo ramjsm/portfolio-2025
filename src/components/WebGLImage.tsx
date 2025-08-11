@@ -21,7 +21,10 @@ export function WebGLImage({ imgRef, ...props }) {
 
   useEffect(() => {
     if (texture.image && materialRef.current) {
-      materialRef.current.uResolution.set(texture.image.width, texture.image.height)
+      materialRef.current.uResolution.set(
+        texture.image.width,
+        texture.image.height
+      )
       materialRef.current.uThresholdWhite = props.thresholdWhite
       materialRef.current.uThresholdGray = props.thresholdGray
       // materialRef.current.uNoise = props.noise
@@ -29,33 +32,51 @@ export function WebGLImage({ imgRef, ...props }) {
       materialRef.current.uEnabled = props.enabled */
       // materialRef.current.uActive = isActive
     }
-  }, [texture, props.thresholdWhite, props.thresholdGray, props.noise, props.color, props.enabled, isActive])
+  }, [
+    texture,
+    props.thresholdWhite,
+    props.thresholdGray,
+    props.noise,
+    props.color,
+    props.enabled,
+    isActive,
+  ])
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      if(!isActive) return
-      const x = e.clientX / window.innerWidth;
-      const y = 1.0 - e.clientY / window.innerHeight; // flip Y for UV space
+      if (!isActive) return
+      const x = e.clientX / window.innerWidth
+      const y = 1.0 - e.clientY / window.innerHeight // flip Y for UV space
       if (materialRef.current) {
-        materialRef.current.uMouse.set(x, y);
+        materialRef.current.uMouse.set(x, y)
       }
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [materialRef, isActive]);
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [materialRef, isActive])
 
   useFrame(({ clock }) => {
     if (materialRef.current) {
       materialRef.current.uTime = clock.getElapsedTime()
-      materialRef.current.uActive = isActive ? 1.0 : 0.0;
+      materialRef.current.uActive = isActive ? 1.0 : 0.0
     }
   })
 
   return (
-    <group {...props}>  
-      <mesh ref={meshRef} onPointerOver={() => setIsActive(true)} onPointerLeave={() => setIsActive(false)}>
+    <group {...props}>
+      <mesh
+        ref={meshRef}
+        onPointerOver={() => setIsActive(true)}
+        onPointerLeave={() => setIsActive(false)}
+      >
         <planeGeometry args={[1, 1, 16, 16]} />
-        <thresholdMaterial transparent ref={materialRef} uImage={texture} uColor="white" uMouse={new THREE.Vector3(0, 0, 0)} />
+        <thresholdMaterial
+          transparent
+          ref={materialRef}
+          uImage={texture}
+          uColor="white"
+          uMouse={new THREE.Vector3(0, 0, 0)}
+        />
       </mesh>
     </group>
   )

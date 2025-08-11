@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
   font-family: Syne;
@@ -43,20 +43,19 @@
   src: url('/fonts/PPNeueMontrealMono-Book.otf');
 }
 
-
 @theme {
-  --font-syne: Syne, "san-serif";
-  --font-ark-es: 'ARK-ES', "san-serif";
-  --font-ark-es-dense: 'ARK-ES-Dense', "san-serif";
-  --font-helvetica-neue: 'Helvetica-Neue', "san-serif";
-  --font-teenage-dreams: 'Teenage-Dreams', "san-serif";
-  --font-pp-neue-montreal: 'PP-Neue-Montreal', "san-serif";
+  --font-syne: Syne, 'san-serif';
+  --font-ark-es: 'ARK-ES', 'san-serif';
+  --font-ark-es-dense: 'ARK-ES-Dense', 'san-serif';
+  --font-helvetica-neue: 'Helvetica-Neue', 'san-serif';
+  --font-teenage-dreams: 'Teenage-Dreams', 'san-serif';
+  --font-pp-neue-montreal: 'PP-Neue-Montreal', 'san-serif';
 }
 
 @utility text-stroke-* {
-   -webkit-text-stroke-width: calc(--value(integer) * 1px);
-   -webkit-text-stroke-color: --value(--color-*);
-   -webkit-text-stroke-color: --value([*]);
+  -webkit-text-stroke-width: calc(--value(integer) * 1px);
+  -webkit-text-stroke-color: --value(--color-*);
+  -webkit-text-stroke-color: --value([*]);
 }
 
 #root {
@@ -65,18 +64,17 @@
   font-weight: 100;
   color: white;
   overflow-x: hidden;
-  background-image: 
-    linear-gradient(rgb(20 20 20), rgb(0 0 0 / 83%)),
-    url('/background.webp');
+  background-image:
+    linear-gradient(rgb(20 20 20), rgb(0 0 0 / 83%)), url('/background.webp');
   background-repeat: round;
 }
 
 .word1 {
-  color:white;
+  color: white;
 }
 
-
-.word6, .word7  {
+.word6,
+.word7 {
   color: white;
   font-family: 'Teenage-Dreams';
 }
@@ -90,13 +88,15 @@
 
 .border-texture {
   border: 2px solid transparent;
-  border-image: url("https://www.transparenttextures.com/patterns/binding-dark.png") 4 repeat;
+  border-image: url('https://www.transparenttextures.com/patterns/binding-dark.png')
+    4 repeat;
   filter: brightness(1.5);
 }
 
 .border-texture-top {
   border-top: 2px solid transparent;
-  border-image: url("https://www.transparenttextures.com/patterns/binding-dark.png") 4 repeat;
+  border-image: url('https://www.transparenttextures.com/patterns/binding-dark.png')
+    4 repeat;
   filter: brightness(2.5);
 }
 

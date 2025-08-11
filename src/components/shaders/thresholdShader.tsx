@@ -1,4 +1,4 @@
-import { shaderMaterial } from "@react-three/drei"
+import { shaderMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 
 // GLSL noise function (Classic Perlin)
@@ -38,12 +38,23 @@ const noiseGLSL = `
       m2*m2*dot(a0.zw, x12.zw)
     );
   }
-`;
+`
 
 const ThresholdMaterial = shaderMaterial(
-  { uMouse: new THREE.Vector2(0.5, 0.5), uActive: false, uTime: 0, uImage: null, uResolution: new THREE.Vector2(), uThresholdWhite: 0.4, uThresholdGray: 0.3, uNoise: 1.0, uColor: new THREE.Color(), uEnabled: true },
+  {
+    uMouse: new THREE.Vector2(0.5, 0.5),
+    uActive: false,
+    uTime: 0,
+    uImage: null,
+    uResolution: new THREE.Vector2(),
+    uThresholdWhite: 0.4,
+    uThresholdGray: 0.3,
+    uNoise: 1.0,
+    uColor: new THREE.Color(),
+    uEnabled: true,
+  },
   // vertex shader
-  /*glsl*/`
+  /*glsl*/ `
     varying vec2 vUv;
     uniform float uTime;
     uniform float uActive;
@@ -55,7 +66,7 @@ const ThresholdMaterial = shaderMaterial(
     }
   `,
   // fragment shader
-  /*glsl*/`
+  /*glsl*/ `
     varying vec2 vUv;
     uniform vec2 uResolution;
     uniform sampler2D uImage;
@@ -129,7 +140,6 @@ const ThresholdMaterial = shaderMaterial(
 )
 
 export default ThresholdMaterial
-
 
 /* if(uEnabled == 1.0 && uActive > 0.0) {
         gl_FragColor = thresholded < 0.5 ? vec4(0.0, 0.0, 0.0, 0.0) : vec4(image.r * thresholded, image.g * thresholded, image.b * thresholded, 1.0);

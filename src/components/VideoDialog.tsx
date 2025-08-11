@@ -1,23 +1,23 @@
-import { useRef } from 'react';
+import { useRef } from 'react'
 import ReactPlayer from 'react-player'
 
 export function VideoDialog({ src }) {
-  const dialogRef = useRef(null);
-  const videoRef = useRef(null);
+  const dialogRef = useRef(null)
+  const videoRef = useRef(null)
 
   const openDialog = () => {
     if (dialogRef.current) {
-      dialogRef.current.showModal(); 
-      videoRef.current.play();
+      dialogRef.current.showModal()
+      videoRef.current.play()
     }
-  };
+  }
 
   const closeDialog = () => {
     if (dialogRef.current) {
-      dialogRef.current.close();
-      videoRef.current.pause(); 
+      dialogRef.current.close()
+      videoRef.current.pause()
     }
-  };
+  }
 
   const handleClickOutside = (e) => {
     if (e.currentTarget === e.target) {
@@ -53,11 +53,19 @@ export function VideoDialog({ src }) {
 
           {/* Video Player */}
           <div className="aspect-video mx-auto">
-            <ReactPlayer ref={videoRef} src={src} width="100%" height="100%" muted={false} controls playsInline loop />
+            <ReactPlayer
+              ref={videoRef}
+              src={src}
+              width="100%"
+              height="100%"
+              muted={false}
+              controls
+              playsInline
+              loop
+            />
           </div>
         </div>
       </dialog>
     </>
-  );
-};
-
+  )
+}

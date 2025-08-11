@@ -8,25 +8,24 @@ import * as THREE from 'three'
 extend({ ParticlesMaterial })
 
 export function ParticlesImage({ imgRef, ...props }) {
-  const ref = useRef<THREE.Points>(null);
-  const { size, viewport, gl } = useThree();
+  const ref = useRef<THREE.Points>(null)
+  const { size, viewport, gl } = useThree()
 
   // 2. Create PlaneGeometry and extract positions as points
   const points = useMemo(() => {
-    const geo = new THREE.PlaneGeometry(30, 30, 50, 50); // width, height, segments
-    return geo.attributes.position.array;
-  }, []);
+    const geo = new THREE.PlaneGeometry(30, 30, 50, 50) // width, height, segments
+    return geo.attributes.position.array
+  }, [])
 
   useEffect(() => {
     if (ref.current) {
       const resolution = new THREE.Vector2(
         size.width * gl.getPixelRatio(),
         size.height * gl.getPixelRatio()
-      );
-      ref.current.uniforms.uResolution.value.copy(resolution);
+      )
+      ref.current.uniforms.uResolution.value.copy(resolution)
     }
-  }, [size, gl]);
-
+  }, [size, gl])
 
   return (
     <points ref={ref}>

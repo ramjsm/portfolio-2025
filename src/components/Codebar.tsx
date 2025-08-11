@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
 
 const CodeBar = () => {
-  const barRef = useRef(null);
-  const linesRef = useRef([]);
+  const barRef = useRef(null)
+  const linesRef = useRef([])
 
   useEffect(() => {
     // Prepare lines ref array length
-    linesRef.current = linesRef.current.slice(0, 32);
-  }, []);
+    linesRef.current = linesRef.current.slice(0, 32)
+  }, [])
 
   const onMouseEnter = () => {
     gsap.to(linesRef.current, {
@@ -17,8 +17,8 @@ const CodeBar = () => {
       scaleX: 1.5,
       ease: 'power2.out',
       stagger: 0.05,
-    });
-  };
+    })
+  }
 
   const onMouseLeave = () => {
     gsap.to(linesRef.current, {
@@ -27,8 +27,8 @@ const CodeBar = () => {
       scaleX: 1,
       ease: 'power2.out',
       stagger: 0.05,
-    });
-  };
+    })
+  }
 
   return (
     <div
@@ -49,7 +49,7 @@ const CodeBar = () => {
       {[...Array(32)].map((_, i) => (
         <div
           key={i}
-          ref={el => linesRef.current[i] = el}
+          ref={(el) => (linesRef.current[i] = el)}
           style={{
             height: '100%',
             width: Math.random(2, 5),
@@ -61,7 +61,7 @@ const CodeBar = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default CodeBar;
+export default CodeBar

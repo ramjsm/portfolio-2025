@@ -16,7 +16,7 @@ export function WebGLVideo({ src, videoRef, ...props }) {
 
   useEffect(() => {
     const video = videoRef.current
-    
+
     // Create the video texture once the video element is ready
     videoTextureRef.current = new THREE.VideoTexture(video)
     videoTextureRef.current.minFilter = THREE.LinearFilter
@@ -29,7 +29,6 @@ export function WebGLVideo({ src, videoRef, ...props }) {
       materialRef.current.uThresholdWhite = props.thresholdWhite
       materialRef.current.uThresholdGray = props.thresholdGray
     }
-    
   }, [src, videoTextureRef])
 
   useFrame(() => {
@@ -47,5 +46,4 @@ export function WebGLVideo({ src, videoRef, ...props }) {
       <thresholdMaterial transparent ref={materialRef} uColor="white" />
     </mesh>
   )
-
 }

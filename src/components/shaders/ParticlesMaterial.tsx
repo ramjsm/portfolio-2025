@@ -1,9 +1,9 @@
-import { shaderMaterial } from "@react-three/drei"
+import { shaderMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 
 const ParticlesMaterial = shaderMaterial(
   { uResolution: new THREE.Vector2(5, 5) },
-    /*glsl*/`
+  /*glsl*/ `
     uniform vec2 uResolution;
     varying vec2 vUv;
 
@@ -19,7 +19,7 @@ const ParticlesMaterial = shaderMaterial(
       gl_PointSize *= (1.0 / - viewPosition.z);
     }
   `,
-    /*glsl*/`
+  /*glsl*/ `
     varying vec2 vUv;
 
     void main() {

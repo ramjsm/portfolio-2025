@@ -1,7 +1,12 @@
-import { ScrollScene, UseCanvas, useScrollRig, styles} from "@14islands/r3f-scroll-rig"
-import { Suspense, useRef } from "react"
-import { ParticlesImage } from "./ParticlesImage"
-import { LoadingIndicator } from "./LoadingIndicatior"
+import {
+  ScrollScene,
+  UseCanvas,
+  useScrollRig,
+  styles,
+} from '@14islands/r3f-scroll-rig'
+import { Suspense, useRef } from 'react'
+import { ParticlesImage } from './ParticlesImage'
+import { LoadingIndicator } from './LoadingIndicatior'
 
 export function ParticlesImageWrapper({ src, loading = 'eager' }) {
   const el = useRef(null)
@@ -11,7 +16,13 @@ export function ParticlesImageWrapper({ src, loading = 'eager' }) {
   return (
     <>
       <div ref={el} className="Placeholder ScrollScene max-h-full">
-        <img className={styles.hiddenWhenSmooth + " object-cover"} ref={img} loading={loading} src={src} alt="This will be loaded as a texture" />
+        <img
+          className={styles.hiddenWhenSmooth + ' object-cover'}
+          ref={img}
+          loading={loading}
+          src={src}
+          alt="This will be loaded as a texture"
+        />
       </div>
       {hasSmoothScrollbar && (
         <UseCanvas>

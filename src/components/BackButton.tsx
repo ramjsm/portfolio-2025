@@ -1,27 +1,27 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 export function BackButton() {
-    const height = 64;
-    const width = 28;
-    const gap = -10;
-    const midY = height / 2;
-    const triangleCount = 1;
+  const height = 64
+  const width = 28
+  const gap = -10
+  const midY = height / 2
+  const triangleCount = 1
 
-    useGSAP(() => {
-        gsap.from('.triangle', {
-            autoAlpha: 0,
-            duration: 2,
-            stagger: .1,
-            transformOrigin: '50% 50%'
-        })
+  useGSAP(() => {
+    gsap.from('.triangle', {
+      autoAlpha: 0,
+      duration: 2,
+      stagger: 0.1,
+      transformOrigin: '50% 50%',
     })
+  })
 
-    const padding = 1; // Add 1px padding to the left
-  const totalWidth = triangleCount * (width + gap) - gap + padding;
+  const padding = 1 // Add 1px padding to the left
+  const totalWidth = triangleCount * (width + gap) - gap + padding
 
   const triangles = Array.from({ length: triangleCount }).map((_, i) => {
-    const offsetX = i * (width + gap) + padding;
+    const offsetX = i * (width + gap) + padding
     return (
       <polygon
         className="triangle"
@@ -36,8 +36,8 @@ export function BackButton() {
         strokeWidth="1"
         strokeLinejoin="round"
       />
-    );
-  });
+    )
+  })
 
   return (
     <svg
@@ -49,5 +49,5 @@ export function BackButton() {
     >
       {triangles}
     </svg>
-  );
+  )
 }

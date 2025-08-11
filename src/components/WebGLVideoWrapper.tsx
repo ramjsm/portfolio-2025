@@ -1,9 +1,20 @@
-import { ScrollScene, UseCanvas, useScrollRig, styles} from "@14islands/r3f-scroll-rig"
-import { Suspense, useRef } from "react"
-import { LoadingIndicator } from "./LoadingIndicatior"
-import { WebGLVideo } from "./WebGLVideo"
+import {
+  ScrollScene,
+  UseCanvas,
+  useScrollRig,
+  styles,
+} from '@14islands/r3f-scroll-rig'
+import { Suspense, useRef } from 'react'
+import { LoadingIndicator } from './LoadingIndicatior'
+import { WebGLVideo } from './WebGLVideo'
 
-export function WebGLVideoWrapper({ src, thresholdWhite, thresholdGray, noise, loading = 'eager' }) {
+export function WebGLVideoWrapper({
+  src,
+  thresholdWhite,
+  thresholdGray,
+  noise,
+  loading = 'eager',
+}) {
   const el = useRef()
   const videoRef = useRef()
   const { hasSmoothScrollbar } = useScrollRig()
@@ -31,7 +42,14 @@ export function WebGLVideoWrapper({ src, thresholdWhite, thresholdGray, noise, l
           <ScrollScene track={el} debug={false}>
             {(props) => (
               <Suspense fallback={<LoadingIndicator {...props} />}>
-                <WebGLVideo videoRef={videoRef} src={src} thresholdWhite={thresholdWhite} thresholdGray={thresholdGray} noise={noise} {...props} />
+                <WebGLVideo
+                  videoRef={videoRef}
+                  src={src}
+                  thresholdWhite={thresholdWhite}
+                  thresholdGray={thresholdGray}
+                  noise={noise}
+                  {...props}
+                />
               </Suspense>
             )}
           </ScrollScene>
