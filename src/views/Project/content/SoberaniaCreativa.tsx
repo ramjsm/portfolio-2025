@@ -3,7 +3,7 @@ import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
 export function SoberaniaCreativa() {
   return (
     <div className="mt-20 flex flex-col gap-20">
-      <div className="mx-auto flex w-[80%] flex-col gap-2">
+      <div className="mx-auto flex flex-col gap-2">
         <div>
           <WebGLImageWrapper
             src="/projects/soberania-creativa/sitemap.webp"

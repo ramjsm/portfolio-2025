@@ -16,10 +16,11 @@ export function Home() {
   }, [location, scrollTo])
 
   return (
-    <div className="texture-test w-full">
+    <div className="flex w-full flex-col gap-30 landscape:gap-60">
       <Landing />
       <Services />
       <Cocreations />
+      <div className="border-texture-top h-1"></div>
       <ClientsWork />
     </div>
   )

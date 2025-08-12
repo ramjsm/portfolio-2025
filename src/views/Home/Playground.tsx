@@ -22,7 +22,7 @@ export function Playground() {
             GROUND
           </div>
         </div>
-        <div ref={el} className="h-dvh w-full"></div>
+        <div ref={el} className="h-screen w-full"></div>
         <div className="border-texture absolute bottom-[50%] left-0 h-1/3 w-1/3">
           <WebGLImageWrapper
             src="cocreations/synthara/synthara1.jpg"

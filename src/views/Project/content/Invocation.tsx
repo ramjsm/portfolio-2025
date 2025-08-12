@@ -3,7 +3,7 @@ import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
 export function Invocation() {
   return (
     <div className="mt-20 flex flex-col gap-20">
-      <div className="mx-auto flex w-[80%] flex-col gap-2">
+      <div className="mx-auto flex flex-col gap-2">
         <div className="col-start-1 col-end-3 row-start-1 row-end-1">
           <WebGLImageWrapper
             src="/projects/invocation/invocation-front-wide.webp"

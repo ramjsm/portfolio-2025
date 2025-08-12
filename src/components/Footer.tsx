@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <div className="font-pp-neue-montreal flex items-end px-5 py-5 text-xs uppercase opacity-60">
+    <div className="font-pp-neue-montreal mt-16 flex items-end px-5 py-5 text-xs uppercase opacity-60">
       <div className="flex-1">
         <ul className="">
           <li>

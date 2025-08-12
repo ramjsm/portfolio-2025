@@ -58,6 +58,42 @@
   -webkit-text-stroke-color: --value([*]);
 }
 
+@layer base {
+  html {
+    font-size: 13px;
+  }
+
+  @media (min-width: theme('screens.sm')) {
+    html {
+      font-size: 14px; /* Small screens: 640px+ */
+    }
+  }
+
+  @media (min-width: theme('screens.md')) {
+    html {
+      font-size: 14px; /* Medium screens: 768px+ (Tailwind default) */
+    }
+  }
+
+  @media (min-width: theme('screens.lg')) {
+    html {
+      font-size: 16px; /* Large screens: 1024px+ */
+    }
+  }
+
+  @media (min-width: theme('screens.xl')) {
+    html {
+      font-size: 16px; /* Extra large: 1280px+ */
+    }
+  }
+
+  @media (min-width: theme('screens.2xl')) {
+    html {
+      font-size: 16px; /* 2XL screens: 1536px+ */
+    }
+  }
+}
+
 #root {
   margin: 0 auto;
   font-family: 'Helvetica-Neue';
@@ -65,8 +101,26 @@
   color: white;
   overflow-x: hidden;
   background-image:
-    linear-gradient(rgb(20 20 20), rgb(0 0 0 / 83%)), url('/background.webp');
+    linear-gradient(rgb(15 15 15), rgb(0 0 0 / 75%)), url('/background.webp');
   background-repeat: round;
+}
+
+/* Fix for mobile viewport height jumping */
+@media (max-width: 768px) {
+  html {
+    /* Use static viewport height on mobile to prevent jumping */
+    height: 100vh;
+    height: 100svh; /* Small viewport height for iOS Safari */
+  }
+
+  body {
+    height: 100%;
+  }
+
+  /* Ensure smooth scrolling behavior on mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .word1 {

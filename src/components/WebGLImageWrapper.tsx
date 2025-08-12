@@ -11,14 +11,13 @@ import type { MediaAsset } from '../config/projects'
 
 interface WebGLImageWrapperProps extends MediaAsset {
   loading?: 'eager' | 'lazy'
-  noise?: number
-  labelClass?: string
 }
 
 export function WebGLImageWrapper({
   src,
   thresholdWhite,
   thresholdGray,
+  mediaClass,
   loading = 'eager',
 }: WebGLImageWrapperProps) {
   const el = useRef<HTMLDivElement>(null!)
@@ -27,13 +26,13 @@ export function WebGLImageWrapper({
 
   return (
     <>
-      <div ref={el} className="Placeholder ScrollScene max-h-full">
+      <div ref={el} className="h-full w-full">
         <img
-          className={styles.hiddenWhenSmooth + ' object-cover'}
+          className={`${styles.hiddenWhenSmooth} ${mediaClass} h-full w-full object-cover`}
           ref={img}
           loading={loading}
           src={src}
-          alt="This will be loaded as a texture"
+          alt={src}
         />
       </div>
       {hasSmoothScrollbar && (

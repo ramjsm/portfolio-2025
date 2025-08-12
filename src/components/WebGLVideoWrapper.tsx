@@ -15,6 +15,7 @@ export function WebGLVideoWrapper({
   src,
   thresholdWhite,
   thresholdGray,
+  mediaClass,
 }: WebGLVideoWrapperProps) {
   const el = useRef<HTMLDivElement>(null!)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -25,7 +26,7 @@ export function WebGLVideoWrapper({
       <div ref={el} className="Placeholder ScrollScene aspect-video">
         <video
           ref={videoRef}
-          className={styles.hiddenWhenSmooth}
+          className={`${styles.hiddenWhenSmooth} ${mediaClass}`}
           src={src}
           loop
           muted

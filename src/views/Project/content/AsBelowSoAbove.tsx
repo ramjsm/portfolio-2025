@@ -5,7 +5,7 @@ import { WebGLVideoWrapper } from '../../../components/WebGLVideoWrapper'
 export function AsBelowSoAbove() {
   return (
     <div className="mt-20 flex flex-col gap-20">
-      <div className="mx-auto flex w-[80%] flex-col gap-2">
+      <div className="mx-auto flex flex-col gap-2">
         <div className="relative">
           <WebGLVideoWrapper
             src="/projects/as-below-so-above/as-below-so-above-live-cam.webm"

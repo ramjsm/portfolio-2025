@@ -3,7 +3,7 @@ import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
 export function Irmajoanne() {
   return (
     <div className="mt-20 flex flex-col gap-20">
-      <div className="mx-auto flex h-[120hdv] w-[80%] flex-col gap-2">
+      <div className="mx-auto flex flex-col gap-2">
         <div>
           <WebGLImageWrapper
             src="/projects/irmajoanne/design_system.png"

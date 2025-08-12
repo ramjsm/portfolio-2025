@@ -19,12 +19,12 @@ import { projectsList } from '../config/projects'
 export function ProjectTemplate() {
   const { slug } = useParams<{ slug: string }>()
   const projects = projectsList
-  const projectData = getProjectBySlug(slug!)
+  const project = getProjectBySlug(slug!)
   const nextProject = getNextProjectBySlug(slug!)
   const { scrollTo } = useScrollbar()
 
   useLayoutEffect(() => {
-    scrollTo(0)
+    (scrollTo as any)(0, { immediate: true })
   }, [scrollTo])
 
   useGSAP(() => {
@@ -67,42 +67,47 @@ export function ProjectTemplate() {
     })
   })
 
-  if (!projectData || !nextProject) {
+  if (!project || !nextProject) {
     return <div>Project not found</div>
   }
 
   return (
     <article className="relative w-full">
-      <div className="relative flex min-h-dvh w-full items-center">
-        <div className="absolute top-[50%] left-[50%] z-10 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center gap-4 mix-blend-difference">
-          <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 text-7xl whitespace-nowrap text-transparent uppercase drop-shadow-xl/50">
-            {projectData.title}
-          </h1>
+      <div className="relative flex min-h-screen w-full flex-col justify-center">
+        <div className="mt-20 -mr-2 mb-5 flex flex-col items-end justify-end text-right">
+          <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
+          <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${project.title}`}</h1>
         </div>
-        <div className="border-texture relative top-[20%] left-0 aspect-video">
-          <WebGLVideoWrapper {...projectData.hero} />
-          {projectData.videoURL && (
-            <div className="absolute right-5 bottom-5">
-              <VideoDialog src={projectData.videoURL} />
+        <div className="border-texture relative mb-10 flex aspect-video items-center justify-center mix-blend-difference">
+          <WebGLVideoWrapper {...project.hero} />
+          {project.videoURL && (
+            <div className="absolute bottom-3 left-3 lg:right-5 lg:bottom-5">
+              <VideoDialog src={project.videoURL} />
             </div>
           )}
         </div>
-      </div>
-      <div className="relative mb-10 flex w-full">
-        <div className="info-wrapper flex flex-1 flex-col gap-4">
-          {projectData.info.map((info: InfoSection) => (
+        {/* Responsive Info*/}
+        <div className="info-wrapper flex flex-col gap-4 lg:invisible lg:mb-0 lg:flex-col landscape:invisible">
+          {project.info.map((info: InfoSection) => (
             <Info key={info.header} header={info.header} list={info.list} />
           ))}
         </div>
-        <div className="flex flex-3 flex-col gap-5 text-xl font-[100]">
-          {projectData.intro}
+      </div>
+      <div className="flex w-full flex-col md:mb-10 lg:flex-row landscape:flex-row">
+        <div className="info-wrapper invisible mb-10 flex-1 gap-4 lg:visible lg:mb-0 lg:flex-col landscape:visible">
+          {project.info.map((info: InfoSection) => (
+            <Info key={info.header} header={info.header} list={info.list} />
+          ))}
+        </div>
+        <div className="flex flex-col gap-5 text-xl font-[100] lg:flex-3">
+          {project.intro}
         </div>
       </div>
-      <div className="my-20">{projectData.body}</div>
-      {projectData.credits && (
+      <div className="mx-auto my-20 lg:w-[80%]">{project.body}</div>
+      {project.credits && (
         <ul className="mb-20 text-center font-[100]">
-          {projectData.credits.map((listItem, index: number) => (
-            <li key={index} className="text-xl">
+          {project.credits.map((listItem, index: number) => (
+            <li key={index} className="text-l">
               {listItem}
             </li>
           ))}
@@ -111,13 +116,11 @@ export function ProjectTemplate() {
       <div className="flex w-full items-center gap-4">
         <div className="border-texture-top h-0 w-full"></div>
         <div className="font-pp-neue-montreal flex flex-1 items-center justify-center gap-3 text-sm">
-          {projects.map((project, index) => (
+          {projects.map((p, index) => (
             <Link
-              key={project.slug}
-              to={`/project/${project.slug}`}
-              className={
-                projectData.slug === project.slug ? 'text-xl' : 'opacity-50'
-              }
+              key={p.slug}
+              to={`/project/${p.slug}`}
+              className={p.slug === project.slug ? 'text-xl' : 'opacity-50'}
             >
               {`/0${index + 1}`}
             </Link>
@@ -127,7 +130,7 @@ export function ProjectTemplate() {
       </div>
       <div className="mt-4 mb-16 flex items-end justify-end text-right">
         <Link to={`/project/${nextProject.slug}`}>
-          <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`/ ${nextProject.title}`}</div>
+          <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${nextProject.title}`}</div>
           <div className="text-l opacity-50">{`Up Next / ${getProjectCategoryLabel(nextProject.category)}`}</div>
         </Link>
       </div>

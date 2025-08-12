@@ -16,7 +16,7 @@ export function Overlay() {
           <div className="font-[100] uppercase">Creative Techonologist</div>
         </Link>
         <Link to="/" className="flex flex-1 justify-center">
-          <Logo width="33px" height="33px" />
+          <Logo className="h-[24px] w-[24px] lg:h-[33px] lg:w-[33px]" />
         </Link>
         <div className="flex-1 text-right font-[100] text-nowrap uppercase opacity-60">
           <div>
@@ -34,8 +34,11 @@ export function Overlay() {
           </a>
         </div>
       </div>
-      <div className="fixed right-5 bottom-5">
-        <Menu width="80px" height="80px" onClick={toggleMenu} />
+      <div className="fixed right-5 bottom-5 z-9999">
+        <Menu
+          className="h-[60px] w-[60px] lg:h-[80px] lg:w-[80px]"
+          onClick={toggleMenu}
+        />
       </div>
       {isMenuVisible && (
         <div className="fixed right-5 bottom-30 flex flex-col bg-transparent text-right">

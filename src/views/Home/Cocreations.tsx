@@ -6,7 +6,7 @@ import { CocreationLinkThumbnail } from './CocreationLinkThumbnail'
 export function Cocreations() {
   useGSAP(() => {
     gsap.from('.header1', {
-      y: -50,
+      y: '-20%',
       autoAlpha: 0,
       stagger: 0.5,
       scrollTrigger: {
@@ -15,7 +15,7 @@ export function Cocreations() {
     })
 
     gsap.from('.header2', {
-      y: -50,
+      y: '-20%',
       autoAlpha: 0,
       stagger: 0.25,
       scrollTrigger: {
@@ -25,18 +25,18 @@ export function Cocreations() {
   })
 
   return (
-    <div className="relative flex min-h-dvh w-full items-center justify-center">
+    <div className="relative flex w-full items-center justify-center">
       <a id="co-creations" className="absolute -top-30 left-0"></a>
-      <div className="z-10 grid h-[120dhv] w-[930px] transform grid-cols-[40%_20%_40%] grid-rows-[10%_20%_5%_30%_25%_10%] gap-2">
+      <div className="z-10 grid w-[930px] transform grid-cols-[40%_20%_40%] grid-rows-[10%_20%_5%_30%_25%_10%] gap-2">
         <div className="justify relative col-span-2 flex justify-items-start">
           <div id="header1" className="relative flex-1">
-            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-20 text-8xl text-transparent">
+            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-[40%] left-[50%] -translate-x-1/2 text-[8vw] text-transparent lg:text-8xl">
               CO-
             </div>
-            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-10 text-8xl text-transparent">
+            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-[15%] left-[50%] -translate-x-1/2 text-[8vw] text-transparent lg:text-8xl">
               CO-
             </div>
-            <div className="header1 font-syne absolute bottom-0 text-8xl">
+            <div className="header1 font-syne absolute -bottom-[10%] left-[50%] -translate-x-1/2 text-[8vw] lg:text-8xl">
               CO-
             </div>
           </div>
@@ -56,13 +56,13 @@ export function Cocreations() {
           id="header2"
           className="relative col-start-1 col-end-4 row-start-6 row-end-6"
         >
-          <div className="header2 font-syne absolute top-0 z-3 text-8xl">
+          <div className="header2 font-syne absolute top-[20%] left-[50%] z-3 -translate-x-1/2 -translate-y-1/2 text-[8vw] lg:text-8xl">
             CREATIONS
           </div>
-          <div className="header2 font-syne text-stroke-gray-100 text-stroke-1 absolute top-10 z-2 text-8xl text-transparent">
+          <div className="header2 font-syne text-stroke-gray-100 text-stroke-1 absolute top-[45%] left-[50%] z-2 -translate-x-1/2 -translate-y-1/2 text-[8vw] text-transparent lg:text-8xl">
             CREATIONS
           </div>
-          <div className="header2 font-syne text-stroke-gray-100 text-stroke-1 absolute top-20 z-1 text-8xl text-transparent">
+          <div className="header2 font-syne text-stroke-gray-300 text-stroke-1 absolute top-[70%] left-[50%] z-1 -translate-x-1/2 -translate-y-1/2 text-[8vw] text-transparent lg:text-8xl">
             CREATIONS
           </div>
         </div>

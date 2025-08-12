@@ -12,6 +12,7 @@ import './App.css'
 import { Footer } from './components/Footer'
 import { RoughEase } from 'gsap/EasePack'
 import { SSRSafe } from './components/SSRSafe'
+import { useIsMobile } from './hooks/useIsMobile'
 
 // Only register GSAP plugins on client-side
 if (typeof window !== 'undefined') {
@@ -26,6 +27,7 @@ if (typeof window !== 'undefined') {
 
 function App() {
   const ref = useRef<HTMLDivElement>(null)
+  const isMobile = useIsMobile()
 
   return (
     <div ref={ref} className="mx-auto w-full antialiased">
@@ -41,10 +43,10 @@ function App() {
         >
           <ambientLight intensity={2} />
         </GlobalCanvas>
-        <SmoothScrollbar />
+        <SmoothScrollbar enabled={!isMobile} scrollRestoration="auto" />
       </SSRSafe>
       <Overlay />
-      <div className="mx-auto max-w-[1920px] md:w-full lg:w-2/3">
+      <div className="mx-auto max-w-[1920px] px-10 md:px-20 lg:w-2/3 lg:px-0">
         <Router />
       </div>
       <Footer />

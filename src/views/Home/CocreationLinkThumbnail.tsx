@@ -28,13 +28,13 @@ export function CocreationLinkThumbnail({
   return (
     <Link
       to={`/project/${cocreation.slug}`}
-      className={`relative text-[#909090] transition hover:text-white ${cocreation.thumbnail.className}`}
+      className={`relative transition hover:text-white lg:text-[#909090] ${cocreation.thumbnail.className}`}
     >
       <WebGLImageWrapper {...cocreation.thumbnail} />
       <span
         id={cocreation.slug}
         className={
-          'text-l font-pp-neue-montreal absolute px-3 uppercase transition ' +
+          'font-pp-neue-montreal lg:text-l absolute text-sm uppercase transition ' +
           cocreation.thumbnail.labelClass
         }
       >{`/${cocreation.title}`}</span>

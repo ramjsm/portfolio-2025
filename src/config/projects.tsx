@@ -11,6 +11,7 @@ export interface MediaAsset {
   src: string
   thresholdWhite: number
   thresholdGray: number
+  mediaClass?: string
 }
 
 export interface ThumbnailAsset extends MediaAsset {
@@ -47,7 +48,8 @@ export const projectsList: Project[] = [
       src: '/projects/the-magic-box/thumbnail.webp',
       thresholdWhite: 0.5,
       thresholdGray: 0.2,
-      labelClass: 'label bottom-3 left-3',
+      mediaClass: 'brightness-65 contrast-100',
+      labelClass: 'label bottom-1 lg:bottom-3 left-2 lg:left-3',
       className: 'border-texture row-start-2 row-end-4 col-start-1 col-end-3',
     },
     hero: {
@@ -105,7 +107,6 @@ export const projectsList: Project[] = [
     body: <TheMagicBox />,
     credits: [
       <>
-        Presented at{' '}
         <a className="underline" href="https://raw-skpz.de/bwh/">
           Beamtenwohnhaus Open Studios 2023
         </a>
@@ -127,7 +128,8 @@ export const projectsList: Project[] = [
       src: '/projects/juliette/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.5,
-      labelClass: 'label top-3 left-3',
+      mediaClass: 'brightness-60 contrast-110',
+      labelClass: 'label lg:top-3 lg:left-3 top-1 left-2',
       className: 'border-texture row-start-1 row-end-4 col-start-3 col-end-3',
     },
     hero: {
@@ -198,7 +200,7 @@ export const projectsList: Project[] = [
         >
           Un_Real Desires 2019
         </a>{' '}
-        group exhibition at{' '}
+        at{' '}
         <a
           href="https://somos-arts.org/"
           className="underline"
@@ -233,7 +235,8 @@ export const projectsList: Project[] = [
       src: '/projects/synthara/thumbnail.webp',
       thresholdWhite: 0.6,
       thresholdGray: 0.4,
-      labelClass: 'label top-24 right-4',
+      mediaClass: 'brightness-90 contrast-110',
+      labelClass: 'label top-[20%] lg:right-4 right-2',
       className: 'row-start-3 row-end-5 col-start-1 col-end-4',
     },
     hero: {
@@ -295,7 +298,6 @@ export const projectsList: Project[] = [
     body: <Synthara />,
     credits: [
       <>
-        Presented at{' '}
         <a
           href="https://www.instagram.com/consciousmadness_official"
           className="underline"
@@ -327,7 +329,8 @@ export const projectsList: Project[] = [
       src: '/projects/as-below-so-above/thumbnail.webp',
       thresholdWhite: 0.5,
       thresholdGray: 0.4,
-      labelClass: 'label top-3 left-3',
+      mediaClass: 'brightness-70 contrast-110',
+      labelClass: 'label top-1 left-2 lg:top-3 lg:left-3',
       className: 'border-texture row-start-5 col-start-1 row-span-2',
     },
     hero: {
@@ -400,9 +403,9 @@ export const projectsList: Project[] = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          Aa Below So Above 2021
+          As Below So Above 2021
         </a>{' '}
-        collective exhibition at{' '}
+        at{' '}
         <a
           className="underline"
           href="https://www.instagram.com/willowsp_/?hl=en"
@@ -459,7 +462,8 @@ export const projectsList: Project[] = [
       src: '/projects/invocation/thumbnail.webp',
       thresholdWhite: 0.16,
       thresholdGray: 0.8,
-      labelClass: 'label bottom-3 left-3',
+      mediaClass: 'brightness-90 contrast-110',
+      labelClass: 'label bottom-2 left-1 lg:bottom-3 lg:left-3',
       className: 'border-texture row-start-5 col-span-2',
     },
     hero: {
@@ -538,11 +542,13 @@ export const projectsList: Project[] = [
       src: '/projects/soberania-creativa/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.5,
-      labelClass: 'top-3 left-5',
+      mediaClass: 'brightness-60 contrast-115',
+      labelClass: 'lg:top-3 lg:left-5 bottom-1 left-2',
       className: 'border-texture row-start-5 col-span-2',
     },
     hero: {
       src: '/projects/soberania-creativa/hero.webm',
+      mediaClass: 'brightness-75 contrast-90',
       thresholdWhite: 0.3,
       thresholdGray: 0.3,
     },
@@ -620,12 +626,13 @@ export const projectsList: Project[] = [
   {
     slug: 'irmajoanne',
     category: 'client',
-    title: 'Irmajoanne',
+    title: 'Irma Joanne',
     thumbnail: {
       src: '/projects/irmajoanne/thumbnail.webp',
       thresholdWhite: 0.8,
       thresholdGray: 0.2,
-      labelClass: 'top-3 right-5',
+      mediaClass: 'brightness-60 contrast-100',
+      labelClass: 'lg:top-3 lg:right-5 bottom-1 right-2',
       className: 'border-texture row-start-5 col-span-2',
     },
     hero: {
@@ -697,7 +704,7 @@ export const projectsList: Project[] = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          Irmajoanne
+          Irma Joanne
         </a>
       </>,
       <>Web Design & Development / Ramses Salas </>,
