@@ -10,16 +10,19 @@ import { WebGLVideo } from './WebGLVideo'
 import { VideoDialog, type VideoDialogRef } from './VideoDialog'
 import type { MediaAsset } from '../config/projects'
 
-interface WebGLVideoWrapperProps extends MediaAsset {}
+interface VideoProps extends MediaAsset {
+  className?: string
+}
 
-export function WebGLVideoWrapper({
+export function Video({
   src,
   thresholdWhite,
   thresholdGray,
   mediaClass,
   disableDialog = false,
   videoURL,
-}: WebGLVideoWrapperProps) {
+  className,
+}: VideoProps) {
   const el = useRef<HTMLDivElement>(null!)
   const videoRef = useRef<HTMLVideoElement>(null)
   const dialogRef = useRef<VideoDialogRef>(null)
@@ -33,7 +36,7 @@ export function WebGLVideoWrapper({
   }
 
   return (
-    <>
+    <div className={className}>
       <div
         ref={el}
         className={`Placeholder ScrollScene relative aspect-video ${showVideo ? 'cursor-pointer' : ''}`}
@@ -79,6 +82,6 @@ export function WebGLVideoWrapper({
           </span>
         </>
       )}
-    </>
+    </div>
   )
 }

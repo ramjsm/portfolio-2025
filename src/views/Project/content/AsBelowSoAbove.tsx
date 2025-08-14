@@ -1,18 +1,16 @@
 import { Image } from '../../../components/Image'
-import { WebGLVideoWrapper } from '../../../components/WebGLVideoWrapper'
+import { Video } from '../../../components/Video'
 
 export function AsBelowSoAbove() {
   return (
     <div className="mt-20 flex flex-col gap-20">
       <div className="mx-auto flex flex-col gap-2">
-        <div className="relative">
-          <WebGLVideoWrapper
-            src="/projects/as-below-so-above/as-below-so-above-live-cam.webm"
-            thresholdWhite={0.13}
-            thresholdGray={0.13}
-            videoURL="https://vimeo.com/1014313543"
-          />
-        </div>
+        <Video
+          src="/projects/as-below-so-above/as-below-so-above-live-cam.webm"
+          thresholdWhite={0.13}
+          thresholdGray={0.13}
+          videoURL="https://vimeo.com/1014313543"
+        />
         <div className="flex gap-2">
           <Image
             src="/projects/as-below-so-above/video-mapping.webp"

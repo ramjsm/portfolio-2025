@@ -12,7 +12,7 @@ import {
 import { useParams } from 'react-router-dom'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
-import { WebGLVideoWrapper } from '../components/WebGLVideoWrapper'
+import { Video } from './Video'
 import { projectsList } from '../config/projects'
 
 export function ProjectTemplate() {
@@ -77,9 +77,11 @@ export function ProjectTemplate() {
           <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
           <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${project.title}`}</h1>
         </div>
-        <div className="border-texture relative mb-10 flex aspect-video items-center justify-center mix-blend-difference">
-          <WebGLVideoWrapper {...project.hero} videoURL={project.videoURL} />
-        </div>
+        <Video
+          {...project.hero}
+          videoURL={project.videoURL}
+          className="border-texture relative mb-10 flex aspect-video items-center justify-center"
+        />
         {/* Responsive Info*/}
         <div className="info-wrapper flex flex-col gap-4 lg:invisible lg:mb-0 lg:flex-col landscape:invisible">
           {project.info.map((info: InfoSection) => (
