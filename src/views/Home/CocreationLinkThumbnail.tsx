@@ -11,6 +11,8 @@ interface CocreationLinkThumbnailProps {
 export function CocreationLinkThumbnail({
   cocreation,
 }: CocreationLinkThumbnailProps) {
+  const { className, ...thumbnailProps } = cocreation.thumbnail
+
   useGSAP(() => {
     gsap.to(`#${cocreation.slug}`, {
       duration: 2,
@@ -24,9 +26,6 @@ export function CocreationLinkThumbnail({
       },
     })
   })
-
-  // Destructure to exclude className from being passed to Image
-  const { className, ...thumbnailProps } = cocreation.thumbnail
 
   return (
     <Link

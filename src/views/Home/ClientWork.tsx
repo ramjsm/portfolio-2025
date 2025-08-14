@@ -4,7 +4,7 @@ import { Image } from '../../components/Image'
 import { Link } from 'react-router-dom'
 import { getProjectsByCategory } from '../../config/projects'
 
-export function ClientsWork() {
+export function ClientWork() {
   const projects = getProjectsByCategory('client')
 
   useGSAP(() => {

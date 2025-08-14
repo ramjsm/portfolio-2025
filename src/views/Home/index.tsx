@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import { ClientsWork } from './ClientsWork'
+import { ClientWork } from './ClientWork'
 import { Cocreations } from './Cocreations'
 import { Landing } from './Landing'
 import { Services } from './Services'
@@ -16,12 +16,11 @@ export function Home() {
   }, [location, scrollTo])
 
   return (
-    <div className="flex w-full flex-col gap-30 landscape:gap-60">
+    <div className="flex w-full flex-col gap-40 landscape:gap-60">
       <Landing />
       <Services />
       <Cocreations />
-      <div className="border-texture-top h-1"></div>
-      <ClientsWork />
+      <ClientWork />
     </div>
   )
 }
