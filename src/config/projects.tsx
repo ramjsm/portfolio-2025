@@ -13,6 +13,7 @@ export interface MediaAsset {
   thresholdGray: number
   mediaClass?: string
   disableDialog?: boolean
+  videoURL?: string
 }
 
 export interface ThumbnailAsset extends MediaAsset {

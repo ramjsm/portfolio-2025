@@ -1,7 +1,6 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-import { VideoDialog } from '../components/VideoDialog'
 import { Link } from 'react-router-dom'
 import { Info } from './Info'
 import {
@@ -79,12 +78,7 @@ export function ProjectTemplate() {
           <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${project.title}`}</h1>
         </div>
         <div className="border-texture relative mb-10 flex aspect-video items-center justify-center mix-blend-difference">
-          <WebGLVideoWrapper {...project.hero} />
-          {project.videoURL && (
-            <div className="absolute bottom-3 left-3 lg:right-5 lg:bottom-5">
-              <VideoDialog src={project.videoURL} />
-            </div>
-          )}
+          <WebGLVideoWrapper {...project.hero} videoURL={project.videoURL} />
         </div>
         {/* Responsive Info*/}
         <div className="info-wrapper flex flex-col gap-4 lg:invisible lg:mb-0 lg:flex-col landscape:invisible">

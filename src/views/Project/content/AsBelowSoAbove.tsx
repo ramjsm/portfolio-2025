@@ -1,4 +1,3 @@
-import { VideoDialog } from '../../../components/VideoDialog'
 import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
 import { WebGLVideoWrapper } from '../../../components/WebGLVideoWrapper'
 
@@ -11,10 +10,8 @@ export function AsBelowSoAbove() {
             src="/projects/as-below-so-above/as-below-so-above-live-cam.webm"
             thresholdWhite={0.13}
             thresholdGray={0.13}
+            videoURL="https://vimeo.com/1014313543"
           />
-          <div className="absolute bottom-5 left-5 z-10">
-            <VideoDialog src="https://vimeo.com/1014313543" />
-          </div>
         </div>
         <div className="flex gap-2">
           <div className="flex-1">

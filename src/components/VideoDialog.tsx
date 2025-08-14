@@ -1,67 +1,56 @@
-import { useRef } from 'react'
+import { useRef, forwardRef, useImperativeHandle } from 'react'
 import ReactPlayer from 'react-player'
 
 interface VideoDialogProps {
   src: string
 }
 
-export function VideoDialog({ src }: VideoDialogProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null)
-  const videoRef = useRef<any>(null)
+export interface VideoDialogRef {
+  open: () => void
+  close: () => void
+}
 
-  const openDialog = () => {
-    if (dialogRef.current) {
-      dialogRef.current.showModal()
-      if (videoRef.current) videoRef.current.play()
+export const VideoDialog = forwardRef<VideoDialogRef, VideoDialogProps>(
+  ({ src }, ref) => {
+    const dialogRef = useRef<HTMLDialogElement>(null)
+    const videoRef = useRef<any>(null)
+
+    useImperativeHandle(ref, () => ({
+      open: () => {
+        if (dialogRef.current) {
+          dialogRef.current.showModal()
+          if (videoRef.current) videoRef.current.play()
+        }
+      },
+      close: () => {
+        if (dialogRef.current) {
+          dialogRef.current.close()
+          if (videoRef.current) videoRef.current.pause()
+        }
+      },
+    }))
+
+    const closeDialog = () => {
+      if (dialogRef.current) {
+        dialogRef.current.close()
+        if (videoRef.current) videoRef.current.pause()
+      }
     }
-  }
 
-  const closeDialog = () => {
-    if (dialogRef.current) {
-      dialogRef.current.close()
-      if (videoRef.current) videoRef.current.pause()
+    const handleClickOutside = (e: React.MouseEvent<HTMLDialogElement>) => {
+      if (e.currentTarget === e.target) {
+        closeDialog()
+      }
     }
-  }
 
-  const handleClickOutside = (e: React.MouseEvent<HTMLDialogElement>) => {
-    if (e.currentTarget === e.target) {
-      closeDialog()
-    }
-  }
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDialogElement>) => {
-    if (e.key === 'Escape') {
-      closeDialog()
-    }
-  }
-
-  return (
-    <>
-      {/* Trigger Button */}
-      <button
-        onClick={openDialog}
-        className="text-l font-pp-neue-montreal bg-white/3 px-4 py-2 transition hover:cursor-pointer"
-      >
-        /WATCH
-      </button>
-
-      {/* Native Dialog Element */}
+    return (
       <dialog
         ref={dialogRef}
         onClick={handleClickOutside}
-        onKeyDown={handleKeyDown}
-        className="mx-auto my-auto w-full max-w-[1920px] border-none bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center lg:w-2/3"
+        onKeyDown={closeDialog}
+        className="mx-auto my-auto max-h-screen w-full max-w-[1920px] border-none bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center lg:w-2/3"
       >
         <div className="relative w-full shadow-lg lg:px-10">
-          {/* Close Button */}
-          {/* <button
-            onClick={closeDialog}
-            className="absolute top-0 right-0 transition font-syne text-4xl text-transparent text-stroke-gray-100 text-stroke-1"
-            aria-label="Close video"
-          >
-            x
-          </button> */}
-
           {/* Video Player */}
           <div className="mx-auto aspect-video">
             <ReactPlayer
@@ -77,6 +66,8 @@ export function VideoDialog({ src }: VideoDialogProps) {
           </div>
         </div>
       </dialog>
-    </>
-  )
-}
+    )
+  }
+)
+
+VideoDialog.displayName = 'VideoDialog'
