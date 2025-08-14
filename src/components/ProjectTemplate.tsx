@@ -71,7 +71,7 @@ export function ProjectTemplate() {
   }
 
   return (
-    <article className="relative w-full">
+    <article className="w-full">
       <div className="relative flex min-h-screen w-full flex-col justify-center">
         <div className="mt-20 -mr-2 mb-5 flex flex-col items-end justify-end text-right">
           <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
@@ -83,19 +83,19 @@ export function ProjectTemplate() {
           className="border-texture relative mb-10 flex aspect-video items-center justify-center"
         />
         {/* Responsive Info*/}
-        <div className="info-wrapper flex flex-col gap-4 lg:invisible lg:mb-0 lg:flex-col landscape:invisible">
+        <div className="info-wrapper flex flex-col gap-4 lg:mb-0 lg:hidden lg:flex-col landscape:hidden">
           {project.info.map((info: InfoSection) => (
             <Info key={info.header} header={info.header} list={info.list} />
           ))}
         </div>
       </div>
-      <div className="flex w-full flex-col md:mb-10 lg:flex-row landscape:flex-row">
-        <div className="info-wrapper invisible mb-10 flex-1 gap-4 lg:visible lg:mb-0 lg:flex-col landscape:visible">
+      <div className="mt-10 flex w-full flex-col md:mb-10 lg:mt-0 lg:flex-row landscape:flex-row">
+        <div className="info-wrapper mb-10 hidden flex-1 gap-4 lg:mb-0 lg:block lg:flex-col landscape:block">
           {project.info.map((info: InfoSection) => (
             <Info key={info.header} header={info.header} list={info.list} />
           ))}
         </div>
-        <div className="flex flex-col gap-5 text-xl font-[100] lg:flex-3">
+        <div className="flex flex-col gap-5 text-xl font-[100] lg:flex-3 landscape:flex-3">
           {project.intro}
         </div>
       </div>

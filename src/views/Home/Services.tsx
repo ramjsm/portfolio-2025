@@ -42,6 +42,7 @@ export function Services() {
       })
 
       const track = trackRef.current
+
       if (track) {
         const scrollWidth = track.scrollWidth / 2 // half because content is duplicated
 
@@ -58,7 +59,7 @@ export function Services() {
     })
   })
   return (
-    <div className="relative flex w-full items-center justify-center pb-50">
+    <div className="relative -mt-40 flex w-full items-center justify-center pb-50">
       <p className="text w-[80%] text-xl lg:text-2xl">
         I collaborate with artists and creatives teams to turn ideas into
         digital experiences. Through code, motion and interaction, I explore
@@ -67,13 +68,13 @@ export function Services() {
       <div className="absolute bottom-0 left-1/2 w-screen -translate-x-1/2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div
           ref={trackRef}
-          className="led-text flex whitespace-nowrap will-change-transform"
+          className="led-text font-ark-es-dense text-stroke-gray-100 text-stroke-1 flex text-[8vw] whitespace-nowrap text-transparent uppercase opacity-70 will-change-transform lg:text-5xl landscape:text-[4.2vw]/[4.5vw]"
         >
-          <span className="font-ark-es-dense text-stroke-gray-100 text-stroke-1 text-[8vw] text-transparent uppercase opacity-70 lg:text-5xl">
+          <span>
             Web - Motion - Interaction - Design - Web - Motion - Interaction -
             Design -
           </span>
-          <span className="font-ark-es-dense text-stroke-gray-100 text-stroke-1 text-[8vw] text-transparent uppercase opacity-70 lg:text-5xl">
+          <span>
             Web - Motion - Interaction - Design - Web - Motion - Interaction -
             Design -
           </span>
