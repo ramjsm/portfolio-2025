@@ -99,7 +99,7 @@ export function ProjectTemplate() {
           {project.intro}
         </div>
       </div>
-      <div className="mx-auto my-20 lg:w-[80%]">{project.body}</div>
+      <div className="mx-auto my-20 lg:w-[80%]">{project.content}</div>
       {project.credits && (
         <ul className="mb-20 text-center font-[100]">
           {project.credits.map((listItem, index: number) => (

@@ -37,7 +37,7 @@ export interface Project {
   videoURL?: string
   intro: ReactNode
   info: InfoSection[]
-  body: ReactNode
+  content: ReactNode
   credits?: Array<ReactNode>
 }
 
@@ -107,7 +107,7 @@ export const projectsList: Project[] = [
       { header: 'Tech', list: ['TouchDesigner', 'OpenAI', 'Python'] },
       { header: 'Type', list: ['Interactive Installation'] },
     ],
-    body: <TheMagicBox />,
+    content: <TheMagicBox />,
     credits: [
       <>
         <a className="underline" href="https://raw-skpz.de/bwh/">
@@ -193,7 +193,7 @@ export const projectsList: Project[] = [
       { header: 'Tech', list: ['Unity', 'NVIDIA FleX', 'C#'] },
       { header: 'Type', list: ['Interactive Installation'] },
     ],
-    body: <Juliette />,
+    content: <Juliette />,
     credits: [
       <>
         <a
@@ -300,7 +300,7 @@ export const projectsList: Project[] = [
       { header: 'Tech', list: ['Blender', 'TouchDesigner', 'GLSL'] },
       { header: 'Type', list: ['Interactive Installation'] },
     ],
-    body: <Synthara />,
+    content: <Synthara />,
     credits: [
       <>
         <a
@@ -400,7 +400,7 @@ export const projectsList: Project[] = [
       { header: 'Tech', list: ['TouchDesigner'] },
       { header: 'Type', list: ['Interactive Installation', 'Performance'] },
     ],
-    body: <AsBelowSoAbove />,
+    content: <AsBelowSoAbove />,
     credits: [
       <>
         <a
@@ -525,7 +525,7 @@ export const projectsList: Project[] = [
       { header: 'Tech', list: ['OpenFrameworks', 'C++'] },
       { header: 'Type', list: ['Interactive Installation'] },
     ],
-    body: <Invocation />,
+    content: <Invocation />,
     credits: [
       <>
         Choreography /{' '}
@@ -615,7 +615,7 @@ export const projectsList: Project[] = [
         ],
       },
     ],
-    body: <SoberaniaCreativa />,
+    content: <SoberaniaCreativa />,
     credits: [
       <>
         Branding & Marketing /{' '}
@@ -703,7 +703,7 @@ export const projectsList: Project[] = [
         ],
       },
     ],
-    body: <Irmajoanne />,
+    content: <Irmajoanne />,
     credits: [
       <>
         Photography /{' '}
