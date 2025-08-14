@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
+import { Image } from '../../components/Image'
 import { Link } from 'react-router-dom'
 import type { Project } from '../../config/projects'
 
@@ -25,12 +25,15 @@ export function CocreationLinkThumbnail({
     })
   })
 
+  // Destructure to exclude className from being passed to Image
+  const { className, ...thumbnailProps } = cocreation.thumbnail
+
   return (
     <Link
       to={`/project/${cocreation.slug}`}
-      className={`relative transition hover:text-white lg:text-[#909090] ${cocreation.thumbnail.className}`}
+      className={`relative transition hover:text-white lg:text-[#909090] ${className}`}
     >
-      <WebGLImageWrapper {...cocreation.thumbnail} />
+      <Image {...thumbnailProps} />
       <span
         id={cocreation.slug}
         className={

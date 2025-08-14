@@ -1,4 +1,4 @@
-import { WebGLImageWrapper } from '../../../components/WebGLImageWrapper'
+import { Image } from '../../../components/Image'
 import { WebGLVideoWrapper } from '../../../components/WebGLVideoWrapper'
 
 export function AsBelowSoAbove() {
@@ -14,55 +14,43 @@ export function AsBelowSoAbove() {
           />
         </div>
         <div className="flex gap-2">
-          <div className="flex-1">
-            <WebGLImageWrapper
-              src="/projects/as-below-so-above/video-mapping.webp"
-              thresholdWhite={0.6}
-              thresholdGray={0.4}
-            />
-          </div>
-          <div className="flex-1">
-            <div className="col-start-1 col-end-3 row-start-2 row-end-3">
-              <WebGLImageWrapper
-                src="/projects/as-below-so-above/sculpture-top.webp"
-                thresholdWhite={0.3}
-                thresholdGray={0.3}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-1 col-end-3 row-start-2 row-end-3">
-          <WebGLImageWrapper
-            src="/projects/as-below-so-above/wall-people.webp"
-            thresholdWhite={0.5}
+          <Image
+            src="/projects/as-below-so-above/video-mapping.webp"
+            thresholdWhite={0.6}
             thresholdGray={0.4}
+            className="flex-1"
+          />
+          <Image
+            src="/projects/as-below-so-above/sculpture-top.webp"
+            thresholdWhite={0.3}
+            thresholdGray={0.3}
+            className="flex-1"
           />
         </div>
+        <Image
+          src="/projects/as-below-so-above/wall-people.webp"
+          thresholdWhite={0.5}
+          thresholdGray={0.4}
+        />
         <div className="flex gap-2">
-          <div className="flex-1">
-            <WebGLImageWrapper
-              src="/projects/as-below-so-above/sculpture.webp"
-              thresholdWhite={0.5}
-              thresholdGray={0.5}
-            />
-          </div>
-          <div className="flex-1">
-            <div className="col-start-1 col-end-3 row-start-2 row-end-3">
-              <WebGLImageWrapper
-                src="/projects/as-below-so-above/paintings.webp"
-                thresholdWhite={0.35}
-                thresholdGray={0.35}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-1 col-end-3 row-start-2 row-end-3">
-          <WebGLImageWrapper
-            src="/projects/as-below-so-above/after-performance.webp"
+          <Image
+            src="/projects/as-below-so-above/sculpture.webp"
             thresholdWhite={0.5}
-            thresholdGray={0.4}
+            thresholdGray={0.5}
+            className="flex-1"
+          />
+          <Image
+            src="/projects/as-below-so-above/paintings.webp"
+            thresholdWhite={0.35}
+            thresholdGray={0.35}
+            className="flex-1"
           />
         </div>
+        <Image
+          src="/projects/as-below-so-above/after-performance.webp"
+          thresholdWhite={0.5}
+          thresholdGray={0.4}
+        />
       </div>
     </div>
   )

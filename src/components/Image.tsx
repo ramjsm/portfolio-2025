@@ -10,18 +10,20 @@ import { LoadingIndicator } from './LoadingIndicatior'
 import { ImageDialog, type ImageDialogRef } from './ImageDialog'
 import type { MediaAsset } from '../config/projects'
 
-interface WebGLImageWrapperProps extends MediaAsset {
+interface ImageProps extends MediaAsset {
   loading?: 'eager' | 'lazy'
+  className?: string
 }
 
-export function WebGLImageWrapper({
+export function Image({
   src,
   thresholdWhite,
   thresholdGray,
   mediaClass,
   loading = 'eager',
   disableDialog = false,
-}: WebGLImageWrapperProps) {
+  className = '',
+}: ImageProps) {
   const el = useRef<HTMLDivElement>(null!)
   const img = useRef<HTMLImageElement>(null)
   const dialogRef = useRef<ImageDialogRef>(null)
@@ -34,10 +36,10 @@ export function WebGLImageWrapper({
   }
 
   return (
-    <>
-      <div 
-        ref={el} 
-        className={`h-full w-full ${!disableDialog ? 'cursor-zoom-in' : ''}`}
+    <div className={className}>
+      <div
+        ref={el}
+        className={`h-full w-full ${!disableDialog ? 'cursor-pointer' : ''}`}
         onClick={handleClick}
       >
         <img
@@ -65,6 +67,6 @@ export function WebGLImageWrapper({
         </UseCanvas>
       )}
       {!disableDialog && <ImageDialog ref={dialogRef} src={src} alt={src} />}
-    </>
+    </div>
   )
 }

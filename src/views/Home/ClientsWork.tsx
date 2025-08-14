@@ -1,6 +1,6 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
+import { Image } from '../../components/Image'
 import { Link } from 'react-router-dom'
 import { getProjectsByCategory } from '../../config/projects'
 
@@ -61,9 +61,9 @@ export function ClientsWork() {
           <Link
             key={project.slug}
             to={`/project/${project.slug}`}
-            className="border-texture relative aspect-video h-1/2 w-full"
+            className="relative aspect-video"
           >
-            <WebGLImageWrapper {...project.thumbnail} />
+            <Image {...project.thumbnail} />
             <span
               id={project.slug}
               className={`lg:text-l text-l font-pp-neue-montreal absolute text-sm text-white uppercase ${project.thumbnail.labelClass}`}

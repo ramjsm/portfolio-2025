@@ -2,7 +2,7 @@ import { ScrollScene, UseCanvas } from '@14islands/r3f-scroll-rig'
 import { LoadingIndicator } from '../../components/LoadingIndicatior'
 import { Suspense, useRef } from 'react'
 import { PlaygroundGraph } from '../../components/PlayGroundGraph'
-import { WebGLImageWrapper } from '../../components/WebGLImageWrapper'
+import { Image } from '../../components/Image'
 
 export function Playground() {
   const el = useRef<HTMLDivElement>(null!)
@@ -23,11 +23,12 @@ export function Playground() {
           </div>
         </div>
         <div ref={el} className="h-screen w-full"></div>
-        <div className="border-texture absolute bottom-[50%] left-0 h-1/3 w-1/3">
-          <WebGLImageWrapper
+        <div className="absolute bottom-[50%] left-0 h-1/3 w-1/3">
+          <Image
             src="cocreations/synthara/synthara1.jpg"
             thresholdWhite={0.2}
             thresholdGray={0.2}
+            className="border-texture"
           />
           <div className="font-teenage-dreams text-4xl">Synthara</div>
           <div className="">#webgl #three.js</div>

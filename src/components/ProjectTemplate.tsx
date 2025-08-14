@@ -23,7 +23,7 @@ export function ProjectTemplate() {
   const { scrollTo } = useScrollbar()
 
   useLayoutEffect(() => {
-    (scrollTo as any)(0, { immediate: true })
+    ;(scrollTo as any)(0, { immediate: true })
   }, [scrollTo])
 
   useGSAP(() => {
