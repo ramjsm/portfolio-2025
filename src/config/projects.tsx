@@ -12,6 +12,7 @@ export interface MediaAsset {
   thresholdWhite: number
   thresholdGray: number
   mediaClass?: string
+  disableDialog?: boolean
 }
 
 export interface ThumbnailAsset extends MediaAsset {
@@ -51,6 +52,7 @@ export const projectsList: Project[] = [
       mediaClass: 'brightness-65 contrast-100',
       labelClass: 'label bottom-1 lg:bottom-3 left-2 lg:left-3',
       className: 'border-texture row-start-2 row-end-4 col-start-1 col-end-3',
+      disableDialog: true,
     },
     hero: {
       src: '/projects/the-magic-box/hero.webm',
@@ -131,6 +133,7 @@ export const projectsList: Project[] = [
       mediaClass: 'brightness-60 contrast-110',
       labelClass: 'label lg:top-3 lg:left-3 top-1 left-2',
       className: 'border-texture row-start-1 row-end-4 col-start-3 col-end-3',
+      disableDialog: true,
     },
     hero: {
       src: '/projects/juliette/Juliette_hero_animation.webm',
@@ -238,6 +241,7 @@ export const projectsList: Project[] = [
       mediaClass: 'brightness-90 contrast-110',
       labelClass: 'label top-[20%] lg:right-4 right-2',
       className: 'row-start-3 row-end-5 col-start-1 col-end-4',
+      disableDialog: true,
     },
     hero: {
       src: '/projects/synthara/hero.webm',
@@ -332,6 +336,7 @@ export const projectsList: Project[] = [
       mediaClass: 'brightness-70 contrast-110',
       labelClass: 'label top-1 left-2 lg:top-3 lg:left-3',
       className: 'border-texture row-start-5 col-start-1 row-span-2',
+      disableDialog: true,
     },
     hero: {
       src: '/projects/as-below-so-above/hero.webm',
@@ -465,6 +470,7 @@ export const projectsList: Project[] = [
       mediaClass: 'brightness-90 contrast-110',
       labelClass: 'label bottom-2 left-1 lg:bottom-3 lg:left-3',
       className: 'border-texture row-start-5 col-span-2',
+      disableDialog: true,
     },
     hero: {
       src: '/projects/invocation/invocation_hero_animation.webm',
@@ -545,6 +551,7 @@ export const projectsList: Project[] = [
       mediaClass: 'brightness-60 contrast-115',
       labelClass: 'lg:top-3 lg:left-5 bottom-1 left-2',
       className: 'border-texture row-start-5 col-span-2',
+      disableDialog: true,
     },
     hero: {
       src: '/projects/soberania-creativa/hero.webm',
@@ -634,6 +641,7 @@ export const projectsList: Project[] = [
       mediaClass: 'brightness-60 contrast-100',
       labelClass: 'lg:top-3 lg:right-5 bottom-1 right-2',
       className: 'border-texture row-start-5 col-span-2',
+      disableDialog: true,
     },
     hero: {
       src: '/projects/irmajoanne/hero.webm',

@@ -12,19 +12,25 @@ export function VideoDialog({ src }: VideoDialogProps) {
   const openDialog = () => {
     if (dialogRef.current) {
       dialogRef.current.showModal()
-      if (videoRef.current) videoRef.current.getInternalPlayer()?.play()
+      if (videoRef.current) videoRef.current.play()
     }
   }
 
   const closeDialog = () => {
     if (dialogRef.current) {
       dialogRef.current.close()
-      if (videoRef.current) videoRef.current.getInternalPlayer()?.pause()
+      if (videoRef.current) videoRef.current.pause()
     }
   }
 
   const handleClickOutside = (e: React.MouseEvent<HTMLDialogElement>) => {
     if (e.currentTarget === e.target) {
+      closeDialog()
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDialogElement>) => {
+    if (e.key === 'Escape') {
       closeDialog()
     }
   }
@@ -43,9 +49,10 @@ export function VideoDialog({ src }: VideoDialogProps) {
       <dialog
         ref={dialogRef}
         onClick={handleClickOutside}
-        className="max-w-[1920px]border-none mx-auto my-auto w-2/3 bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center"
+        onKeyDown={handleKeyDown}
+        className="mx-auto my-auto w-full max-w-[1920px] border-none bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center lg:w-2/3"
       >
-        <div className="relative w-full px-10 shadow-lg">
+        <div className="relative w-full shadow-lg lg:px-10">
           {/* Close Button */}
           {/* <button
             onClick={closeDialog}
