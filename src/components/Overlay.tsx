@@ -13,7 +13,7 @@ export function Overlay() {
       <div className="font-pp-neue-montreal fixed z-99 flex w-full justify-between bg-linear-to-b from-[#101010] to-transparent px-5 py-5 text-xs tracking-wider">
         <Link to="/" className="flex-1 text-nowrap opacity-60">
           <div className="font-[100] uppercase">Ramses Salas</div>
-          <div className="font-[100] uppercase">Creative Techonologist</div>
+          <div className="font-[100] uppercase">Creative Technologist</div>
         </Link>
         <Link to="/" className="flex flex-1 justify-center">
           <Logo className="h-[24px] w-[24px] lg:h-[33px] lg:w-[33px]" />

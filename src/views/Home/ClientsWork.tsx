@@ -41,7 +41,7 @@ export function ClientsWork() {
       <div className="clients-work-header h- relative z-10 h-[16vw] lg:h-50">
         <div className="absolute top-[20%] right-0">
           <div className="client-work-shadow font-syne text-stroke-gray-100 text-stroke-1 mr-[10vw] text-[8vw]/[8.2vw] text-transparent lg:text-8xl">
-            CLIENTS
+            CLIENT
           </div>
           <div className="client-work-shadow font-syne text-stroke-gray-100 text-stroke-1 text-right text-[8vw]/[8.2vw] text-transparent lg:text-8xl">
             WORK
@@ -49,7 +49,7 @@ export function ClientsWork() {
         </div>
         <div className="absolute top-[0%] right-0">
           <div className="client-work font-syne mr-[10vw] text-[8vw]/[8.2vw] lg:text-8xl">
-            CLIENTS
+            CLIENT
           </div>
           <div className="client-work font-syne text-right text-[8vw]/[8.2vw] lg:text-8xl">
             WORK
