@@ -32,7 +32,7 @@ export function CocreationLinkThumbnail({
       to={`/project/${cocreation.slug}`}
       className={`relative transition hover:text-white lg:text-[#909090] ${className}`}
     >
-      <Image {...thumbnailProps} />
+      <Image className="h-full w-full" {...thumbnailProps} />
       <span
         id={cocreation.slug}
         className={
