@@ -1,6 +1,6 @@
 import { useImageAsTexture } from '@14islands/r3f-scroll-rig'
 import { useEffect, useRef, useState } from 'react'
-import ThresholdMaterial from './shaders/thresholdShader'
+import ThresholdMaterial from '../shaders/thresholdShader'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 

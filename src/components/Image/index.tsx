@@ -6,9 +6,9 @@ import {
 } from '@14islands/r3f-scroll-rig'
 import { Suspense, useRef } from 'react'
 import { WebGLImage } from './WebGLImage'
-import { LoadingIndicator } from './LoadingIndicatior'
+import { LoadingIndicator } from '../LoadingIndicatior'
 import { ImageDialog, type ImageDialogRef } from './ImageDialog'
-import type { MediaAsset } from '../config/projects'
+import type { MediaAsset } from '../../config/projects'
 
 interface ImageProps extends MediaAsset {
   loading?: 'eager' | 'lazy'

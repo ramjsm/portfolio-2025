@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import ThresholdMaterial from './shaders/thresholdShader'
+import ThresholdMaterial from '../shaders/thresholdShader'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 

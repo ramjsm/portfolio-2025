@@ -5,10 +5,10 @@ import {
   styles,
 } from '@14islands/r3f-scroll-rig'
 import { Suspense, useRef } from 'react'
-import { LoadingIndicator } from './LoadingIndicatior'
+import { LoadingIndicator } from '../LoadingIndicatior'
 import { WebGLVideo } from './WebGLVideo'
 import { VideoDialog, type VideoDialogRef } from './VideoDialog'
-import type { MediaAsset } from '../config/projects'
+import type { MediaAsset } from '../../config/projects'
 
 interface VideoProps extends MediaAsset {
   className?: string
