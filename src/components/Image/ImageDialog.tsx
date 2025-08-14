@@ -50,14 +50,14 @@ export const ImageDialog = forwardRef<ImageDialogRef, ImageDialogProps>(
         ref={dialogRef}
         onClick={handleClickOutside}
         onKeyDown={handleKeyDown}
-        className="fixed inset-0 h-screen w-screen overflow-hidden border-none bg-transparent p-4 outline-none backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center focus:outline-none"
+        className="mx-auto my-auto h-full max-h-screen w-full max-w-screen border-none bg-transparent outline-none backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center focus:outline-none lg:w-2/3 lg:max-w-[1920px]"
       >
         {/* Image */}
         <img
           src={src}
           alt={alt || src}
-          className="h-auto max-h-full w-auto max-w-full cursor-zoom-out object-contain"
-          onClick={(e) => e.stopPropagation()}
+          className="h-auto max-h-screen w-auto max-w-screen cursor-pointer object-contain lg:max-h-full lg:max-w-full"
+          onClick={closeDialog}
         />
       </dialog>
     )
