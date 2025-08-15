@@ -133,7 +133,7 @@ export const projectsList: Project[] = [
       thresholdGray: 0.5,
       mediaClass: 'brightness-60 contrast-110',
       labelClass: 'label lg:top-3 lg:left-3 top-1 left-2',
-      className: 'border-texture row-start-1 row-end-4 col-start-3 col-end-3',
+      className: 'border-texture row-start-1 row-end-4 col-start-3 col-end-4',
       disableDialog: true,
     },
     hero: {

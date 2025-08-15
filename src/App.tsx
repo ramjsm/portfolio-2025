@@ -41,7 +41,7 @@ function App() {
           }}
           globalRender={false}
         >
-          <ambientLight intensity={2} />
+          <ambientLight intensity={1} />
         </GlobalCanvas>
         <SmoothScrollbar enabled={!isMobile} scrollRestoration="auto" />
       </SSRSafe>

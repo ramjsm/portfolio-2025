@@ -8,8 +8,8 @@ const ThresholdMaterial = shaderMaterial(
     uTime: 0,
     uImage: null,
     uResolution: new THREE.Vector2(),
-    uThresholdWhite: 0.4,
-    uThresholdGray: 0.3,
+    uThresholdWhite: 2.0,
+    uThresholdGray: 2.0,
     uNoise: 1.0,
     uColor: new THREE.Color(),
     uEnabled: true,
@@ -78,11 +78,11 @@ const ThresholdMaterial = shaderMaterial(
       vec2 mouseUV = uMouse / uResolution;
       mouseUV.y = 1.0 - mouseUV.y;
 
-      if (uActive > 0.0) {
-        float dist = distance(uv, uMouse);
-        float ripple = sin(dist * 50.0 - uTime * 4.0) * 0.1;
-        uv += normalize(uv - uMouse) * ripple;
-      }
+      // if (uActive > 0.0) {
+      //   float dist = distance(uv, uMouse);
+      //   float ripple = sin(dist * 50.0 - uTime * 4.0) * 0.1;
+      //   uv += normalize(uv - uMouse) * ripple;
+      // }
 
       vec4 image = texture(uImage, uv);
 
