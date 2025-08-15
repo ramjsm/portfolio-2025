@@ -14,6 +14,7 @@ import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
 import { Video } from './Video'
 import { projectsList } from '../config/projects'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export function ProjectTemplate() {
   const { slug } = useParams<{ slug: string }>()
@@ -21,6 +22,7 @@ export function ProjectTemplate() {
   const project = getProjectBySlug(slug!)
   const nextProject = getNextProjectBySlug(slug!)
   const { scrollTo } = useScrollbar()
+  const isMobile = useIsMobile()
 
   useLayoutEffect(() => {
     ;(scrollTo as any)(0, { immediate: true })
@@ -73,29 +75,41 @@ export function ProjectTemplate() {
   return (
     <article className="w-full">
       <div className="relative flex min-h-screen w-full flex-col justify-center">
-        <div className="mt-20 -mr-2 mb-5 flex flex-col items-end justify-end text-right">
-          <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
-          <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${project.title}`}</h1>
-        </div>
+        {isMobile && (
+          <div className="mt-20 -mr-2 mb-5 flex flex-col items-end justify-end text-right lg:hidden">
+            <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
+            <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${project.title}`}</h1>
+          </div>
+        )}
+        {!isMobile && (
+          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+            <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
+            <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-7xl text-nowrap text-transparent">{`${project.title}`}</h1>
+          </div>
+        )}
         <Video
           {...project.hero}
           videoURL={project.videoURL}
-          className="border-texture relative mb-10 flex aspect-video items-center justify-center"
+          className="border-texture mb-10 flex aspect-video items-center justify-center lg:mb-0 lg:max-h-2/3"
         />
         {/* Responsive Info*/}
-        <div className="info-wrapper flex flex-col gap-4 lg:mb-0 lg:hidden lg:flex-col landscape:hidden">
-          {project.info.map((info: InfoSection) => (
-            <Info key={info.header} header={info.header} list={info.list} />
-          ))}
-        </div>
+        {isMobile && (
+          <div className="info-wrapper flex flex-col gap-4 lg:mb-0 lg:hidden lg:flex-col landscape:hidden">
+            {project.info.map((info: InfoSection) => (
+              <Info key={info.header} header={info.header} list={info.list} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="mt-10 flex w-full flex-col md:mb-10 lg:mt-0 lg:flex-row landscape:flex-row">
-        <div className="info-wrapper mb-10 hidden flex-1 gap-4 lg:mb-0 lg:block lg:flex-col landscape:block">
-          {project.info.map((info: InfoSection) => (
-            <Info key={info.header} header={info.header} list={info.list} />
-          ))}
-        </div>
-        <div className="flex flex-col gap-5 text-xl font-[100] lg:flex-3 landscape:flex-3">
+        {!isMobile && (
+          <div className="info-wrapper flex flex-1 flex-col gap-4">
+            {project.info.map((info: InfoSection) => (
+              <Info key={info.header} header={info.header} list={info.list} />
+            ))}
+          </div>
+        )}
+        <div className="flex flex-col gap-2 text-xl font-[100] lg:flex-3 lg:text-base landscape:flex-3">
           {project.intro}
         </div>
       </div>

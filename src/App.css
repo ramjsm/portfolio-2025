@@ -83,13 +83,13 @@
 
   @media (min-width: theme('screens.xl')) {
     html {
-      font-size: 16px; /* Extra large: 1280px+ */
+      font-size: 18px; /* Extra large: 1280px+ */
     }
   }
 
   @media (min-width: theme('screens.2xl')) {
     html {
-      font-size: 16px; /* 2XL screens: 1536px+ */
+      font-size: 17px; /* 2XL screens: 1536px+ */
     }
   }
 }

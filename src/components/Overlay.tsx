@@ -42,10 +42,15 @@ export function Overlay() {
       </div>
       {isMenuVisible && (
         <div className="fixed right-5 bottom-30 flex flex-col bg-transparent text-right">
-          <Link to="/about">About</Link>
-          <Link to="/#co-creations">Co-Creations</Link>
-          <Link to="/#clients-work">Clients Work</Link>
-          <p>Comming Soon / Playground</p>
+          <Link to="/about" onClick={toggleMenu}>
+            About
+          </Link>
+          <Link to="/#co-creations" onClick={toggleMenu}>
+            Co-Creations
+          </Link>
+          <Link to="/#clients-work" onClick={toggleMenu}>
+            Clients Work
+          </Link>
         </div>
       )}
     </>
