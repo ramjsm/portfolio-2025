@@ -61,9 +61,11 @@ export function Services() {
   return (
     <div className="relative -mt-40 flex w-full items-center justify-center pb-50">
       <p className="text w-[80%] text-xl lg:text-2xl">
-        I collaborate with artists and creatives teams to turn ideas into
-        digital experiences. Through code, motion and interaction, I explore
-        technology as a tool for expression, experimentation and connection.
+        I collaborate with artists and creative teams to shape digital
+        experiences that combine creativity and technology. Using interactive
+        and generative systems, I explore new ways of expressing ideas and
+        crafting experiences. Together, we turn creative visions into digital
+        realities.
       </p>
       <div className="absolute bottom-0 left-1/2 w-screen -translate-x-1/2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div

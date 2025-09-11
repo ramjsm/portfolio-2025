@@ -78,7 +78,7 @@ export function Video({
       {showVideo && (
         <>
           <VideoDialog ref={dialogRef} src={videoURL} />
-          <span className="text-l font-pp-neue-montreal absolute bottom-2 left-2 lg:bottom-5 lg:left-5">
+          <span className="text-l font-pp-neue-montreal absolute bottom-2 left-2 lg:bottom-5 lg:left-5 lg:hidden">
             /WATCH
           </span>
         </>

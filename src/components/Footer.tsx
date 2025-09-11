@@ -23,7 +23,7 @@ export function Footer() {
           </li>
           <li>
             <a
-              href="https://www.instagram.com/ramjsm"
+              href="https://www.instagram.com/ramsessalas_"
               target="_blank"
               rel="noopener noreferrer"
             >

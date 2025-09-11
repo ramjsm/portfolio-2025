@@ -11,11 +11,19 @@ export function Overlay() {
   return (
     <>
       <div className="font-pp-neue-montreal fixed z-99 flex w-full justify-between bg-linear-to-b from-[#101010] to-transparent px-5 py-5 text-xs tracking-wider">
-        <Link to="/" className="flex-1 text-nowrap opacity-60">
+        <Link
+          to="/"
+          className="flex-1 text-nowrap opacity-60"
+          data-cursor-text="HOME"
+        >
           <div className="font-[100] uppercase">Ramses Salas</div>
           <div className="font-[100] uppercase">Creative Technologist</div>
         </Link>
-        <Link to="/" className="flex flex-1 justify-center">
+        <Link
+          to="/"
+          className="flex flex-1 justify-center"
+          data-cursor-text="HOME"
+        >
           <Logo className="h-[24px] w-[24px] lg:h-[33px] lg:w-[33px]" />
         </Link>
         <div className="flex-1 text-right font-[100] text-nowrap uppercase opacity-60">
@@ -29,6 +37,7 @@ export function Overlay() {
             href="https://calendly.com/me-ramsessalas/30min"
             target="_blank"
             rel="noopener noreferrer"
+            data-cursor-text="CONTACT"
           >
             Schedule a Call &#8594;
           </a>
@@ -36,7 +45,8 @@ export function Overlay() {
       </div>
       <div className="fixed right-5 bottom-5 z-9999">
         <Menu
-          className="h-[60px] w-[60px] lg:h-[80px] lg:w-[80px]"
+          className="cursor-hover h-[60px] w-[60px] lg:h-[80px] lg:w-[80px]"
+          data-cursor-text="MENU"
           onClick={toggleMenu}
         />
       </div>
