@@ -62,6 +62,7 @@ export function ClientWork() {
             key={project.slug}
             to={`/project/${project.slug}`}
             className="relative aspect-video"
+            data-cursor-text="EXPLORE"
           >
             <Image {...project.thumbnail} />
             <span

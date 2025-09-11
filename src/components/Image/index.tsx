@@ -39,8 +39,9 @@ export function Image({
     <div className={className}>
       <div
         ref={el}
-        className={`h-full w-full ${!disableDialog ? 'cursor-pointer' : ''}`}
+        className={`h-full w-full ${!disableDialog ? 'cursor-hover cursor-pointer' : ''}`}
         onClick={handleClick}
+        data-cursor-text="ZOOM IN"
       >
         <img
           className={`${styles.hiddenWhenSmooth} ${mediaClass} h-full w-full object-cover`}

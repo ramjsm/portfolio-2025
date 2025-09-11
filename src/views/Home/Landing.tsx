@@ -2,6 +2,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/SplitText'
 import { useRef } from 'react'
+import ASCIIText from '../../components/ASCIIText'
 
 export function Landing() {
   const container = useRef<HTMLDivElement>(null)
@@ -34,6 +35,12 @@ export function Landing() {
         as a medium for <br></br>
         creative expression
       </h1>
+      {/* <ASCIIText
+        text="Technology as Medium </br> for Creative Expression"
+        textFontSize={100}
+        enableWaves={true}
+        asciiFontSize={8}
+      /> */}
     </div>
   )
 }

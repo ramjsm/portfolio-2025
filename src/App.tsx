@@ -13,6 +13,8 @@ import { Footer } from './components/Footer'
 import { RoughEase } from 'gsap/EasePack'
 import { SSRSafe } from './components/SSRSafe'
 import { useIsMobile } from './hooks/useIsMobile'
+import { Loader } from '@react-three/drei'
+import Cursor from './components/Cursor'
 
 // Only register GSAP plugins on client-side
 if (typeof window !== 'undefined') {
@@ -50,7 +52,8 @@ function App() {
         <Router />
       </div>
       <Footer />
-      {/*   <Cursor /> */}
+      {/*  <Loader /> */}
+      {!isMobile && <Cursor />}
     </div>
   )
 }

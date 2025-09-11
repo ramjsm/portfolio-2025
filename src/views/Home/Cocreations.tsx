@@ -30,7 +30,7 @@ export function Cocreations() {
       <div className="z-10 grid w-[930px] transform grid-cols-[40%_20%_40%] grid-rows-[10%_20%_5%_30%_25%_10%] gap-2">
         <div className="justify relative col-span-2 flex justify-items-start">
           <div id="header1" className="relative flex-1">
-            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-[40%] left-[50%] -translate-x-1/2 text-[8vw] text-transparent lg:text-8xl">
+            <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-[40%] left-[50%] -translate-x-1/2 text-[8vw] text-transparent xl:text-8xl">
               CO-
             </div>
             <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-[15%] left-[50%] -translate-x-1/2 text-[8vw] text-transparent lg:text-8xl">

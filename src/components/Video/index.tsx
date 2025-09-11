@@ -39,8 +39,9 @@ export function Video({
     <div className={`relative ${className}`}>
       <div
         ref={el}
-        className={`Placeholder ScrollScene relative aspect-video ${showVideo ? 'cursor-pointer' : ''}`}
+        className={`Placeholder ScrollScene relative aspect-video ${showVideo ? 'cursor-hover cursor-pointer' : ''}`}
         onClick={handleClick}
+        data-cursor-text="WATCH"
       >
         <video
           ref={videoRef}
