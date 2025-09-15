@@ -47,7 +47,7 @@ function App() {
         <SmoothScrollbar enabled={!isMobile} scrollRestoration="auto" />
       </SSRSafe>
       <Overlay />
-      <div className="mx-auto max-w-[1920px] px-10 md:px-20 lg:w-2/3 lg:px-0">
+      <div className="mx-auto max-w-[1920px] px-10 md:px-14 lg:w-2/3 lg:px-0">
         <Router />
       </div>
       <Footer />

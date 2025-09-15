@@ -24,7 +24,7 @@ export function Overlay() {
           className="flex flex-1 justify-center"
           data-cursor-text="HOME"
         >
-          <Logo className="h-[24px] w-[24px] lg:h-[33px] lg:w-[33px]" />
+          <Logo className="h-[2rem] w-[2rem] lg:h-[33px] lg:w-[33px]" />
         </Link>
         <div className="flex-1 text-right font-[100] text-nowrap uppercase opacity-60">
           <div>
@@ -45,7 +45,7 @@ export function Overlay() {
       </div>
       <div className="fixed right-5 bottom-5 z-9999">
         <Menu
-          className="cursor-hover h-[60px] w-[60px] lg:h-[80px] lg:w-[80px]"
+          className="cursor-hover h-[5rem] w-[5rem] lg:h-[80px] lg:w-[80px]"
           data-cursor-text="MENU"
           onClick={toggleMenu}
         />

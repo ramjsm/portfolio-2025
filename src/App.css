@@ -60,24 +60,36 @@
 
 @layer base {
   html {
-    font-size: 13px;
+    font-size: 30px;
   }
 
   @media (min-width: theme('screens.sm')) {
     html {
-      font-size: 14px; /* Small screens: 640px+ */
+      font-size: 30px; /* Small screens: 640px+ */
     }
   }
 
   @media (min-width: theme('screens.md')) {
     html {
-      font-size: 14px; /* Medium screens: 768px+ (Tailwind default) */
+      font-size: 18px; /* Medium screens: 768px+ (Tailwind default) */
     }
   }
 
   @media (min-width: theme('screens.lg')) {
     html {
       font-size: 16px; /* Large screens: 1024px+ */
+    }
+  }
+
+  @media (min-width: theme('screens.xl')) {
+    html {
+      font-size: 16px; /* Extra large: 1280px+ */
+    }
+  }
+
+  @media (min-width: theme('screens.2xl')) {
+    html {
+      font-size: 16px; /* 2XL screens: 1536px+ */
     }
   }
 }

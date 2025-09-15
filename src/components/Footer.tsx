@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <div className="font-pp-neue-montreal mt-16 flex items-end px-5 py-5 text-xs uppercase opacity-60">
       <div className="flex-1">
-        <ul className="">
+        <ul className="justify-bottom flex flex-col gap-1">
           <li>
             <a
               href="https://www.linkedin.com/in/ramsessalas/"
@@ -43,7 +43,7 @@ export function Footer() {
           <li></li>
         </ul>
       </div>
-      <div className="flex flex-1 flex-col items-center">
+      <div className="flex flex-1 flex-col items-center gap-1">
         <span>hello@ramsessalas.com</span>
         <span>Ramses Salas 2025 ©</span>
       </div>
