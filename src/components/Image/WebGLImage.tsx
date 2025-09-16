@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 import ThresholdMaterial from '../shaders/thresholdShader'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 extend({ ThresholdMaterial })
 
@@ -23,14 +25,32 @@ export function WebGLImage({ imgRef, ...props }: WebGLImageProps) {
   const meshRef = useRef<any>(null)
   const [isActive, setIsActive] = useState(false)
 
+  useGSAP(() => {
+    gsap.fromTo(
+      materialRef.current,
+      {
+        uThresholdWhite: 1,
+        uThresholdGray: 1,
+        uNoise: 0,
+      },
+      {
+        duration: 1.8,
+        uThresholdWhite: props.thresholdWhite,
+        uThresholdGray: props.thresholdGray,
+        uNoise: 1,
+        scrollTrigger: imgRef.current,
+      }
+    )
+  })
+
   useEffect(() => {
     if (texture.image && materialRef.current) {
       materialRef.current.uResolution.set(
         texture.image.width,
         texture.image.height
       )
-      materialRef.current.uThresholdWhite = props.thresholdWhite
-      materialRef.current.uThresholdGray = props.thresholdGray
+      // materialRef.current.uThresholdWhite = props.thresholdWhite
+      // materialRef.current.uThresholdGray = props.thresholdGray
     }
   }, [
     texture,

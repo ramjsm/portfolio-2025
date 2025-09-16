@@ -1,8 +1,12 @@
 import { Image } from '../../../components/Image'
+import { Helmet } from 'react-helmet'
 
 export function TheMagicBox() {
   return (
     <div className="mx-auto flex flex-col gap-2">
+      <Helmet>
+        <title>The Magic Box - Futuristic Wisdom Edition | Ramses Salas</title>
+      </Helmet>
       <Image
         src="/projects/the-magic-box/entrance.webp"
         thresholdWhite={0.3}

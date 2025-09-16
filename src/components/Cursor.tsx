@@ -176,11 +176,11 @@ const Cursor = () => {
           zIndex: 9999,
         }}
       >
-        <CircularText
+        {/* <CircularText
           text={`/ ${currentText} / ${currentText} / ${currentText} `}
           spinDuration={60}
           className="font-pp-neue-montreal"
-        />
+        /> */}
       </div>
     </>
   )

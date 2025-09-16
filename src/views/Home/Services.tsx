@@ -60,7 +60,7 @@ export function Services() {
   })
   return (
     <div className="relative -mt-40 flex w-full items-center justify-center pb-50">
-      <p className="text w-[80%] text-xl lg:text-2xl">
+      <p className="text w-[80%] text-xl lg:text-xl">
         I collaborate with artists and creative teams to shape digital
         experiences that combine creativity and technology. Using interactive
         and generative systems, I explore new ways of expressing ideas and

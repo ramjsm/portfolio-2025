@@ -1,8 +1,12 @@
 import { Image } from '../../../components/Image'
+import { Helmet } from 'react-helmet'
 
 export function Irmajoanne() {
   return (
     <div className="mx-auto flex flex-col gap-2">
+      <Helmet>
+        <title>Irmajoanne | Ramses Salas</title>
+      </Helmet>
       <Image
         src="/projects/irmajoanne/design_system.png"
         thresholdWhite={0.25}

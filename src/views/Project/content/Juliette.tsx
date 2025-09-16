@@ -1,8 +1,12 @@
 import { Image } from '../../../components/Image'
+import { Helmet } from 'react-helmet'
 
 export function Juliette() {
   return (
     <div className="mx-auto flex flex-col gap-2">
+      <Helmet>
+        <title>Juliette | Ramses Salas</title>
+      </Helmet>
       <Image
         src="/projects/juliette/juliette-ramses.webp"
         thresholdWhite={0.3}

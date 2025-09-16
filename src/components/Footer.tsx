@@ -43,8 +43,10 @@ export function Footer() {
           <li></li>
         </ul>
       </div>
-      <div className="flex flex-1 flex-col items-center gap-1">
-        <span>hello@ramsessalas.com</span>
+      <div className="flex flex-1 flex-col items-center">
+        <a href="mailto:hello@ramsessalas.com" data-cursor-text="CONTACT">
+          hello@ramsessalas.com
+        </a>
         <span>Ramses Salas 2025 ©</span>
       </div>
       <div className="flex-1"></div>

@@ -1,9 +1,13 @@
 import { Image } from '../../../components/Image'
 import { Video } from '../../../components/Video'
+import { Helmet } from 'react-helmet'
 
 export function AsBelowSoAbove() {
   return (
     <div className="mx-auto flex flex-col gap-2">
+      <Helmet>
+        <title>As Below So Above | Ramses Salas</title>
+      </Helmet>
       <Video
         src="/projects/as-below-so-above/as-below-so-above-live-cam.webm"
         thresholdWhite={0.13}

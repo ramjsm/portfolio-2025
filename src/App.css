@@ -71,13 +71,13 @@
 
   @media (min-width: theme('screens.md')) {
     html {
-      font-size: 18px; /* Medium screens: 768px+ (Tailwind default) */
+      font-size: 30px; /* Medium screens: 768px+ (Tailwind default) */
     }
   }
 
   @media (min-width: theme('screens.lg')) {
     html {
-      font-size: 16px; /* Large screens: 1024px+ */
+      font-size: 30px; /* Large screens: 1024px+ */
     }
   }
 

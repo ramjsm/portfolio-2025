@@ -17,7 +17,7 @@ export function CocreationLinkThumbnail({
     gsap.to(`#${cocreation.slug}`, {
       duration: 2,
       scrambleText: {
-        text: `/${cocreation.title}`,
+        text: `/${cocreation.slug}`,
         chars: '01',
       },
       scrollTrigger: {
@@ -37,7 +37,7 @@ export function CocreationLinkThumbnail({
       <span
         id={cocreation.slug}
         className={
-          'font-pp-neue-montreal lg:text-l absolute text-sm uppercase transition ' +
+          'font-pp-neue-montreal lg:text-l absolute text-sm lowercase transition ' +
           cocreation.thumbnail.labelClass
         }
       >{`/${cocreation.title}`}</span>

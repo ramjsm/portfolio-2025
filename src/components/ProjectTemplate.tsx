@@ -35,36 +35,51 @@ export function ProjectTemplate() {
         smartWrap: true,
         onSplit: (self) => {
           gsap.from(self.chars, {
-            y: -100,
             autoAlpha: 0,
-            stagger: 0.075,
+            stagger: 0.1,
             scrollTrigger: {
               trigger: 'h1',
             },
+            ease: 'power4',
           })
         },
       })
     })
 
-    gsap.to('.next', {
-      x: '100%',
-      ease: 'none',
-      repeat: -1,
-      duration: 10,
+    gsap.from('.intro', {
+      duration: 5,
+      // y: 100,
+      autoAlpha: 0,
+      ease: 'expo.out',
+      scrollTrigger: {
+        trigger: '.intro',
+      },
     })
 
-    gsap.to('.previous', {
-      x: '-100%',
-      ease: 'none',
-      repeat: -1,
-      duration: 5,
+    gsap.from('.credits', {
+      duration: 4,
+      autoAlpha: 0,
+      ease: 'expo.out',
+      scrollTrigger: {
+        trigger: '.credits',
+      },
     })
 
     gsap.from('.info', {
       autoAlpha: 0,
-      x: -100,
-      stagger: 0.25,
+      x: -10,
+      stagger: 0.1,
       scrollTrigger: '.info-wrapper',
+    })
+
+    const tl = gsap.timeline({ scrollTrigger: '.pagination' })
+    tl.from('.page-line', {
+      duration: 0.5,
+      width: 0,
+    }).from('.page-number', {
+      autoAlpha: 0,
+      stagger: 0.1,
+      y: -10,
     })
   })
 
@@ -82,16 +97,17 @@ export function ProjectTemplate() {
           </div>
         )}
         {!isMobile && (
-          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
-            <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
-            <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-7xl text-nowrap text-transparent">{`${project.title}`}</h1>
-          </div>
+          <>
+            <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 absolute top-[50%] left-[50%] mb-1 -translate-x-1/2 -translate-y-1/2 text-7xl text-nowrap text-transparent uppercase">
+              {`${project.title}`}
+            </h1>
+          </>
         )}
         <Video
           {...project.hero}
           videoURL={project.videoURL}
           className="border-texture mb-10 flex aspect-video items-center justify-center lg:mb-0 lg:max-h-2/3"
-        />
+        ></Video>
         {/* Responsive Info*/}
         {isMobile && (
           <div className="info-wrapper flex flex-col gap-4 lg:mb-0 lg:hidden lg:flex-col landscape:hidden">
@@ -109,34 +125,37 @@ export function ProjectTemplate() {
             ))}
           </div>
         )}
-        <div className="flex flex-col gap-2 text-xl font-[100] lg:flex-3 lg:text-base landscape:flex-3">
+        <div className="intro flex flex-col gap-2 text-xl font-[100] lg:flex-3 lg:text-base landscape:flex-4">
           {project.intro}
         </div>
       </div>
       <div className="mx-auto my-20 lg:w-[80%]">{project.content}</div>
-      {project.credits && (
-        <ul className="mb-20 text-center font-[100]">
-          {project.credits.map((listItem, index: number) => (
+      <ul className="credits mb-20 text-center font-[100]">
+        {project.credits &&
+          project.credits.map((listItem, index: number) => (
             <li key={index} className="text-l">
               {listItem}
             </li>
           ))}
-        </ul>
-      )}
+      </ul>
       <div className="flex w-full items-center gap-4">
-        <div className="border-texture-top h-0 w-full"></div>
-        <div className="font-pp-neue-montreal flex flex-1 items-center justify-center gap-3 text-sm">
+        <div className="page-line border-texture-top h-0 w-full"></div>
+        <div className="pagination font-pp-neue-montreal flex flex-1 items-center justify-center gap-3 text-sm">
           {projects.map((p, index) => (
             <Link
               key={p.slug}
               to={`/project/${p.slug}`}
-              className={p.slug === project.slug ? 'text-xl' : 'opacity-50'}
+              className={
+                p.slug === project.slug
+                  ? 'page-number text-xl'
+                  : 'page-number opacity-50'
+              }
             >
               {`/0${index + 1}`}
             </Link>
           ))}
         </div>
-        <div className="border-texture-top h-0 w-full"></div>
+        <div className="page-line border-texture-top h-0 w-full"></div>
       </div>
       <div className="mt-4 mb-16 flex items-end justify-end text-right">
         <Link to={`/project/${nextProject.slug}`}>

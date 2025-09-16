@@ -1,8 +1,12 @@
 import { Image } from '../../../components/Image'
+import { Helmet } from 'react-helmet'
 
 export function Synthara() {
   return (
     <div className="mx-auto flex flex-col gap-2">
+      <Helmet>
+        <title>Synthara | Ramses Salas</title>
+      </Helmet>
       <div className="flex gap-2">
         <Image
           src="/projects/synthara/stairs.webp"

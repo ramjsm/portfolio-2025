@@ -1,8 +1,12 @@
 import { Image } from '../../../components/Image'
+import { Helmet } from 'react-helmet'
 
 export function SoberaniaCreativa() {
   return (
     <div className="mx-auto flex flex-col gap-2">
+      <Helmet>
+        <title>Soberanía Creativa | Ramses Salas</title>
+      </Helmet>
       <Image
         src="/projects/soberania-creativa/sitemap.webp"
         thresholdWhite={0.25}

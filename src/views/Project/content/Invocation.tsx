@@ -1,8 +1,12 @@
 import { Image } from '../../../components/Image'
+import { Helmet } from 'react-helmet'
 
 export function Invocation() {
   return (
     <div className="mx-auto flex flex-col gap-2">
+      <Helmet>
+        <title>Invocation | Ramses Salas</title>
+      </Helmet>
       <Image
         src="/projects/invocation/invocation-front-wide.webp"
         thresholdWhite={0.1}

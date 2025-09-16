@@ -34,7 +34,7 @@ export function Overlay() {
             <span>Available for Projects</span>
           </div>
           <a
-            href="https://calendly.com/me-ramsessalas/30min"
+            href="https://calendly.com/ramsessalas/discovery-meeting"
             target="_blank"
             rel="noopener noreferrer"
             data-cursor-text="CONTACT"

@@ -6,10 +6,12 @@ type InfoProps = InfoSection & {
 
 export function Info({ header, list, children }: InfoProps) {
   return (
-    <div>
-      <h3 className="info font-ark-es-dense text-3xl lg:text-3xl">{header}</h3>
+    <div className="mb-2 flex flex-col gap-3">
+      <h3 className="info font-pp-neue-montreal text-xl lowercase lg:text-base">
+        <div className="border-texture inline px-3 py-1">{`/${header}`}</div>
+      </h3>
       {list && (
-        <ul>
+        <ul className="mb-1 flex flex-col gap-1 lg:mb-2">
           {list.map((listItem, index) => (
             <li key={index} className="info text-base lg:text-sm">
               {listItem}

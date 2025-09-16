@@ -22,6 +22,7 @@ export function Video({
   disableDialog = false,
   videoURL,
   className,
+  children,
 }: VideoProps) {
   const el = useRef<HTMLDivElement>(null!)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -39,7 +40,7 @@ export function Video({
     <div className={`relative ${className}`}>
       <div
         ref={el}
-        className={`Placeholder ScrollScene relative aspect-video ${showVideo ? 'cursor-hover cursor-pointer' : ''}`}
+        className={`Placeholder ScrollScene aspect-video ${showVideo ? 'cursor-hover cursor-pointer' : ''}`}
         onClick={handleClick}
         data-cursor-text="WATCH"
       >
@@ -57,6 +58,9 @@ export function Video({
             left: 0,
           }}
         />
+        <div className="0 absolute bottom-0 left-0 w-full px-5 py-5">
+          {children}
+        </div>
       </div>
       {hasSmoothScrollbar && (
         <UseCanvas>
@@ -78,8 +82,8 @@ export function Video({
       {showVideo && (
         <>
           <VideoDialog ref={dialogRef} src={videoURL} />
-          <span className="text-l font-pp-neue-montreal absolute bottom-2 left-2 lg:bottom-5 lg:left-5 lg:hidden">
-            /WATCH
+          <span className="font-pp-neue-montreal absolute bottom-2 left-2 text-base lg:bottom-5 lg:left-5 lg:hidden">
+            /watch
           </span>
         </>
       )}

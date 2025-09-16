@@ -1,8 +1,12 @@
 import { Image } from '../../components/Image'
+import { Helmet } from 'react-helmet'
 
 export function About() {
   return (
     <div className="text-l flex min-h-screen w-full flex-col-reverse items-center justify-center gap-10 lg:flex-row">
+      <Helmet>
+        <title>About | Ramses Salas</title>
+      </Helmet>
       <div className="flex flex-1 flex-col gap-20 text-xl lg:text-base">
         <div className="flex flex-col gap-4 lg:mt-40 lg:gap-2">
           <p>

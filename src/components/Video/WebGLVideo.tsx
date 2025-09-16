@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 import ThresholdMaterial from '../shaders/thresholdShader'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 extend({ ThresholdMaterial })
 
@@ -16,6 +18,25 @@ interface WebGLVideoProps {
 export function WebGLVideo({ src, videoRef, ...props }: WebGLVideoProps) {
   const materialRef = useRef<any>(null)
   const videoTextureRef = useRef<THREE.VideoTexture | null>(null)
+
+  useGSAP(() => {
+    gsap.fromTo(
+      materialRef.current,
+      {
+        uThresholdWhite: 1,
+        uThresholdGray: 1,
+        uNoise: -10,
+      },
+      {
+        duration: 2,
+        uThresholdWhite: props.thresholdWhite,
+        uThresholdGray: props.thresholdGray,
+        uNoise: 1.0,
+        scrollTrigger: videoRef.current,
+        ease: 'expo.out',
+      }
+    )
+  })
 
   useEffect(() => {
     const video = videoRef.current
