@@ -19,8 +19,13 @@ interface WebGLImageProps {
 }
 
 export function WebGLImage({ imgRef, ...props }: WebGLImageProps) {
-  // Load texture from the <img/> and suspend until its ready
-  const texture = useImageAsTexture(imgRef)
+  // Check for preloaded texture first
+  const src = imgRef.current?.src
+  const preloadedTextures = typeof window !== 'undefined' ? (window as any).__preloadedTextures : null
+  const preloadedTexture = preloadedTextures && src ? preloadedTextures.get(src) : null
+  
+  // Use preloaded texture if available, otherwise load from img element
+  const texture = preloadedTexture || useImageAsTexture(imgRef)
   const materialRef = useRef<any>(null)
   const meshRef = useRef<any>(null)
   const [isActive, setIsActive] = useState(false)

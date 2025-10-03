@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { hydrateRoot, createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
+import { AppPreloader } from './components/AppPreloader'
 
 const container = document.getElementById('root')!
 
@@ -11,18 +12,22 @@ if (container.innerHTML.trim()) {
   hydrateRoot(
     container,
     <StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AppPreloader>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AppPreloader>
     </StrictMode>
   )
 } else {
   // Regular client-side rendering for development
   createRoot(container).render(
     <StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AppPreloader>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AppPreloader>
     </StrictMode>
   )
 }

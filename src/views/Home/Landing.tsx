@@ -18,6 +18,7 @@ export function Landing() {
               y: 'random([-100, 100])',
               autoAlpha: 0,
               stagger: 0.15,
+              delay: 3,
               scrollTrigger: {
                 trigger: '.font-ark-es',
               },

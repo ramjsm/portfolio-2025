@@ -28,6 +28,10 @@ export function Image({
   const img = useRef<HTMLImageElement>(null)
   const dialogRef = useRef<ImageDialogRef>(null)
   const { hasSmoothScrollbar } = useScrollRig()
+  
+  // Check if this image is preloaded
+  const preloadedTextures = typeof window !== 'undefined' ? (window as any).__preloadedTextures : null
+  const isPreloaded = preloadedTextures && preloadedTextures.has(src)
 
   const handleClick = () => {
     if (!disableDialog) {
