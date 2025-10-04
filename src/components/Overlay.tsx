@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useProgress } from '@react-three/drei'
+import { Navigation } from './Navigation'
 
 export function Overlay() {
   const [isMenuVisible, setIsMenuVisible] = useState(false)
@@ -79,11 +80,12 @@ export function Overlay() {
           ref={rightElementsRef}
           className="overlay-stack flex-1 text-right font-[100] text-nowrap uppercase opacity-60"
         >
-          <div>
-            <span className="relative h-3 w-3 animate-ping rounded-full bg-green-500">
-              <span className="absolute h-full w-full rounded-full bg-green-500 opacity-75"></span>
+          <div className="flex items-center justify-end gap-2">
+            <span className="text-xs">Available for Projects</span>
+            <span className="relative">
+              <span className="absolute h-2 w-2 animate-ping rounded-full bg-green-500 opacity-75"></span>
+              <span className="relative block h-2 w-2 rounded-full bg-green-500"></span>
             </span>
-            <span>Available for Projects</span>
           </div>
           <a
             href="https://calendly.com/ramsessalas/discovery-meeting"
@@ -102,19 +104,9 @@ export function Overlay() {
           onClick={toggleMenu}
         />
       </div>
-      {isMenuVisible && (
-        <div className="fixed right-5 bottom-30 flex flex-col bg-transparent text-right">
-          <Link to="/about" onClick={toggleMenu}>
-            About
-          </Link>
-          <Link to="/#co-creations" onClick={toggleMenu}>
-            Co-Creations
-          </Link>
-          <Link to="/#clients-work" onClick={toggleMenu}>
-            Clients Work
-          </Link>
-        </div>
-      )}
+
+      {/* Full-screen Navigation */}
+      <Navigation isVisible={isMenuVisible} onClose={toggleMenu} />
     </>
   )
 }
