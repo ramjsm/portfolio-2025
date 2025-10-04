@@ -38,10 +38,10 @@ export function Overlay() {
           y: 20,
           duration: 0.6,
           stagger: 0.5,
-          delay: 1,
+          delay: 0,
           ease: 'power2.out',
         },
-        0.4
+        0.1
       )
   }, [])
 

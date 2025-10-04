@@ -64,7 +64,7 @@ export function AppPreloader({ children }: { children: React.ReactNode }) {
     gsap.to('.loading-overlay', {
       opacity: 0,
       duration: 1,
-      delay: 1.5,
+      delay: 0,
       ease: 'power2.inOut',
       onComplete: () => {
         setIsLoading(false)

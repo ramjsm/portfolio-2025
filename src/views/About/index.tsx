@@ -3,101 +3,119 @@ import { Helmet } from 'react-helmet'
 
 export function About() {
   return (
-    <div className="text-l flex min-h-screen w-full flex-col-reverse items-center justify-center gap-10 lg:flex-row">
+    <div className="text-l flex min-h-screen w-full flex-col-reverse gap-10 lg:flex-row">
       <Helmet>
         <title>About | Ramses Salas</title>
       </Helmet>
-      <div className="flex flex-1 flex-col gap-20 text-xl lg:text-base">
+      <div className="flex flex-1 flex-col gap-10 text-xl lg:text-base">
         <div className="flex flex-col gap-4 lg:mt-40 lg:gap-2">
           <p>
-            Hi, I’m Ramses Salas, a Freelance Creative Technologist based in
-            Berlin. I work with code, motion, and interactivity to create
-            digital experiences that feel alive and invite people to engage.
+            I'm Ramses Salas, a freelance Creative Technologist based in Berlin.
           </p>
           <p>
-            During my time at{' '}
-            <a href="https://www.uc3m.es/inicio">
-              Carlos III University of Madrid
-            </a>{' '}
-            studying Computer Science, I took a course called{' '}
-            <i>Dance & Robotics</i> instructed by{' '}
-            <a
-              href="https://www.researchgate.net/profile/Javier-Gorostiza-2"
-              className="underline"
-            >
-              Javier Gorostiza
-            </a>{' '}
-            and{' '}
-            <a
-              href="https://www.instagram.com/alfredomiralles"
-              className="underline"
-            >
-              Alfredo Miralles
-            </a>
-            . It was the first time I saw technology used not just for utility,
-            but in a way that connected with something human in me. That
-            experience made me pause and ask how I wanted to use the tools I was
-            learning. I began to see technology not just as a set of tools, but
-            as a medium that could speak to people on an emotional level.
+            In a world where technology often pulls us away from the present, my
+            work seeks to bring us back. I see creativity as a way to heal,
+            connect, and question the systems we move through. Using interactive
+            and generative systems, and through collaboration, I explore how
+            technology can hold emotion, mirror awareness, and remind us what it
+            means to be human.
           </p>
           <p>
-            Soon after, I joined the Dance and Technology Laboratory,
-            collaborating with Alfredo on experiments that brought technology
-            into scenic performance. Later, under Javier’s mentorship, I
-            developed my graduation project, exploring motion tracking to create
-            live visualizations for the stage. Each step felt like discovering a
-            new way to translate thought and feeling into something others could
-            experience.
-          </p>
-          <p>
-            Since then, I’ve collaborated with artists, exploring how technology
-            and creativity can come together to express ideas, emotions, and
-            imagined worlds. In a time when technology often pulls us away from
-            the present moment, I try to use it to slow down, notice, and
-            connect. My practice is an invitation to a world where technology
-            brings us closer to ourselves and to the world around us.
+            My practice is rooted in presence, in finding life within the
+            digital and intimacy within the mechanical. I use technology not as
+            an escape but as a way to redefine my reality.
           </p>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="font-ark-es-dense text-4xl">Collaborations</p>
+          <p className="font-ark-es-dense text-4xl">Participations</p>
           <ul className="flex flex-col gap-1">
             <li>
-              <a href="https://www.instagram.com/p/C_lHBO1t_Yd/?hl=en">
+              <a
+                href="https://www.instagram.com/p/C_lHBO1t_Yd/?hl=en"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                2025 / Myths of Tomorrow at Hotel Continental - Award project
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/p/C_lHBO1t_Yd/?hl=en"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2024 / Acid Reflux - Series Parties
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/raw_skpz/">
+              <a
+                href="https://www.instagram.com/raw_skpz/"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2023 / RAW SKPZ Open Studios
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/stories/highlights/18053552674947801/?hl=en">
+              <a
+                href="https://www.instagram.com/stories/highlights/18053552674947801/?hl=en"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2023 / Paula Fraile Open Studios
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/p/CvuVcOmM4dp/?img_index=3">
+              <a
+                href="https://www.instagram.com/p/CvuVcOmM4dp/?img_index=3"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2023 / Synthara at Conscious Madness Festival
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/p/CW565AIM1VW/?hl=en">
+              <a
+                href="https://www.instagram.com/p/CW565AIM1VW/?hl=en"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2020 / As Below So Above at Willow Gallery
               </a>
             </li>
             <li>
-              <a href="https://somos-arts.org/un_real-desires-group-exhibition/">
+              <a
+                href="https://somos-arts.org/un_real-desires-group-exhibition/"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2019 / Juliette Un_Real Desires at SomoS Art House Berlin
               </a>
             </li>
             <li>
-              <a href="https://actividadesculturales.unileon.es/123">
+              <a
+                href="https://actividadesculturales.unileon.es/123"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2018 / Tracking - INJUVE (Universidad de León).
               </a>
             </li>
             <li>
-              <a href="https://www.facebook.com/auladelasartes.uc3m/videos/el-pasado-viernes-nuestro-compa%C3%B1ero-alfredo-miralles-benito-present%C3%B3-la-pieza-so/1657182337638908/">
+              <a
+                href="https://www.facebook.com/auladelasartes.uc3m/videos/el-pasado-viernes-nuestro-compa%C3%B1ero-alfredo-miralles-benito-present%C3%B3-la-pieza-so/1657182337638908/"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 2017 / Tracking - Festival Internacional Danzamos (Centro
                 Cultural Conde Duque).
               </a>
@@ -107,7 +125,7 @@ export function About() {
       </div>
       <div className="flex-1">
         <Image
-          src="/about.webp"
+          src="/Ramses Salas Creative Technologist.webp"
           thresholdWhite={0.35}
           thresholdGray={0.4}
           disableDialog
