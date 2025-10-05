@@ -31,7 +31,7 @@ export function About() {
           <ul className="flex flex-col gap-1">
             <li>
               <a
-                href="https://www.instagram.com/p/C_lHBO1t_Yd/?hl=en"
+                href="https://www.instagram.com/p/DPCVxdIjIAN/?img_index=5"
                 className="underline"
                 target="_blank"
                 rel="noopener noreferrer"
