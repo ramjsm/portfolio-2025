@@ -1,6 +1,6 @@
 import { Suspense, useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Html, useProgress } from '@react-three/drei'
+import { useProgress } from '@react-three/drei'
 import { useImagePreloader, preloadImages } from '../hooks/useImagePreloader'
 import {
   getCriticalHomePageAssets,
@@ -26,7 +26,7 @@ function AssetPreloader({ onComplete }: { onComplete: () => void }) {
       // Small delay to show completion before hiding loader
       const timer = setTimeout(() => {
         onComplete()
-      }, 500)
+      }, 200)
 
       return () => clearTimeout(timer)
     }
@@ -50,6 +50,28 @@ function ProgressiveAssetLoader() {
   }, [])
 
   return null
+}
+
+/**
+ * Minimal loading indicator shown while critical assets are being preloaded.
+ */
+function LoadingIndicator() {
+  const { progress } = useProgress()
+  const clamped = Math.min(100, Math.max(0, Math.round(progress)))
+
+  return (
+    <div className="font-pp-neue-montreal pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center gap-3 text-white">
+      <div className="h-px w-40 overflow-hidden bg-white/15">
+        <div
+          className="h-full bg-white/80 transition-[width] duration-300 ease-out"
+          style={{ width: `${clamped}%` }}
+        />
+      </div>
+      <div className="text-[10px] tracking-[0.3em] text-white/60 uppercase">
+        Loading {clamped.toString().padStart(3, '0')}
+      </div>
+    </div>
+  )
 }
 
 /**
@@ -97,6 +119,7 @@ export function AppPreloader({ children }: { children: React.ReactNode }) {
               <AssetPreloader onComplete={handleComplete} />
             </Suspense>
           </Canvas>
+          <LoadingIndicator />
         </div>
       )}
     </>
