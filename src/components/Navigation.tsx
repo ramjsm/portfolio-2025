@@ -14,67 +14,39 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
   const menuItemsRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
 
-  const { contextSafe } = useGSAP()
+  // Entrance animation
+  useGSAP(
+    () => {
+      if (!isVisible) return
 
-  const animateMenuIn = useCallback(() => {
-    // GSAP animations commented out - fix later
-    // if (navigationRef.current) {
-    //   const tl = gsap.timeline()
-    //   tl.set(navigationRef.current, { display: 'flex' })
-    //     .from(overlayRef.current, {
-    //       opacity: 0,
-    //       duration: 0.3,
-    //       ease: 'power2.out'
-    //     })
-    //     .from('.nav-item', {
-    //       opacity: 0,
-    //       y: 50,
-    //       duration: 0.8,
-    //       stagger: 0.1,
-    //       ease: 'power3.out'
-    //     }, 0.1)
-    //     .from('.nav-footer', {
-    //       opacity: 0,
-    //       y: 30,
-    //       duration: 0.6,
-    //       ease: 'power2.out'
-    //     }, 0.3)
-    // }
-  }, [])
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-  const animateMenuOut = useCallback(() => {
-    // GSAP animations commented out - fix later
-    // if (navigationRef.current) {
-    //   const tl = gsap.timeline()
-    //   tl.to('.nav-item', {
-    //       opacity: 0,
-    //       y: -30,
-    //       duration: 0.4,
-    //       stagger: 0.05,
-    //       ease: 'power2.in'
-    //     })
-    //     .to('.nav-footer', {
-    //       opacity: 0,
-    //       y: -20,
-    //       duration: 0.3,
-    //       ease: 'power2.in'
-    //     }, 0.1)
-    //     .to(overlayRef.current, {
-    //       opacity: 0,
-    //       duration: 0.3,
-    //       ease: 'power2.in'
-    //     }, 0.2)
-    //     .set(navigationRef.current, { display: 'none' })
-    // }
-  }, [])
-
-  useEffect(() => {
-    if (isVisible) {
-      animateMenuIn()
-    } else {
-      animateMenuOut()
-    }
-  }, [isVisible, animateMenuIn, animateMenuOut])
+      tl.fromTo(
+        overlayRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.35 }
+      )
+        .fromTo(
+          ['.menu-label', '.close-btn'],
+          { opacity: 0, y: -6 },
+          { opacity: 1, y: 0, duration: 0.3 },
+          '-=0.15'
+        )
+        .fromTo(
+          '.nav-item',
+          { opacity: 0, y: 16 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.06,
+            clearProps: 'opacity,transform',
+          },
+          '-=0.15'
+        )
+    },
+    { dependencies: [isVisible], scope: navigationRef }
+  )
 
   const handleLinkClick = useCallback(() => {
     onClose()
@@ -103,74 +75,80 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
     }
   }, [isVisible, onClose])
 
+  const navItems = [
+    { to: '/', slug: '/home', cursor: 'HOME' },
+    { to: '/about', slug: '/about', cursor: 'ABOUT' },
+    { to: '/events', slug: '/events', cursor: 'EVENTS' },
+    { to: '/#co-creations', slug: '/co-creations', cursor: 'CO-CREATIONS' },
+    { to: '/#clients-work', slug: '/clients-work', cursor: 'WEB.WORK' },
+  ]
+
   return createPortal(
     <div
       ref={navigationRef}
       className="font-pp-neue-montreal fixed inset-0 z-[9999] flex items-center justify-center"
       style={{ display: isVisible ? 'flex' : 'none' }}
     >
-      {/* Background overlay */}
+      {/* Background overlay — same raw texture as the rest of the site */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 cursor-pointer bg-black"
+        className="absolute inset-0 cursor-pointer"
         onClick={handleOverlayClick}
+        style={{
+          backgroundImage:
+            "linear-gradient(rgb(15 15 15), rgb(0 0 0 / 90%)), url('/background.webp')",
+          backgroundRepeat: 'round',
+        }}
       />
 
       {/* Navigation content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-8">
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-start justify-center px-8">
+        {/* Top label */}
+        <div className="menu-label absolute top-8 left-8 text-xs tracking-[0.3em] text-gray-500 uppercase">
+          Menu
+        </div>
+
         {/* Menu items */}
-        <nav className="text-center">
-          <div ref={menuItemsRef} className="flex flex-col gap-8">
-            <Link
-              to="/"
-              className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
-              onClick={handleLinkClick}
-              data-cursor-text="HOME"
-            >
-              Home
-            </Link>
+        <nav className="w-full max-w-md pl-8">
+          <div ref={menuItemsRef} className="flex flex-col">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={handleLinkClick}
+                data-cursor-text={item.cursor}
+                className="nav-item border-texture-top group relative flex items-baseline gap-4 py-2 transition-[padding] duration-300 hover:pl-2"
+              >
+                {/* Index number */}
+                <span className="w-5 text-[9px] tracking-widest text-gray-500 uppercase transition-colors duration-300 group-hover:text-white/80">
+                  0{index + 1}
+                </span>
 
-            <Link
-              to="/about"
-              className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
-              onClick={handleLinkClick}
-              data-cursor-text="ABOUT"
-            >
-              About
-            </Link>
-
-            <Link
-              to="/events"
-              className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
-              onClick={handleLinkClick}
-              data-cursor-text="EVENTS"
-            >
-              Events
-            </Link>
-
-            <Link
-              to="/#co-creations"
-              className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
-              onClick={handleLinkClick}
-              data-cursor-text="CO-CREATIONS"
-            >
-              Co-Creations
-            </Link>
-
-            <Link
-              to="/#clients-work"
-              className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
-              onClick={handleLinkClick}
-              data-cursor-text="WEB.WORK"
-            >
-              Web Work
-            </Link>
+                {/* Slug-style label */}
+                <span className="font-pp-neue-montreal relative text-base leading-none font-light tracking-tight text-white lowercase">
+                  <span className="relative inline-block">
+                    <span className="text-gray-500 transition-colors duration-300 group-hover:text-white">
+                      {item.slug.split('/')[0]}/
+                    </span>
+                    <span>{item.slug.slice(1)}</span>
+                  </span>
+                </span>
+              </Link>
+            ))}
           </div>
         </nav>
-        {/* Close indicator */}
-        <div className="absolute top-8 right-8 text-sm tracking-wider text-gray-400 uppercase">
-          ESC to close
-        </div>
+
+        {/* Close button */}
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close menu"
+          data-cursor-text="CLOSE"
+          className="close-btn group absolute top-8 right-8 flex items-center gap-2 text-xs tracking-[0.3em] text-gray-400 uppercase transition-colors duration-300 hover:text-white"
+        >
+          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-white/80 group-hover:bg-white" />
+          Close
+        </button>
       </div>
     </div>,
     document.body
