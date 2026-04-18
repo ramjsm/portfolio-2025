@@ -36,7 +36,7 @@ export function Events() {
         <EventsSection
           id="past-events"
           events={past}
-          heading={{ front: 'EVENTS', back: 'PAST' }}
+          heading={{ back: 'PAST' }}
           headingAlign="left"
         />
       )}

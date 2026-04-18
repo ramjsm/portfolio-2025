@@ -1,16 +1,16 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useRef } from 'react'
-import { formatEventDate, type Event } from '../config/events'
+import { formatEventDate, getEventDates, type Event } from '../config/events'
 
 interface EventsSectionProps {
   /** Unique id used for anchors and GSAP targets to avoid collisions between sections. */
   id: string
   events: Event[]
   heading: {
-    /** The larger solid word, e.g. "EVENTS" */
-    front: string
-    /** The word rendered twice behind with different strokes, e.g. "UPCOMING" / "PAST" */
+    /** Optional solid top layer, e.g. "EVENTS". Omit to render only the stroked layer. */
+    front?: string
+    /** The stroked background word, e.g. "UPCOMING" / "PAST". */
     back: string
   }
   headingAlign?: 'left' | 'right'
@@ -51,7 +51,7 @@ export function EventsSection({
     headingAlign === 'right' ? 'right-0 text-right' : 'left-0 text-left'
 
   const rowClassName =
-    'group flex flex-col gap-2 py-6 transition hover:text-white lg:col-span-full lg:grid lg:grid-cols-subgrid lg:items-baseline lg:gap-6 lg:py-8 lg:text-[#909090]'
+    'group relative flex flex-col gap-2 py-6 transition-colors duration-500 ease-out hover:text-white lg:col-span-full lg:grid lg:grid-cols-subgrid lg:items-center lg:gap-6 lg:py-8 lg:text-[#909090]'
 
   return (
     <div
@@ -62,34 +62,48 @@ export function EventsSection({
 
       <div
         id={`${id}-header`}
-        className="relative mb-10 h-[12vw] w-full lg:h-36"
+        className={`relative mb-10 w-full ${
+          heading.front ? 'h-[12vw] lg:h-36' : 'h-[8vw] lg:h-20'
+        }`}
       >
-        <div className={`absolute top-[40%] ${alignClass}`}>
+        <div
+          className={`absolute ${heading.front ? 'top-[40%]' : 'top-0'} ${alignClass}`}
+        >
           <div className="events-heading font-syne text-stroke-gray-300 text-stroke-1 text-[6vw]/[6.2vw] text-transparent lg:text-6xl">
             {heading.back}
           </div>
         </div>
-        <div className={`absolute top-[0%] ${alignClass}`}>
-          <div className="events-heading font-syne text-[6vw]/[6.2vw] lg:text-6xl">
-            {heading.front}
+        {heading.front && (
+          <div className={`absolute top-0 ${alignClass}`}>
+            <div className="events-heading font-syne text-[6vw]/[6.2vw] lg:text-6xl">
+              {heading.front}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <ul
         id={`${id}-list`}
-        className="flex w-full flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]"
+        className="flex w-full flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]"
       >
         {events.map((event) => {
           const rowContent = (
             <>
-              <div className="flex flex-col">
-                <time
-                  dateTime={event.date}
-                  className="font-pp-neue-montreal text-sm uppercase lg:text-base"
-                >
-                  {formatEventDate(event.date)}
-                </time>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -top-[2px] left-0 h-[2px] w-0 bg-white opacity-70 transition-[width] duration-700 ease-out group-hover:w-full"
+              />
+
+              <div className="flex flex-col transition-transform duration-500 ease-out group-hover:translate-x-1">
+                {getEventDates(event.date).map((d) => (
+                  <time
+                    key={d}
+                    dateTime={d}
+                    className="font-pp-neue-montreal text-sm uppercase lg:text-base"
+                  >
+                    {formatEventDate(d)}
+                  </time>
+                ))}
                 {event.time && (
                   <span className="font-pp-neue-montreal text-xs uppercase opacity-70 lg:text-sm">
                     {event.time}
@@ -98,15 +112,28 @@ export function EventsSection({
               </div>
 
               <h3 className="font-syne text-lg leading-tight lg:text-2xl">
-                {event.title}
+                <span className="inline-block transition-transform duration-500 ease-out group-hover:translate-x-2">
+                  {event.title}
+                </span>
               </h3>
 
-              <span className="font-pp-neue-montreal text-sm uppercase lg:text-base">
+              <span className="font-pp-neue-montreal text-sm uppercase transition-transform duration-500 ease-out group-hover:translate-x-1 lg:text-base">
                 {event.venue ?? ''}
               </span>
 
-              <span className="font-pp-neue-montreal text-sm uppercase lg:text-base">
+              <span className="font-pp-neue-montreal text-sm uppercase transition-transform duration-500 ease-out group-hover:translate-x-1 lg:text-base">
                 {event.location ?? ''}
+              </span>
+
+              <span
+                aria-hidden
+                className="font-syne hidden text-lg leading-tight lg:inline-flex lg:items-center lg:justify-end lg:text-2xl"
+              >
+                {event.link && (
+                  <span className="inline-block -translate-x-3 opacity-0 transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100">
+                    ↗
+                  </span>
+                )}
               </span>
             </>
           )
