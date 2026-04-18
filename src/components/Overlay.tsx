@@ -1,23 +1,22 @@
 import { Link } from 'react-router-dom'
 import Logo from '../assets/logo_white.svg?react'
 import Menu from '../assets/menu.svg?react'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useProgress } from '@react-three/drei'
 import { Navigation } from './Navigation'
 import { handleScrambleHover } from '../utils/scrambleText'
+import { useIntro } from '../contexts/IntroContext'
 
 export function Overlay() {
   const [isMenuVisible, setIsMenuVisible] = useState(false)
-  const [animationTriggered, setAnimationTriggered] = useState(false)
   const logoRef = useRef<SVGSVGElement>(null)
   const leftElementsRef = useRef<HTMLAnchorElement>(null)
   const rightElementsRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const menuOpenTl = useRef<gsap.core.Timeline | null>(null)
-  const { progress } = useProgress()
-  const tl = useRef()
+  const tl = useRef<gsap.core.Timeline | null>(null)
+  const { markIntroComplete } = useIntro()
 
   const toggleMenu = () => setIsMenuVisible(!isMenuVisible)
 
@@ -130,39 +129,125 @@ export function Overlay() {
     { dependencies: [isMenuVisible], scope: menuRef }
   )
 
-  // Initially hide all elements including logo
+  // Full intro sequence (plays in parallel with asset loading):
+  //   1. The logo hero-reveals dead-center of the viewport at a larger size.
+  //   2. It then glides up into its resting position in the top bar.
+  //   3. Only after that do the rest of the overlay elements fade in.
+  // The AppPreloader holds the dark backdrop until both the assets finish
+  // loading AND this timeline signals completion via `markIntroComplete`.
   useGSAP(() => {
-    // Create animation timeline
-    tl.current = gsap.timeline()
+    // The intro runs as soon as the Overlay mounts so it happens in parallel
+    // with asset loading. The AppPreloader is responsible for keeping the
+    // loading backdrop visible until BOTH the assets are ready AND the intro
+    // has signalled completion via `markIntroComplete`.
+    tl.current = gsap.timeline({
+      onComplete: () => markIntroComplete(),
+    })
 
-    // Show and animate logo to its position
-    // Animate in other overlay elements
-    tl.current
-      .from(logoRef.current, {
-        opacity: 0,
-        duration: 1,
+    const logo = logoRef.current
+    const logoPaths = logo?.querySelectorAll<SVGPathElement>('path')
+
+    if (logo && logoPaths && logoPaths.length > 0) {
+      // Measure how far the logo needs to travel from the header into the
+      // vertical center of the viewport. It is already horizontally centered
+      // thanks to the header's flex layout, so only Y needs adjusting.
+      const rect = logo.getBoundingClientRect()
+      const viewportCenterY = window.innerHeight / 2
+      const logoCenterY = rect.top + rect.height / 2
+      const deltaY = viewportCenterY - logoCenterY
+
+      // Scale the logo up to a hero size. The header logo is ~32-33px, so a
+      // scale of 4.5 puts it around ~145px for the reveal.
+      const HERO_SCALE = 4
+
+      // Pre-stage the logo: big, centered, and invisible (outline only, no
+      // fill, dash offset equal to the full path length).
+      logoPaths.forEach((path) => {
+        const length = path.getTotalLength()
+        gsap.set(path, {
+          stroke: '#ffffff',
+          strokeWidth: 0.6,
+          fillOpacity: 0,
+          strokeDasharray: length,
+          strokeDashoffset: length,
+        })
       })
-      .from(
-        '.overlay-stack',
-        {
-          opacity: 0,
-          y: 20,
-          duration: 0.6,
-          stagger: 0.5,
-          delay: 0,
-          ease: 'power2.out',
-        },
-        0.1
-      )
-  }, [])
 
-  // Trigger animation when loading is complete
-  useEffect(() => {
-    if (progress >= 100 && !animationTriggered) {
-      setAnimationTriggered(true)
-      tl.current.resume()
+      gsap.set(logo, {
+        y: deltaY,
+        scale: HERO_SCALE,
+        transformOrigin: 'center center',
+      })
+
+      tl.current
+        // 1) Trace the logo outline in place (slow, cinematic).
+        .to(logoPaths, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          ease: 'power2.inOut',
+          stagger: 0.3,
+        })
+        // 2) Flood the shape with its fill.
+        .to(
+          logoPaths,
+          {
+            fillOpacity: 1,
+            duration: 0.9,
+            ease: 'power2.out',
+          },
+          '-=0.5'
+        )
+        // 3) Fade the outline out so only the clean filled logo remains.
+        .to(
+          logoPaths,
+          {
+            strokeOpacity: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+          },
+          '<'
+        )
+        // 4) Spring up into the header slot as soon as the fill lands, so
+        //    there is no dead pause between the logo completing and it
+        //    moving. Split into two tweens so the translate overshoots
+        //    (organic settle) while the scale eases cleanly — back.out on
+        //    scale would briefly shrink past the final size which reads as
+        //    a wobble.
+        .to(
+          logo,
+          {
+            y: 0,
+            duration: 1.25,
+            ease: 'back.out(0.6)',
+          },
+          '>'
+        )
+        .to(
+          logo,
+          {
+            scale: 1,
+            duration: 1.0,
+            ease: 'power3.out',
+          },
+          '<'
+        )
     }
-  }, [progress, animationTriggered])
+
+    // 5) Finally, reveal the rest of the overlay elements with a little
+    //    overshoot so they settle into place organically instead of easing
+    //    out flat. `back.out(overshoot)` pushes past the target and rebounds.
+    tl.current.from(
+      '.overlay-stack',
+      {
+        opacity: 0,
+        y: 28,
+        duration: 0.85,
+        stagger: 0.12,
+        ease: 'back.out(2)',
+      },
+      '-=0.3'
+    )
+  }, [])
 
   return (
     <>

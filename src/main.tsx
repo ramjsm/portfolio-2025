@@ -3,6 +3,7 @@ import { hydrateRoot, createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AppPreloader } from './components/AppPreloader'
+import { IntroProvider } from './contexts/IntroContext'
 
 const container = document.getElementById('root')!
 
@@ -12,22 +13,26 @@ if (container.innerHTML.trim()) {
   hydrateRoot(
     container,
     <StrictMode>
-      <AppPreloader>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </AppPreloader>
+      <IntroProvider>
+        <AppPreloader>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AppPreloader>
+      </IntroProvider>
     </StrictMode>
   )
 } else {
   // Regular client-side rendering for development
   createRoot(container).render(
     <StrictMode>
-      <AppPreloader>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </AppPreloader>
+      <IntroProvider>
+        <AppPreloader>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AppPreloader>
+      </IntroProvider>
     </StrictMode>
   )
 }

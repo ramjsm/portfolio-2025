@@ -7,7 +7,7 @@ import {
   getNonCriticalHomePageAssets,
 } from '../utils/homeAssets'
 import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
+import { useIntro } from '../contexts/IntroContext'
 
 /**
  * Preloader component that loads critical assets
@@ -54,13 +54,19 @@ function ProgressiveAssetLoader() {
 
 /**
  * Minimal loading indicator shown while critical assets are being preloaded.
+ * Once `visible` flips to false the indicator fades out so it does not
+ * compete with the Overlay's hero logo reveal.
  */
-function LoadingIndicator() {
+function LoadingIndicator({ visible }: { visible: boolean }) {
   const { progress } = useProgress()
   const clamped = Math.min(100, Math.max(0, Math.round(progress)))
 
   return (
-    <div className="font-pp-neue-montreal pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center gap-3 text-white">
+    <div
+      className={`font-pp-neue-montreal pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center gap-3 text-white transition-opacity duration-500 ${
+        visible ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
       <div className="h-px w-40 overflow-hidden bg-white/15">
         <div
           className="h-full bg-white/80 transition-[width] duration-300 ease-out"
@@ -79,20 +85,31 @@ function LoadingIndicator() {
  */
 export function AppPreloader({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
-  const { contextSafe } = useGSAP()
+  const [areAssetsReady, setAreAssetsReady] = useState(false)
+  const { isIntroComplete } = useIntro()
+  const hasFadedOutRef = useRef(false)
 
-  const handleComplete = () => {
-    // Simple fade out the loader
+  const handleAssetsReady = () => {
+    setAreAssetsReady(true)
+  }
+
+  // The loading overlay only fades out once BOTH critical assets are ready
+  // AND the Overlay's intro animation has finished. This guarantees the
+  // hero logo reveal plays in front of the loader's dark backdrop and the
+  // page content underneath stays hidden until the intro is complete.
+  useEffect(() => {
+    if (!areAssetsReady || !isIntroComplete || hasFadedOutRef.current) return
+    hasFadedOutRef.current = true
+
     gsap.to('.loading-overlay', {
       opacity: 0,
       duration: 1,
-      delay: 0,
       ease: 'power2.inOut',
       onComplete: () => {
         setIsLoading(false)
       },
     })
-  }
+  }, [areAssetsReady, isIntroComplete])
 
   return (
     <>
@@ -116,10 +133,10 @@ export function AppPreloader({ children }: { children: React.ReactNode }) {
             gl={{ alpha: true }}
           >
             <Suspense fallback={null}>
-              <AssetPreloader onComplete={handleComplete} />
+              <AssetPreloader onComplete={handleAssetsReady} />
             </Suspense>
           </Canvas>
-          <LoadingIndicator />
+          <LoadingIndicator visible={!areAssetsReady} />
         </div>
       )}
     </>
