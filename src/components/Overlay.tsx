@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useProgress } from '@react-three/drei'
 import { Navigation } from './Navigation'
+import { handleScrambleHover } from '../utils/scrambleText'
 
 export function Overlay() {
   const [isMenuVisible, setIsMenuVisible] = useState(false)
@@ -14,11 +15,120 @@ export function Overlay() {
   const leftElementsRef = useRef<HTMLAnchorElement>(null)
   const rightElementsRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
+  const menuOpenTl = useRef<gsap.core.Timeline | null>(null)
   const { progress } = useProgress()
-  const { contextSafe } = useGSAP()
   const tl = useRef()
 
   const toggleMenu = () => setIsMenuVisible(!isMenuVisible)
+
+  // Called from the top-bar home links so clicking them also closes the nav.
+  const closeMenuIfOpen = () => {
+    if (isMenuVisible) setIsMenuVisible(false)
+  }
+
+  // Menu button has two states:
+  //   - idle: the original 4 overlapping capsules (from the static SVG)
+  //   - X   : top & bottom pills slim down, meet in the center and rotate
+  //           ±45° to form an X; middle pills fade out
+  // We wait for any in-flight morph to finish before starting the next one.
+  useGSAP(
+    () => {
+      const bars =
+        menuRef.current?.querySelectorAll<SVGRectElement>('.menu-bar')
+      if (!bars || bars.length < 4) return
+
+      // Fire `cb` once the given timeline has reached the end of its current
+      // direction of motion (forward or reverse). Returns immediately if the
+      // timeline isn't playing.
+      const afterSettled = (
+        timeline: gsap.core.Timeline | null | undefined,
+        cb: () => void
+      ) => {
+        if (!timeline || !timeline.isActive()) {
+          cb()
+          return
+        }
+        const evt = timeline.reversed() ? 'onReverseComplete' : 'onComplete'
+        const prev = timeline.eventCallback(evt)
+        timeline.eventCallback(evt, () => {
+          timeline.eventCallback(evt, prev ?? null)
+          cb()
+        })
+      }
+
+      if (isMenuVisible) {
+        // Morph to X. Keep each pill's original height/rx so the X is made of
+        // the same fat capsules as the idle state — only y, width, and
+        // rotation change.
+        const X_H = 14.345
+        const X_RX = 8.1725
+        // Pill length in the X pose. Original width is 67.145; tweak this to
+        // try thicker / longer diagonals.
+        const X_W = 80
+        const cx = 38 // rect horizontal center (x + width/2)
+        const cy = 36
+        const xAttrs = {
+          x: cx - X_W / 2,
+          y: cy - X_H / 2,
+          width: X_W,
+          height: X_H,
+          rx: X_RX,
+        }
+
+        const MOVE_DUR = 0.45
+        const ROTATE_DUR = 0.45
+
+        menuOpenTl.current = gsap
+          .timeline({ defaults: { ease: 'power3.inOut' } })
+          // Middle pills fade first so they don't clutter the rotation.
+          .to([bars[1], bars[2]], { opacity: 0, duration: 0.3 }, 0)
+          // Phase 1: top pill slims & slides to center (no rotation yet).
+          .to(bars[0], { attr: xAttrs, opacity: 1, duration: MOVE_DUR }, 0.08)
+          // Phase 1: bottom pill slims & slides to center.
+          .to(bars[3], { attr: xAttrs, opacity: 1, duration: MOVE_DUR }, 0.18)
+          // Phase 2: rotate both bars around the exact SVG point (cx, cy).
+          .to(
+            bars[0],
+            { rotate: 45, svgOrigin: `${cx} ${cy}`, duration: ROTATE_DUR },
+            '>-0.05'
+          )
+          .to(
+            bars[3],
+            { rotate: -45, svgOrigin: `${cx} ${cy}`, duration: ROTATE_DUR },
+            '<+0.05'
+          )
+      } else {
+        // Wait for the X morph to finish before unwinding back to idle.
+        afterSettled(menuOpenTl.current, () => {
+          const idleBase = {
+            x: 4.4275,
+            width: 67.145,
+            height: 24.345,
+            rx: 12.1725,
+          }
+          const idleAttrs = [
+            { ...idleBase, y: 0.4275 },
+            { ...idleBase, y: 16.0275 },
+            { ...idleBase, y: 31.6275 },
+            { ...idleBase, y: 47.2275 },
+          ]
+
+          gsap.timeline({ defaults: { ease: 'power3.inOut' } }).to(
+            bars,
+            {
+              attr: (i: number) => idleAttrs[i],
+              rotate: 0,
+              opacity: 1,
+              stagger: 0.05,
+              duration: 0.55,
+            },
+            0
+          )
+        })
+      }
+    },
+    { dependencies: [isMenuVisible], scope: menuRef }
+  )
 
   // Initially hide all elements including logo
   useGSAP(() => {
@@ -56,20 +166,23 @@ export function Overlay() {
 
   return (
     <>
-      <div className="font-pp-neue-montreal fixed z-99 flex w-full justify-between bg-linear-to-b from-[#101010] to-transparent px-5 py-5 text-xs tracking-wider">
+      <div className="font-pp-neue-montreal fixed z-[10000] flex w-full justify-between bg-linear-to-b from-[#101010] to-transparent px-5 py-5 text-xs tracking-[0.3em] text-gray-500 uppercase">
         <Link
           ref={leftElementsRef}
           to="/"
-          className="overlay-stack flex-1 text-nowrap opacity-60"
+          className="overlay-stack flex-1 text-nowrap transition-colors duration-300 hover:text-white"
           data-cursor-text="HOME"
+          onMouseEnter={handleScrambleHover}
+          onClick={closeMenuIfOpen}
         >
-          <div className="font-[100] uppercase">Ramses Salas</div>
-          <div className="font-[100] uppercase">Creative Technologist</div>
+          <div data-scramble="Ramses Salas">Ramses Salas</div>
+          <div data-scramble="Creative Technologist">Creative Technologist</div>
         </Link>
         <Link
           to="/"
           className="flex flex-1 justify-center"
           data-cursor-text="HOME"
+          onClick={closeMenuIfOpen}
         >
           <Logo
             ref={logoRef}
@@ -78,10 +191,10 @@ export function Overlay() {
         </Link>
         <div
           ref={rightElementsRef}
-          className="overlay-stack flex-1 text-right font-[100] text-nowrap uppercase opacity-60"
+          className="overlay-stack flex-1 text-right text-nowrap"
         >
           <div className="flex items-center justify-end gap-2">
-            <span className="text-xs">Available for Projects</span>
+            <span>Available for Projects</span>
             <span className="relative">
               <span className="absolute h-2 w-2 animate-ping rounded-full bg-green-500 opacity-75"></span>
               <span className="relative block h-2 w-2 rounded-full bg-green-500"></span>
@@ -92,12 +205,19 @@ export function Overlay() {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor-text="CONTACT"
+            onMouseEnter={handleScrambleHover}
+            className="transition-colors duration-300 hover:text-white"
           >
-            Schedule a Call &#8594;
+            <span data-scramble="Schedule a Call →">
+              Schedule a Call &#8594;
+            </span>
           </a>
         </div>
       </div>
-      <div ref={menuRef} className="overlay-menu fixed right-5 bottom-5 z-9999">
+      <div
+        ref={menuRef}
+        className="overlay-menu fixed right-5 bottom-5 z-[10000]"
+      >
         <Menu
           className="overlay-stack cursor-hover h-[5rem] w-[5rem] lg:h-[80px] lg:w-[80px]"
           data-cursor-text="MENU"

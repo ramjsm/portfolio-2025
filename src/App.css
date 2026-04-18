@@ -157,3 +157,88 @@
 .font-pp-neue-montreal {
   letter-spacing: 0rem;
 }
+
+/* Menu bars are animated via GSAP in Overlay.tsx.
+   `transform-box: fill-box` makes `transform-origin: center` resolve to each
+   rect's own center (not the SVG viewBox center), so rotations pivot around
+   the bar itself. */
+.menu-icon .menu-bar {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* --- Menu button hover effect --------------------------------------------
+   Cosmetic only. Applies to the wrapper and the SVG element, never to the
+   individual .menu-bar rects, so it can't fight the GSAP state animations
+   (idle <-> X).
+
+   Tuned to match the site's raw / analog / monochrome feel:
+     - no color, just white on near-black
+     - a soft radial halo overlaid with the same binding-dark texture the
+       rest of the site uses, so the aura reads as "grainy paper" rather
+       than a neon bloom
+     - an analog flicker (brightness + glow) that mostly stays still and
+       occasionally pulses, like a tired fluorescent tube */
+.overlay-menu {
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.5s ease-out;
+}
+
+.overlay-menu .menu-icon {
+  transition: filter 0.4s ease;
+}
+
+.overlay-menu:hover {
+  transform: scale(1.05);
+}
+
+.overlay-menu:hover .menu-icon {
+  animation: menu-flicker 4.2s steps(24, end) infinite;
+}
+
+/* Analog flicker: mostly a steady soft white glow, with brief irregular
+   brightness pulses and micro-dips — reads like a worn-out neon sign. */
+@keyframes menu-flicker {
+  0%,
+  46%,
+  54%,
+  96%,
+  100% {
+    filter:
+      drop-shadow(0 0 4px rgba(255, 255, 255, 0.4))
+      drop-shadow(0 0 14px rgba(255, 255, 255, 0.12))
+      brightness(1);
+  }
+  48% {
+    filter:
+      drop-shadow(0 0 6px rgba(255, 255, 255, 0.55))
+      drop-shadow(0 0 22px rgba(255, 255, 255, 0.18))
+      brightness(1.35);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 2px rgba(255, 255, 255, 0.25))
+      brightness(0.85);
+  }
+  97% {
+    filter:
+      drop-shadow(0 0 8px rgba(255, 255, 255, 0.6))
+      drop-shadow(0 0 18px rgba(255, 255, 255, 0.2))
+      brightness(1.5);
+  }
+  98% {
+    filter:
+      drop-shadow(0 0 3px rgba(255, 255, 255, 0.3))
+      brightness(0.8);
+  }
+}
+
+/* Honor reduced-motion preferences — keep the halo, drop the flicker. */
+@media (prefers-reduced-motion: reduce) {
+  .overlay-menu:hover .menu-icon {
+    animation: none;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
+  }
+}

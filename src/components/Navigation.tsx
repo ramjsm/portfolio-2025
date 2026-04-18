@@ -25,25 +25,18 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
         overlayRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 0.35 }
+      ).fromTo(
+        '.nav-item',
+        { opacity: 0, y: 16 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.06,
+          clearProps: 'opacity,transform',
+        },
+        '-=0.15'
       )
-        .fromTo(
-          ['.menu-label', '.close-btn'],
-          { opacity: 0, y: -6 },
-          { opacity: 1, y: 0, duration: 0.3 },
-          '-=0.15'
-        )
-        .fromTo(
-          '.nav-item',
-          { opacity: 0, y: 16 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.06,
-            clearProps: 'opacity,transform',
-          },
-          '-=0.15'
-        )
     },
     { dependencies: [isVisible], scope: navigationRef }
   )
@@ -103,11 +96,6 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
 
       {/* Navigation content */}
       <div className="relative z-10 flex min-h-screen w-full flex-col items-start justify-center px-8">
-        {/* Top label */}
-        <div className="menu-label absolute top-8 left-8 text-xs tracking-[0.3em] text-gray-500 uppercase">
-          Menu
-        </div>
-
         {/* Menu items */}
         <nav className="w-full max-w-md pl-8">
           <div ref={menuItemsRef} className="flex flex-col">
@@ -137,18 +125,6 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
             ))}
           </div>
         </nav>
-
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close menu"
-          data-cursor-text="CLOSE"
-          className="close-btn group absolute top-8 right-8 flex items-center gap-2 text-xs tracking-[0.3em] text-gray-400 uppercase transition-colors duration-300 hover:text-white"
-        >
-          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-white/80 group-hover:bg-white" />
-          Close
-        </button>
       </div>
     </div>,
     document.body
