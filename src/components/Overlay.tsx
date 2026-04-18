@@ -158,7 +158,7 @@ export function Overlay() {
 
       // Scale the logo up to a hero size. The header logo is ~32-33px, so a
       // scale of 4.5 puts it around ~145px for the reveal.
-      const HERO_SCALE = 4
+      const HERO_SCALE = 3
 
       // Pre-stage the logo: big, centered, and invisible (outline only, no
       // fill, dash offset equal to the full path length).
@@ -183,7 +183,7 @@ export function Overlay() {
         // 1) Trace the logo outline in place (slow, cinematic).
         .to(logoPaths, {
           strokeDashoffset: 0,
-          duration: 1.5,
+          duration: 1.8,
           ease: 'power2.inOut',
           stagger: 0.3,
         })
