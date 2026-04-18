@@ -38,25 +38,19 @@ export function ClientWork() {
   return (
     <div className="relative w-full justify-center">
       <a id="clients-work" className="absolute -top-30 left-0"></a>
-      <div className="clients-work-header h- relative z-10 h-[16vw] lg:h-50">
-        <div className="absolute top-[20%] right-0">
-          <div className="client-work-shadow font-syne text-stroke-gray-100 text-stroke-1 mr-[10vw] text-[8vw]/[8.2vw] text-transparent lg:text-8xl">
-            CLIENT
-          </div>
-          <div className="client-work-shadow font-syne text-stroke-gray-100 text-stroke-1 text-right text-[8vw]/[8.2vw] text-transparent lg:text-8xl">
+      <div className="clients-work-header relative z-10 h-[16vw] lg:h-50">
+        <div className="absolute top-[40%] right-0">
+          <div className="client-work-shadow font-syne text-stroke-gray-300 text-stroke-1 text-right text-[8vw]/[8.2vw] text-transparent lg:text-8xl">
             WORK
           </div>
         </div>
         <div className="absolute top-[0%] right-0">
-          <div className="client-work font-syne mr-[10vw] text-[8vw]/[8.2vw] lg:text-8xl">
-            CLIENT
-          </div>
           <div className="client-work font-syne text-right text-[8vw]/[8.2vw] lg:text-8xl">
-            WORK
+            WEB.
           </div>
         </div>
       </div>
-      <div className="mx-auto flex flex-col gap-4 lg:w-[80%]">
+      <div className="mx-auto flex flex-row gap-4">
         {projects.map((project) => (
           <Link
             key={project.slug}

@@ -6,10 +6,14 @@ import { Services } from './Services'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
+import { Playground } from './Playground'
+import { UpcomingEvents } from './UpcomingEvents'
+import { getUpcomingEvents } from '../../config/events'
 
 export function Home() {
   const location = useLocation()
   const { scrollTo } = useScrollbar()
+  const hasUpcomingEvents = getUpcomingEvents().length > 0
 
   useEffect(() => {
     if (location.hash) scrollTo(location.hash)
@@ -23,6 +27,7 @@ export function Home() {
       </Helmet>
       <Landing />
       <Services />
+      {hasUpcomingEvents && <UpcomingEvents />}
       <Cocreations />
       <ClientWork />
     </div>

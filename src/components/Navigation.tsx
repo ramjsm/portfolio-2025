@@ -140,6 +140,15 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
             </Link>
 
             <Link
+              to="/events"
+              className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
+              onClick={handleLinkClick}
+              data-cursor-text="EVENTS"
+            >
+              Events
+            </Link>
+
+            <Link
               to="/#co-creations"
               className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
               onClick={handleLinkClick}
@@ -152,9 +161,9 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
               to="/#clients-work"
               className="nav-item text-5xl leading-none font-light tracking-tight text-white transition-colors duration-300 hover:text-gray-300"
               onClick={handleLinkClick}
-              data-cursor-text="CLIENTS"
+              data-cursor-text="WEB.WORK"
             >
-              Clients Work
+              Web Work
             </Link>
           </div>
         </nav>
