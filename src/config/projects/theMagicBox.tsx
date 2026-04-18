@@ -3,7 +3,7 @@ import type { Project } from '../projects'
 
 export const theMagicBox: Project = {
   slug: 'the-magic-box',
-  category: 'cocreation',
+  category: 'installation',
   title: 'The Magic Box',
   isRecent: true,
   thumbnail: {

@@ -1,9 +1,9 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { getProjectsByCategory } from '../../config/projects'
-import { CocreationLinkThumbnail } from './CocreationLinkThumbnail'
+import { InstallationLinkThumbnail } from './InstallationLinkThumbnail'
 
-export function Cocreations() {
+export function Installations() {
   useGSAP(() => {
     gsap.from('.header1', {
       y: '-20%',
@@ -26,7 +26,7 @@ export function Cocreations() {
 
   return (
     <div className="relative flex w-full items-center justify-center">
-      <a id="co-creations" className="absolute -top-30 left-0"></a>
+      <a id="installations" className="absolute -top-30 left-0"></a>
       <div className="z-10 grid w-[930px] transform grid-cols-[40%_20%_40%] grid-rows-[10%_20%_5%_30%_25%_10%] gap-2">
         <div className="justify relative col-span-2 flex justify-items-start">
           <div id="header1" className="relative flex-1">
@@ -45,10 +45,10 @@ export function Cocreations() {
             {/* <CodeBar /> */}
           </div>
         </div>
-        {getProjectsByCategory('cocreation').map((cocreation) => (
-          <CocreationLinkThumbnail
-            key={cocreation.slug}
-            cocreation={cocreation}
+        {getProjectsByCategory('installation').map((installation) => (
+          <InstallationLinkThumbnail
+            key={installation.slug}
+            installation={installation}
           />
         ))}
         <div className="border-texture -z-1 col-start-1 col-end-4 row-start-4 row-end-5 border-r border-b border-l"></div>

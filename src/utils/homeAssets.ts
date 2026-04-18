@@ -8,12 +8,12 @@ export function getHomePageAssets(): string[] {
   const assets: string[] = []
   
   // Static assets used in Home components
-  assets.push('/codebar.png') // Used in Cocreations component
+  assets.push('/codebar.png') // Used in Installations component
   assets.push('/about.webp')  // Used in About page (might be prefetched)
   
-  // Get all cocreation projects (used in Cocreations component)
-  const cocreationProjects = getProjectsByCategory('cocreation')
-  cocreationProjects.forEach(project => {
+  // Get all installation projects (used in Installations component)
+  const installationProjects = getProjectsByCategory('installation')
+  installationProjects.forEach(project => {
     // Add thumbnail images
     assets.push(project.thumbnail.src)
     
@@ -21,8 +21,8 @@ export function getHomePageAssets(): string[] {
     assets.push(project.hero.src)
   })
   
-  // Get all client work projects (used in ClientWork component)
-  const clientProjects = getProjectsByCategory('client')
+  // Get all web projects (used in Web component)
+  const clientProjects = getProjectsByCategory('web')
   clientProjects.forEach(project => {
     // Add thumbnail images
     assets.push(project.thumbnail.src)
@@ -52,12 +52,12 @@ export function getCriticalHomePageAssets(): string[] {
   assets.push('/codebar.png')
   
   // Only thumbnail images for immediate display
-  const cocreationProjects = getProjectsByCategory('cocreation')
-  cocreationProjects.forEach(project => {
+  const installationProjects = getProjectsByCategory('installation')
+  installationProjects.forEach(project => {
     assets.push(project.thumbnail.src)
   })
   
-  const clientProjects = getProjectsByCategory('client')
+  const clientProjects = getProjectsByCategory('web')
   clientProjects.forEach(project => {
     assets.push(project.thumbnail.src)
   })

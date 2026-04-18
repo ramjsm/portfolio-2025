@@ -3,7 +3,7 @@ import type { Project } from '../projects'
 
 export const juliette: Project = {
   slug: 'juliette',
-  category: 'cocreation',
+  category: 'installation',
   title: 'Juliette',
   isRecent: true,
   thumbnail: {

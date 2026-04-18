@@ -27,7 +27,7 @@ export interface InfoSection {
   list: Array<string | ReactNode>
 }
 
-export type ProjectCategory = 'cocreation' | 'client'
+export type ProjectCategory = 'installation' | 'web'
 
 export interface Project {
   slug: string
@@ -58,10 +58,10 @@ export const getProjectsByCategory = (category: ProjectCategory): Project[] =>
 
 export const getProjectCategoryLabel = (category: ProjectCategory): string => {
   switch (category) {
-    case 'cocreation':
-      return 'Co-Creation'
-    case 'client':
-      return 'Client Work'
+    case 'installation':
+      return 'Installation'
+    case 'web':
+      return 'Web'
     default:
       return 'Undefined'
   }

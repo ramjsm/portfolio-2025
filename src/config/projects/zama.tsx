@@ -3,7 +3,7 @@ import type { Project } from '../projects'
 
 export const zama: Project = {
   slug: 'zama',
-  category: 'client',
+  category: 'web',
   title: 'Zama',
   isRecent: true,
   thumbnail: {

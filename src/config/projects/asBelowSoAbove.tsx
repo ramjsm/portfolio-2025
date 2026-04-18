@@ -3,7 +3,7 @@ import type { Project } from '../projects'
 
 export const asBelowSoAbove: Project = {
   slug: 'as-below-so-above',
-  category: 'cocreation',
+  category: 'installation',
   title: 'As Below So Above',
   isRecent: true,
   thumbnail: {

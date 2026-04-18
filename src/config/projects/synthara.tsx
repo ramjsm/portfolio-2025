@@ -3,7 +3,7 @@ import type { Project } from '../projects'
 
 export const synthara: Project = {
   slug: 'synthara',
-  category: 'cocreation',
+  category: 'installation',
   title: 'Synthara',
   isRecent: true,
   thumbnail: {

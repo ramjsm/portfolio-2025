@@ -3,7 +3,7 @@ import type { Project } from '../projects'
 
 export const invocation: Project = {
   slug: 'invocation',
-  category: 'cocreation',
+  category: 'installation',
   title: 'Invocation',
   isRecent: true,
   thumbnail: {

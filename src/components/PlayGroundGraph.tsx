@@ -74,8 +74,8 @@ const PLAYGROUND_NODES: NodeData[] = [
 
 // Map config categories to graph categories
 const CATEGORY_MAP: Record<string, string> = {
-  client: 'web',
-  cocreation: 'installation',
+  web: 'web',
+  installation: 'installation',
 }
 
 const CATEGORY_NODES: NodeData[] = [

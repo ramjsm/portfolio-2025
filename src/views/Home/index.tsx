@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
-import { ClientWork } from './ClientWork'
-import { Cocreations } from './Cocreations'
+import { Web } from './Web'
+import { Installations } from './Installations'
 import { Landing } from './Landing'
 import { Services } from './Services'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
@@ -28,8 +28,8 @@ export function Home() {
       <Landing />
       <Services />
       {hasUpcomingEvents && <UpcomingEvents />}
-      <Cocreations />
-      <ClientWork />
+      <Installations />
+      <Web />
     </div>
   )
 }
