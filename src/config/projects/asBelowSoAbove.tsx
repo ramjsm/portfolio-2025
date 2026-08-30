@@ -5,7 +5,8 @@ export const asBelowSoAbove: Project = {
   slug: 'as-below-so-above',
   category: 'installation',
   title: 'As Below So Above',
-  isRecent: true,
+  featured: true,
+  date: '2021',
   thumbnail: {
     src: '/projects/as-below-so-above/thumbnail.webp',
     thresholdWhite: 0.5,
@@ -24,28 +25,44 @@ export const asBelowSoAbove: Project = {
   intro: (
     <>
       <p>
-        As Below, So Above is an immersive exhibition where nature and
-        technology exist in the same space. Organic textures and technological
-        creations are brought together to create a sensory experience that
-        moves between the microscopic and the perceived physical.
+        {' '}
+        <em>As Below, So Above</em> is a collective exhibition by Tangible
+        Collective, exploring the relationship between nature, technology, and
+        different scales of perception. The exhibition brings together natural
+        grass, generative sculptures, paintings, interactive projections, and
+        ambient sound within a shared environment.{' '}
+      </p>
+
+      <p>
+        {' '}
+        Inspired by Hermetic philosophy and inverting the phrase “as above, so
+        below”, the exhibition explores the idea that everything, from the
+        microscopic to the cosmic, is composed of the same fundamental building
+        blocks. By bringing organic and technological elements into the same
+        environment, it invites visitors to question the relationship between
+        nature and technology.{' '}
       </p>
       <p>
-        Inspired by Hermetic philosophy and the phrase "As above, so below",
-        the project reflects on the idea that everything in the universe, from
-        the atomic to the cosmic, is made of the same fundamental matter. The
-        experience invites visitors to zoom in and out and question how we
-        relate to both nature and technology in a shared, encoded reality.
-      </p>
-      <p>
-        The exhibition blends digital projections, sound, and physical
-        elements to explore how we understand the world around us. Whose
-        utopia, whose dystopia?
+        {' '}
+        An interactive live performance extends this exploration through
+        interactive visuals that respond to the music in real time, moving
+        between microscopic textures and larger forms across the surrounding
+        environment. <em>As Below, So Above</em> was presented at{' '}
+        <a
+          className="underline"
+          href="https://www.instagram.com/willowsp_/?hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Willow Gallery
+        </a>{' '}
+        in 2021.{' '}
       </p>
     </>
   ),
   info: [
     {
-      header: 'Artist',
+      header: 'team',
       list: [
         <a
           className="underline"
@@ -131,8 +148,7 @@ export const asBelowSoAbove: Project = {
       </a>
     </>,
     <>
-      Interaction Design, Projection Mapping & Generative Visuals / Ramses
-      Salas
+      Interaction Design, Projection Mapping & Generative Visuals / Ramses Salas
     </>,
   ],
 }

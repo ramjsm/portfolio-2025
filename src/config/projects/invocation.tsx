@@ -5,7 +5,8 @@ export const invocation: Project = {
   slug: 'invocation',
   category: 'installation',
   title: 'Invocation',
-  isRecent: true,
+  featured: false,
+  date: '2019',
   thumbnail: {
     src: '/projects/invocation/thumbnail.webp',
     thresholdWhite: 0.16,
@@ -24,35 +25,40 @@ export const invocation: Project = {
   intro: (
     <>
       <p>
-        Invocation is a live audiovisual experiment developed with
-        OpenFrameworks and a motion sensor.
+        {' '}
+        <em>Invocation</em> is a live audiovisual experiment exploring the
+        relationship between movement, sound, and light. Using motion tracking
+        and generative graphics, the piece creates an evolving abstract
+        structure that responds to movement and live audio.{' '}
       </p>
+
       <p>
-        Using head and hand tracking,{' '}
+        {' '}
+        The piece was inspired by earlier research into genetic algorithms and{' '}
         <a
           className="underline"
-          href="https://www.instagram.com/xuehka"
+          href="http://www.foibg.com/ijitk/ijitk-vol10/ijitk10-03-p03.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Xueh Magrini Troll
-        </a>{' '}
-        manipulates a generative light structure in real time. The algorithm
-        simulates organic growth, producing an evolving abstract form.
+          Dawkins' biomorphs
+        </a>
+        , exploring how ideas from evolutionary computation could be translated
+        into an audiovisual performance. Through movement and sound, the
+        performer appears to invoke an evolving form, giving the abstract
+        structure the quality of something being brought to life.{' '}
       </p>
+
       <p>
-        Movement data drives rotation and translation of the visuals. Live
-        audio input modulates the graphics, adding effects such as pulses and
-        flickers.
-      </p>
-      <p>
-        The piece explore the relationship between movement, sound, and light.
+        {' '}
+        Developed in OpenFrameworks and C++, the experiment uses a motion sensor
+        to track movement and drive the generative visual system.{' '}
       </p>
     </>
   ),
   info: [
     {
-      header: 'Artist',
+      header: 'Team',
       list: [
         <a
           className="underline"
@@ -64,13 +70,13 @@ export const invocation: Project = {
         </a>,
       ],
     },
-    { header: 'Tech', list: ['OpenFrameworks', 'C++'] },
-    { header: 'Type', list: ['Interactive Installation'] },
+    { header: 'Tools', list: ['OpenFrameworks', 'Kinect', 'C++'] },
+    { header: 'Type', list: ['Interactive Experiment'] },
   ],
   content: <Invocation />,
   credits: [
     <>
-      Choreography /{' '}
+      Choreography & Performance /{' '}
       <a
         className="underline"
         href="https://www.instagram.com/xuehka"
@@ -81,5 +87,16 @@ export const invocation: Project = {
       </a>
     </>,
     <>Interaction Design & Generative Visuals / Ramses Salas </>,
+    <>
+      Related Research /{' '}
+      <a
+        className="underline"
+        href="http://www.foibg.com/ijitk/ijitk-vol10/ijitk10-03-p03.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Towards a Dawkins’ Genetic Algorithm
+      </a>
+    </>,
   ],
 }

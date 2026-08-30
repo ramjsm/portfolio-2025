@@ -5,11 +5,12 @@ export const soberaniaCreativa: Project = {
   slug: 'soberania-creativa',
   category: 'web',
   title: 'Soberania Creativa',
-  isRecent: true,
+  featured: true,
+  date: '2025',
   thumbnail: {
-    src: '/projects/soberania-creativa/thumbnail.webp',
-    thresholdWhite: 0.8,
-    thresholdGray: 0.5,
+    src: '/projects/soberania-creativa/screenshot-0.webp',
+    thresholdWhite: 1,
+    thresholdGray: 0.6,
     mediaClass: 'brightness-60 contrast-115',
     labelClass: 'lg:top-3 lg:left-5 bottom-1 left-2',
     className: 'border-texture row-start-5 col-span-2',
@@ -24,24 +25,36 @@ export const soberaniaCreativa: Project = {
   intro: (
     <>
       <p>
-        Soberanía Creativa is a platform dedicated to somatic-spiritual healing
-        through creative expression.
+        {' '}
+        <em>Soberanía Creativa</em> is a digital platform bringing together the
+        artistic and facilitation practice of{' '}
+        <a
+          className="underline"
+          href="https://soberaniacreativa.com/raices/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Paloma Todd Montes
+        </a>
+        . Initially developed as a portfolio and blog, the project has grown
+        into a space for exploring and sharing her work around cyclical
+        consciousness, belonging, ancestral memory, embodiment, and personal
+        experience.{' '}
       </p>
+
       <p>
-        Designed and implemented in WordPress, the site was envisioned as a
-        digital oasis for reading and learning. It offers a familiar space that
-        invites reflection and exploration.
+        {' '}
+        The platform has expanded to include a podcast, recorded workshops, and
+        an online store for materials related to her practice. Its visual
+        language is minimal and tactile, built around digitized paintings,
+        photographs, and collage drawn from her artistic work.{' '}
       </p>
+
       <p>
-        It reflects the vision of Paloma Todd Montes, an artist and facilitator
-        whose work arises from a personal landscape of exile, hybridity, and
-        embodied memory. The site showcases her illustrations, portfolio, blog,
-        and podcast, offering a window into her creative world.
-      </p>
-      <p>
-        Rooted in ancestral wisdom, narrative sovereignty, and the cyclical
-        mystery of the body, the platform provides a grounded and responsive
-        experience that holds space for oral and embodied storytelling.
+        {' '}
+        The platform is built in WordPress, with custom layouts and content
+        structures adapted to its different forms of material. The project also
+        extends into print through the design of booklets and books.{' '}
       </p>
     </>
   ),
@@ -59,7 +72,20 @@ export const soberaniaCreativa: Project = {
         </a>,
       ],
     },
-    { header: 'Tools', list: ['Figma', 'Wordpress', 'Adobe Photoshop'] },
+    {
+      header: 'Team',
+      list: [
+        <a
+          className="underline"
+          href="https://bio.site/ecoscomunicacion"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Carolina Olmos
+        </a>,
+      ],
+    },
+    { header: 'Tools', list: ['Wordpress', 'InDesign', 'Figma', 'Photoshop'] },
     {
       header: 'Type',
       list: [
@@ -88,6 +114,6 @@ export const soberaniaCreativa: Project = {
         Carolina Olmos
       </a>
     </>,
-    <>Web Design & Development / Ramses Salas </>,
+    <>Web Design, Development & Print / Ramses Salas </>,
   ],
 }

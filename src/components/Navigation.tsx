@@ -74,6 +74,7 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
     { to: '/events', slug: '/events', cursor: 'EVENTS' },
     { to: '/#installations', slug: '/installations', cursor: 'INSTALLATIONS' },
     { to: '/#web', slug: '/web', cursor: 'WEB.WORK' },
+    { to: '/archive', slug: '/archive', cursor: 'ARCHIVE' },
   ]
 
   return createPortal(

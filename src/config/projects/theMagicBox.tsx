@@ -5,10 +5,11 @@ export const theMagicBox: Project = {
   slug: 'the-magic-box',
   category: 'installation',
   title: 'The Magic Box',
-  isRecent: true,
+  featured: false,
+  date: '2023',
   thumbnail: {
     src: '/projects/the-magic-box/thumbnail.webp',
-    thresholdWhite: 0.5,
+    thresholdWhite: 0.1,
     thresholdGray: 0.2,
     mediaClass: 'brightness-65 contrast-100',
     labelClass: 'label bottom-1 lg:bottom-3 left-2 lg:left-3',
@@ -24,7 +25,28 @@ export const theMagicBox: Project = {
   intro: (
     <>
       <p>
-        The Magic Box is an original project by{' '}
+        {' '}
+        <em>The Magic Box: Futuristic Wisdom Edition</em> is an interactive
+        installation that transforms Xueh Magrini Troll's sculpture and
+        performative device into a talking oracle. The original work invites
+        visitors to have a personal conversation with Xueh, who listens from
+        behind the sculpture and creates a drawing inspired by their
+        interaction.{' '}
+      </p>
+
+      <p>
+        {' '}
+        For the <em>Futuristic Wisdom Edition</em>, the conversation shifts from
+        the artist to the sculpture itself. Visitors ask questions directly to
+        it, while their voices are recorded, transcribed, and processed through
+        an AI system to generate a spoken response. The sculpture becomes an
+        interface between the visitor and an artificial voice, extending the
+        original idea into a playful and mysterious encounter.{' '}
+      </p>
+
+      <p>
+        {' '}
+        The installation was developed in collaboration with{' '}
         <a
           className="underline"
           href="https://www.instagram.com/xuehka"
@@ -32,27 +54,25 @@ export const theMagicBox: Project = {
           rel="noopener noreferrer"
         >
           Xueh Magrini Troll
+        </a>{' '}
+        and built in TouchDesigner, combining voice interaction, AI-generated
+        responses, and the physical sculpture. The{' '}
+        <em>Futuristic Wisdom Edition</em> was presented at{' '}
+        <a
+          className="underline"
+          href="https://raw-skpz.de/bwh/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Beamtenwohnhaus Open Studios 2023
         </a>
-        . People are invited to sit in front of a mysterious, handmade box and
-        have a personal conversation with it. Xueh is listening from behind
-        creating a unique drawing inspired by what she heard.
-      </p>
-      <p>
-        The Futuristic Wisdom Edition builds on this idea by turning the Magic
-        Box into a talking oracle. Instead of speaking with Xueh, visitors ask
-        questions directly to the box. Their voice is recorded, transcribed,
-        and sent to an AI system, offering playful and witty replies.
-      </p>
-      <p>
-        This version was built using TouchDesigner and combines sculpture,
-        voice interaction, and artificial intelligence to create a playful and
-        mysterious experience.
+        .{' '}
       </p>
     </>
   ),
   info: [
     {
-      header: 'Artist',
+      header: 'team',
       list: [
         <a
           className="underline"
@@ -64,19 +84,29 @@ export const theMagicBox: Project = {
         </a>,
       ],
     },
-    { header: 'Tech', list: ['TouchDesigner', 'OpenAI', 'Python'] },
+    { header: 'tools', list: ['TouchDesigner', 'OpenAI', 'Python'] },
     { header: 'Type', list: ['Interactive Installation'] },
   ],
   content: <TheMagicBox />,
   credits: [
     <>
-      <a className="underline" href="https://raw-skpz.de/bwh/">
+      <a
+        className="underline"
+        href="https://raw-skpz.de/bwh/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Beamtenwohnhaus Open Studios 2023
       </a>
     </>,
     <>
       Concept & Sculpture /{' '}
-      <a className="underline" href="https://raw-skpz.de/bwh/">
+      <a
+        className="underline"
+        href="https://raw-skpz.de/bwh/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Xueh Magrini Troll
       </a>
     </>,

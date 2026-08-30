@@ -8,15 +8,37 @@ export function Zama() {
         <title>Zama | Ramses Salas</title>
       </Helmet>
       <Image
-        src="/projects/zama/zama-values.jpg"
+        src="/projects/zama/screenshot-0.webp"
         thresholdWhite={0.25}
         thresholdGray={0.25}
       />
       <Image
-        src="/projects/zama/zama-typography.jpg"
+        src="/projects/zama/screenshot-2.webp"
+        thresholdWhite={0.25}
+        thresholdGray={0.1}
+      />
+      <Image
+        src="/projects/zama/screenshot-1.webp"
         thresholdWhite={0.25}
         thresholdGray={0.25}
       />
+      <div className="flex gap-2">
+        <Image
+          src="/projects/zama/screenshot-4.webp"
+          thresholdWhite={0.25}
+          thresholdGray={0.1}
+        />
+        <Image
+          src="/projects/zama/screenshot-3.webp"
+          thresholdWhite={1}
+          thresholdGray={0.2}
+        />
+        <Image
+          src="/projects/zama/screenshot-6.webp"
+          thresholdWhite={0.25}
+          thresholdGray={0.25}
+        />
+      </div>
     </div>
   )
 }

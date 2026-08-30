@@ -63,9 +63,8 @@ export function Services() {
       <p className="text w-[80%] text-xl lg:text-xl">
         I collaborate with artists and creative teams to shape digital
         experiences that combine creativity and technology. Using interactive
-        and generative systems, I explore new ways of expressing ideas and
-        crafting experiences. Together, we turn creative visions into digital
-        realities.
+        and generative systems, I explore and experiment with different ways of
+        expressing ideas and crafting experiences.
       </p>
       <div className="absolute bottom-0 left-1/2 w-screen -translate-x-1/2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div

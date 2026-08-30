@@ -5,47 +5,58 @@ export const zama: Project = {
   slug: 'zama',
   category: 'web',
   title: 'Zama',
-  isRecent: true,
+  featured: true,
+  date: '2026',
   thumbnail: {
-    src: '/projects/zama/zama-thumbnail.webp',
-    thresholdWhite: 0.5,
-    thresholdGray: 0.3,
+    src: '/projects/zama/screenshot-0.webp',
+    thresholdWhite: 1,
+    thresholdGray: 0.6,
     mediaClass: 'brightness-60 contrast-115',
     labelClass: 'lg:top-3 lg:left-5 bottom-1 left-2',
     className: 'border-texture row-start-5 col-span-2',
     disableDialog: true,
   },
   hero: {
-    src: '/projects/soberania-creativa/hero.webm',
-    mediaClass: 'brightness-75 contrast-90',
-    thresholdWhite: 0.3,
-    thresholdGray: 0.3,
+    src: '/projects/zama/hero.webm',
+    mediaClass: 'brightness-100 contrast-90',
+    thresholdWhite: 1,
+    thresholdGray: 0.7,
   },
   intro: (
     <>
       <p>
-        Zama is the website of{' '}
+        {' '}
+        <em>Zama</em> is a digital portfolio developed for artist{' '}
         <a
           className="underline"
           href="https://www.instagram.com/zama.tattoo/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          María Ángelica Mártinez
+          Zama
         </a>
-        , an artist whose work explores emotion, energy, and human experience
-        through painting, performance and tattoos.
+        , bringing together her work across tattooing, painting, and
+        performance. The site translates her practice into a digital space
+        through a visual language shaped by gesture, materiality, and
+        imperfection.{' '}
       </p>
+
       <p>
-        The project began with a series of collaborative sessions to define the
-        conceptual and visual direction for the site. This research informed the
-        design and structure, resulting in a cohesive experience that reflects
-        her artistic practice.
+        {' '}
+        The project grew from a series of conversations and sessions exploring
+        her practice and how it could translate into a digital space. Ideas
+        around beauty, imperfection, and vulnerability led to a raw, minimal,
+        and handmade visual language influenced by wabi-sabi and organic forms.
+        Strokes and gestures drawn from her tattooing and painting become part
+        of the site's visual language, appearing as transitions between
+        different parts of her practice.{' '}
       </p>
+
       <p>
-        The site was designed to create a calm and accessible space that
-        reflects her artistic practice. It organizes her statement, portfolio,
-        and booking process in a way that is intuitive and easy to navigate.
+        {' '}
+        The site was designed in Figma and developed with Next.js, using GSAP
+        for animations and interactions. Visual elements were created in After
+        Effects and integrated into the site.{' '}
       </p>
     </>
   ),
@@ -59,11 +70,11 @@ export const zama: Project = {
           target="_blank"
           rel="noopener noreferrer"
         >
-          María Ángelica Mártinez
+          Zama
         </a>,
       ],
     },
-    { header: 'Tools', list: ['Figma', 'Next.js', 'Adobe After Effects'] },
+    { header: 'Tools', list: ['Next.js', 'GSAP', 'After Effects', 'Figma'] },
     {
       header: 'Type',
       list: [

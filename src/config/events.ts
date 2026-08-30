@@ -1,3 +1,5 @@
+import { parseFlexibleDate, formatFlexibleDate } from '../utils/date'
+
 export interface Event {
   slug: string
   title: string
@@ -150,10 +152,7 @@ export const eventsList: Event[] = [
  * Returns a comparable timestamp for a single date, treating year-only
  * entries as January 1st of that year.
  */
-export const getEventTimestamp = (date: string): number => {
-  if (/^\d{4}$/.test(date)) return new Date(`${date}-01-01T00:00:00Z`).getTime()
-  return new Date(date).getTime()
-}
+export const getEventTimestamp = parseFlexibleDate
 
 /** Timestamps for every date of an event. */
 export const getEventTimestamps = (date: Event['date']): number[] =>
@@ -187,15 +186,4 @@ export const getPastEvents = (now: Date = new Date()): Event[] => {
     .sort((a, b) => latestTimestamp(b.date) - latestTimestamp(a.date))
 }
 
-export const formatEventDate = (
-  date: string,
-  locale: string = 'en-US'
-): string => {
-  if (/^\d{4}$/.test(date)) return date
-  const d = new Date(date)
-  return d.toLocaleDateString(locale, {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-  })
-}
+export const formatEventDate = formatFlexibleDate

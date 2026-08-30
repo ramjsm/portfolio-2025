@@ -5,7 +5,8 @@ export const synthara: Project = {
   slug: 'synthara',
   category: 'installation',
   title: 'Synthara',
-  isRecent: true,
+  featured: true,
+  date: '2023',
   thumbnail: {
     src: '/projects/synthara/thumbnail.webp',
     thresholdWhite: 0.6,
@@ -24,39 +25,53 @@ export const synthara: Project = {
   intro: (
     <>
       <p>
-        Synthara is an interactive installation that explores the intersection
-        of organic and synthetic life. A 3D printed mountain landscape houses
-        glowing kombucha scoby deposits that react to human movement.
+        {' '}
+        <em>Synthara</em> is an interactive installation exploring a world where
+        organic and synthetic life coexist. A 3D printed mountain landscape
+        houses glowing deposits of kombucha SCOBY that respond to the movement
+        of visitors.{' '}
       </p>
+
       <p>
-        Visitors interact with the piece through motion sensors, triggering
-        ripples of color and ambient sound projected in real-time using
-        TouchDesigner.
+        {' '}
+        Developed as a speculative world where nature and technology evolve
+        together, <em>Synthara</em> imagines a form of coexistence between the
+        organic and the synthetic. The landscape and living materials create a
+        space where these different forms of life become part of the same
+        ecosystem.{' '}
       </p>
+
       <p>
-        The concept and artistic direction were developed in collaboration
-        with{' '}
+        {' '}
+        Visitors interact with the installation through motion sensors,
+        triggering changes in colour and ambient sound in real time. The
+        interactive system was built in TouchDesigner, connecting the physical
+        landscape and biomaterials with generative visuals and sound. The
+        concept and artistic direction were developed in collaboration with{' '}
         <a
           className="underline"
           href="https://nataliadlh.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Natalia de León Hernandez
+          Natalia de León Hernández
         </a>
-        , whose vision shaped the world of Synthara, blending ecological
-        symbolism with speculative design.
-      </p>
-      <p>
-        This project brings together digital fabrication, biomaterials,
-        generative visuals, and interactive systems to imagine a future where
-        nature and technology evolve together.
+        . <em>Synthara</em> was presented at the{' '}
+        <a
+          href="https://www.instagram.com/consciousmadness_official"
+          className="underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Concious Madness Festival 2023
+        </a>
+        .{' '}
       </p>
     </>
   ),
   info: [
     {
-      header: 'Artist',
+      header: 'team',
       list: [
         <a
           className="underline"
@@ -68,7 +83,10 @@ export const synthara: Project = {
         </a>,
       ],
     },
-    { header: 'Tech', list: ['Blender', 'TouchDesigner', 'GLSL'] },
+    {
+      header: 'Tools',
+      list: ['UltiMaker Cura', 'TouchDesigner', 'Kinect', 'Blender', 'GLSL'],
+    },
     { header: 'Type', list: ['Interactive Installation'] },
   ],
   content: <Synthara />,
