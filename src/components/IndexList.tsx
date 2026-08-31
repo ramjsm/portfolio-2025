@@ -68,11 +68,12 @@ export function IndexList({
 
   useGSAP(
     () => {
-      gsap.from(`.${id}-header-line`, {
+      // debug: gsap trigger in mobile
+      /* gsap.from(`.${id}-header-line`, {
         autoAlpha: 0,
         y: -6,
         scrollTrigger: { trigger: `#${id}-header` },
-      })
+      }) */
     },
     { scope: containerRef }
   )
