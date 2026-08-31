@@ -1,45 +1,57 @@
-import { Image } from '../../components/Image'
+import { AsciiImage } from '../../components/AsciiImage'
 import { Helmet } from 'react-helmet'
-import { PastEvents } from './PastEvents'
+import { Link } from 'react-router-dom'
+import { Bio } from './Bio'
+import { Experience } from './Experience'
+import { Training } from './Training'
+import { Residencies } from './Residencies'
+import { Research } from './Research'
 
 export function About() {
   return (
-    <div className="flex min-h-screen w-full flex-col gap-30">
+    <div className="flex min-h-screen w-full flex-col gap-20 lg:gap-30">
       <Helmet>
         <title>About | Ramses Salas</title>
       </Helmet>
-      <div className="text-l flex w-full flex-col-reverse gap-10 lg:flex-row">
+      <div className="absolute top-0 right-0 max-h-full max-w-full flex-1">
+        <AsciiImage
+          src="/about-ramses-salas3.webp"
+          cellSize={10}
+          exposure={2}
+          spacing={0}
+          sampleColor
+        />
+      </div>
+      <div className="text-l relative z-10 mt-150 flex w-full flex-col-reverse gap-10 lg:mt-0 lg:flex-row">
         <div className="flex flex-1 flex-col gap-10 text-xl lg:text-base">
-          <div className="flex flex-col gap-4 lg:mt-40 lg:gap-2">
-            <p>
-              I'm Ramses Salas, a freelance Creative Technologist based in
+          <div className="flex flex-col gap-4 lg:mt-40 lg:gap-3">
+            <p className="font-syne max-w-2xl text-2xl lg:text-3xl">
+              I&apos;m Ramses Salas, a freelance Creative Technologist based in
               Berlin.
             </p>
-            <p>
-              In a world where technology often pulls us away from the present,
-              my work seeks to bring us back. I see creativity as a way to heal,
-              connect, and question the systems we move through. Using
-              interactive and generative systems, and through collaboration, I
-              explore how technology can hold emotion, mirror awareness, and
-              remind us what it means to be human.
-            </p>
-            <p>
-              My practice is rooted in presence, in finding life within the
-              digital and intimacy within the mechanical. I use technology not
-              as an escape but as a way to redefine my reality.
+            <p className="max-w-xl">
+              I work across art, technology, and experimentation, collaborating
+              with artists and creative teams on projects that use technology as
+              a medium for creative expression.
             </p>
           </div>
         </div>
-        <div className="flex-1">
-          <Image
-            src="/Ramses Salas Creative Technologist.webp"
-            thresholdWhite={0.35}
-            thresholdGray={0.4}
-            disableDialog
-          />
-        </div>
       </div>
-      <PastEvents />
+      <Bio />
+      <div className="border-texture flex w-full flex-col divide-y divide-white/10 px-4 lg:px-6">
+        <Experience />
+        <Training />
+        <Research />
+        <Residencies />
+      </div>
+      <div className="mt-4 mb-16 flex items-end justify-end text-right">
+        <Link to="/events">
+          <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">
+            Events
+          </div>
+          <div className="text-l opacity-50">See Upcoming & Past Events</div>
+        </Link>
+      </div>
     </div>
   )
 }
