@@ -45,7 +45,7 @@ export function AsciiImage({
     <div className={className}>
       <div ref={el} className="relative h-full w-full">
         <img
-          className={`${styles.hiddenWhenSmooth} ${mediaClass} h-full w-full object-cover`}
+          className={`${styles.hiddenWhenSmooth} ${mediaClass} h-full w-full object-cover opacity-0`}
           ref={img}
           loading={loading}
           src={src}
