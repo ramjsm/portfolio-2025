@@ -36,6 +36,8 @@ export interface InfoSection {
 
 export type ProjectCategory = 'installation' | 'web'
 
+export type ProjectsListFilter = 'all' | 'featured' | 'non-featured'
+
 export interface Project {
   slug: string
   category: ProjectCategory
@@ -109,21 +111,51 @@ export const getProjectsSortedByDate = (): Project[] =>
 export const getProjectBySlug = (slug: string): Project | undefined =>
   projectsList.find((project) => project.slug === slug)
 
-export const getNextProjectBySlug = (slug: string): Project | undefined => {
-  const currentIndex = projectsList.findIndex(
+export const getNextProjectBySlug = (
+  slug: string,
+  projectsFilter: ProjectsListFilter
+): Project | undefined => {
+  const filteredProjects = getFilteredProjects(projectsFilter)
+  const currentIndex = filteredProjects.findIndex(
     (project) => project.slug === slug
   )
+  console.log(filteredProjects)
+  console.log(currentIndex)
   if (currentIndex === -1) return undefined
-  if (currentIndex + 1 < projectsList.length)
-    return projectsList[currentIndex + 1]
-  return projectsList[0]
+  if (currentIndex + 1 < filteredProjects.length)
+    return filteredProjects[currentIndex + 1]
+  return filteredProjects[0]
 }
 
-export const getPreviousProjectBySlug = (slug: string): Project | undefined => {
-  const currentIndex = projectsList.findIndex(
+export const getPreviousProjectBySlug = (
+  slug: string,
+  projectsFilter: ProjectsListFilter
+): Project | undefined => {
+  const filteredProjects = getFilteredProjects(projectsFilter)
+  const currentIndex = filteredProjects.findIndex(
     (project) => project.slug === slug
   )
   if (currentIndex === -1) return undefined
-  if (currentIndex - 1 >= 0) return projectsList[currentIndex - 1]
-  return projectsList[projectsList.length - 1]
+  if (currentIndex - 1 >= 0) return filteredProjects[currentIndex - 1]
+  return filteredProjects[projectsList.length - 1]
+}
+
+export const getFeaturedProjectByDate = (): Project[] =>
+  getProjectsSortedByDate().filter((project) => project.featured)
+
+export const getFilteredProjects = (filter: ProjectsListFilter) => {
+  switch (filter) {
+    case 'featured':
+      return getProjectsSortedByDate().filter((project) => project.featured)
+    case 'non-featured':
+      return getProjectsSortedByDate().filter((project) => !project.featured)
+    default:
+      return getProjectsSortedByDate()
+  }
+}
+
+export const isProjectsListFilter = (
+  value: string | null
+): value is ProjectsListFilter => {
+  return value === 'all' || value === 'featured' || value === 'non-featured'
 }

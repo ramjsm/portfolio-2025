@@ -1,26 +1,29 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Info } from './Info'
 import {
   getProjectBySlug,
-  getNextProjectBySlug,
   getProjectCategoryLabel,
   type InfoSection,
+  getFeaturedProjectByDate,
+  getNextProjectBySlug,
+  getFilteredProjects,
+  type ProjectsListFilter,
 } from '../config/projects'
 import { useParams } from 'react-router-dom'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
 import { Video } from './Video'
-import { projectsList } from '../config/projects'
 import { useIsMobile } from '../hooks/useIsMobile'
 
 export function ProjectTemplate() {
   const { slug } = useParams<{ slug: string }>()
-  const projects = projectsList
+  const filter = 'featured'
+  const projects = getFilteredProjects(filter)
   const project = getProjectBySlug(slug!)
-  const nextProject = getNextProjectBySlug(slug!)
+  const nextProject = getNextProjectBySlug(slug!, filter)
   const { scrollTo } = useScrollbar()
   const isMobile = useIsMobile()
 
