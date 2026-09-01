@@ -6,8 +6,16 @@ import { Experience } from './Experience'
 import { Training } from './Training'
 import { Residencies } from './Residencies'
 import { Research } from './Research'
+import { useScrollbar } from '@14islands/r3f-scroll-rig'
+import { useLayoutEffect } from 'react'
 
 export function About() {
+  const { scrollTo } = useScrollbar()
+
+  useLayoutEffect(() => {
+    ;(scrollTo as any)(0, { immediate: true })
+  }, [scrollTo])
+
   return (
     <div className="flex min-h-screen w-full flex-col gap-20 lg:gap-30">
       <Helmet>

@@ -167,7 +167,6 @@ export function ProjectTemplate() {
           <div className="page-line border-texture-top h-0 w-full"></div>
         </div>
       )}
-
       {nextProject && (
         <div className="mt-4 mb-16 flex items-end justify-end text-right">
           <Link to={`/project/${nextProject.slug}?filter=${filter}`}>

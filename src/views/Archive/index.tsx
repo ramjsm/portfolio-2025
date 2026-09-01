@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import type { MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
@@ -12,6 +12,7 @@ import {
 import { handleScrambleHover } from '../../utils/scrambleText'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { formatFlexibleDateYear } from '../../utils/date'
+import { useScrollbar } from '@14islands/r3f-scroll-rig'
 
 export function Archive() {
   const isMobile = useIsMobile()
@@ -19,6 +20,11 @@ export function Archive() {
   const previewImgRef = useRef<HTMLImageElement>(null)
   const { contextSafe } = useGSAP()
   const projects = getProjectsSortedByDate()
+  const { scrollTo } = useScrollbar()
+
+  useLayoutEffect(() => {
+    ;(scrollTo as any)(0, { immediate: true })
+  }, [scrollTo])
 
   useGSAP(() => {
     if (!previewRef.current) return
