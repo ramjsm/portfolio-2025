@@ -55,7 +55,7 @@ export function Web() {
           {projects.map((project) => (
             <Link
               key={project.slug}
-              to={`/project/${project.slug}`}
+              to={`/project/${project.slug}?filter=featured`}
               className="relative aspect-video"
               data-cursor-text="EXPLORE"
             >

@@ -87,7 +87,7 @@ export function Archive() {
           return (
             <Link
               key={project.slug}
-              to={`/project/${project.slug}`}
+              to={`/project/${project.slug}?filter=all`}
               data-cursor-text="EXPLORE"
               onMouseEnter={(e) => {
                 handleScrambleHover(e)

@@ -29,7 +29,7 @@ export function InstallationLinkThumbnail({
 
   return (
     <Link
-      to={`/project/${installation.slug}`}
+      to={`/project/${installation.slug}?filter=featured`}
       className={`relative transition hover:text-white lg:text-[#909090] ${className}`}
       data-cursor-text="EXPLORE"
     >

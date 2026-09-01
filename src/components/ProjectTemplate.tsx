@@ -11,6 +11,7 @@ import {
   getNextProjectBySlug,
   getFilteredProjects,
   type ProjectsListFilter,
+  isProjectsListFilter,
 } from '../config/projects'
 import { useParams } from 'react-router-dom'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
@@ -20,7 +21,11 @@ import { useIsMobile } from '../hooks/useIsMobile'
 
 export function ProjectTemplate() {
   const { slug } = useParams<{ slug: string }>()
-  const filter = 'all'
+  const [searchParams] = useSearchParams()
+  const filterParam = searchParams.get('filter')
+  const filter: ProjectsListFilter = isProjectsListFilter(filterParam)
+    ? filterParam
+    : 'all'
   const projects = getFilteredProjects(filter)
   const project = getProjectBySlug(slug!)
   const nextProject = getNextProjectBySlug(slug!, filter)
@@ -141,28 +146,31 @@ export function ProjectTemplate() {
             </li>
           ))}
       </ul>
-      <div className="flex w-full items-center gap-4">
-        <div className="page-line border-texture-top h-0 w-full"></div>
-        <div className="pagination font-pp-neue-montreal flex flex-1 items-center justify-center gap-3 text-sm">
-          {projects.map((p, index) => (
-            <Link
-              key={p.slug}
-              to={`/project/${p.slug}`}
-              className={
-                p.slug === project.slug
-                  ? 'page-number text-xl'
-                  : 'page-number opacity-50'
-              }
-            >
-              {`/0${index + 1}`}
-            </Link>
-          ))}
+      {isMobile && filter === 'all' ? null : (
+        <div className="flex w-full items-center gap-4">
+          <div className="page-line border-texture-top h-0 w-full"></div>
+          <div className="pagination font-pp-neue-montreal flex flex-1 items-center justify-center gap-3 text-sm">
+            {projects.map((p, index) => (
+              <Link
+                key={p.slug}
+                to={`/project/${p.slug}`}
+                className={
+                  p.slug === project.slug
+                    ? 'page-number text-xl'
+                    : 'page-number opacity-50'
+                }
+              >
+                {`/0${index + 1}`}
+              </Link>
+            ))}
+          </div>
+          <div className="page-line border-texture-top h-0 w-full"></div>
         </div>
-        <div className="page-line border-texture-top h-0 w-full"></div>
-      </div>
+      )}
+
       {nextProject && (
         <div className="mt-4 mb-16 flex items-end justify-end text-right">
-          <Link to={`/project/${nextProject.slug}`}>
+          <Link to={`/project/${nextProject.slug}?filter=${filter}`}>
             <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${nextProject.title}`}</div>
             <div className="text-l opacity-50">{`Up Next / ${getProjectCategoryLabel(nextProject.category)}`}</div>
           </Link>
