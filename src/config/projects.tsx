@@ -119,8 +119,6 @@ export const getNextProjectBySlug = (
   const currentIndex = filteredProjects.findIndex(
     (project) => project.slug === slug
   )
-  console.log(filteredProjects)
-  console.log(currentIndex)
   if (currentIndex === -1) return undefined
   if (currentIndex + 1 < filteredProjects.length)
     return filteredProjects[currentIndex + 1]
