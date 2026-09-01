@@ -15,7 +15,7 @@ export function About() {
       </Helmet>
       <div className="absolute top-0 right-0 max-h-full max-w-full flex-1">
         <AsciiImage
-          src="/about-ramses-salas3.webp"
+          src="/about-background.webp"
           cellSize={10}
           exposure={2}
           spacing={0}
