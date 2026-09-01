@@ -20,7 +20,7 @@ import { useIsMobile } from '../hooks/useIsMobile'
 
 export function ProjectTemplate() {
   const { slug } = useParams<{ slug: string }>()
-  const filter = 'featured'
+  const filter = 'all'
   const projects = getFilteredProjects(filter)
   const project = getProjectBySlug(slug!)
   const nextProject = getNextProjectBySlug(slug!, filter)
@@ -86,7 +86,7 @@ export function ProjectTemplate() {
     })
   })
 
-  if (!project || !nextProject) {
+  if (!project) {
     return <div>Project not found</div>
   }
 
@@ -160,12 +160,14 @@ export function ProjectTemplate() {
         </div>
         <div className="page-line border-texture-top h-0 w-full"></div>
       </div>
-      <div className="mt-4 mb-16 flex items-end justify-end text-right">
-        <Link to={`/project/${nextProject.slug}`}>
-          <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${nextProject.title}`}</div>
-          <div className="text-l opacity-50">{`Up Next / ${getProjectCategoryLabel(nextProject.category)}`}</div>
-        </Link>
-      </div>
+      {nextProject && (
+        <div className="mt-4 mb-16 flex items-end justify-end text-right">
+          <Link to={`/project/${nextProject.slug}`}>
+            <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${nextProject.title}`}</div>
+            <div className="text-l opacity-50">{`Up Next / ${getProjectCategoryLabel(nextProject.category)}`}</div>
+          </Link>
+        </div>
+      )}
     </article>
   )
 }
