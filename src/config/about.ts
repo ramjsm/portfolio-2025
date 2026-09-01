@@ -84,14 +84,14 @@ export const publicationsList: Publication[] = [
 export const experienceList: TimelineEntry[] = [
   {
     slug: 'plan-a-engineering',
-    role: 'Senior Frontend Developer, Frontend Technical Lead & Engineering Manager',
+    role: 'Senior Frontend Developer · Frontend Technical Lead · Engineering Manager',
     organization: 'Plan A',
     start: 2021,
     end: 2024,
   },
   {
     slug: 'charly-education',
-    role: 'Frontend Developer, Frontend Lead Engineer',
+    role: 'Frontend Developer · Frontend Lead Engineer',
     organization: 'Charly Education',
     start: 2019,
     end: 2021,
@@ -105,7 +105,7 @@ export const experienceList: TimelineEntry[] = [
   },
   {
     slug: 'nit-organizing-committee',
-    role: 'Member, NIT Organizing Committee',
+    role: 'Organizing Committee Member',
     organization:
       'Natural Information Technologies VII & VIII International Conference',
     start: 2016,
@@ -127,7 +127,7 @@ export const experienceList: TimelineEntry[] = [
   },
   {
     slug: 'upm-junior-web-android-developer',
-    role: 'Junior Web and Android Developer (Internship, concurrent with research)',
+    role: 'Web & Android Developer Intern',
     organization: 'Polytechnic University of Madrid',
     start: 2015,
     end: 2017,
@@ -137,12 +137,20 @@ export const experienceList: TimelineEntry[] = [
 /** Reverse-chronological; entries without dates are listed last. */
 export const trainingList: TimelineEntry[] = [
   {
-    slug: 'scripting-sound-live-coding',
-    role: 'Scripting Sound: Artistic Practices in Live Coding',
-    organization: 'MotionLab.Berlin',
+    slug: 'visual-noise-school-of-machines',
+    role: 'Visualizing Noise: Creating Beyond Sight',
+    organization: 'School of Machines, Making & Make-Believe',
+    start: 2026,
+    end: 2026,
+    link: 'https://www.instagram.com/p/DUnrBH0FNxB/',
+  },
+   {
+    slug: 'figd-3d-specialist',
+    role: '3D Specialist: 3D-Design, Modeling & Rendering',
+    organization: 'FIGD Fachinstitut für Informatik und Grafikdesign',
     start: 2025,
     end: 2025,
-    link: 'https://berlinnewmediaweek.com/en/program-schedule/alexandra-cardenas-scripting-sound-artistic-practices-in-live-coding',
+    link: 'https://www.figd-akademie.de/visual-artist-3d-specialist/'
   },
   {
     slug: 'advanced-prototyping-awwwards',
@@ -152,29 +160,21 @@ export const trainingList: TimelineEntry[] = [
     end: 2025,
     link: 'https://www.awwwards.com/academy/course/advanced-prototyping-from-early-ideas-to-rich-interactions',
   },
-  {
-    slug: 'visual-noise-school-of-machines',
-    role: 'Visualizing Noise',
-    organization: 'School of Machines, Making & Make-Believe',
+   {
+    slug: 'scripting-sound-live-coding',
+    role: 'Scripting Sound: Artistic Practices in Live Coding',
+    organization: 'MotionLab.Berlin',
     start: 2025,
     end: 2025,
-    link: 'https://www.instagram.com/p/DUnrBH0FNxB/',
+    link: 'https://berlinnewmediaweek.com/en/program-schedule/alexandra-cardenas-scripting-sound-artistic-practices-in-live-coding',
   },
   {
     slug: 'threejs-journey',
-    role: 'Three.js Course',
+    role: 'Three.js Development',
     organization: 'Three.js Journey',
     start: 2024,
     end: 2025,
     link: 'https://threejs-journey.com/lessons/introduction#'
-  },
-  {
-    slug: 'figd-3d-specialist',
-    role: '3D Specialist: 3D-Design, Modeling & Rendering',
-    organization: 'FIGD Fachinstitut für Informatik und Grafikdesign',
-    start: 2025,
-    end: 2025,
-    link: 'https://www.figd-akademie.de/visual-artist-3d-specialist/'
   },
   {
     slug: 'creative-coding-2-domestika',
@@ -201,7 +201,7 @@ export const trainingList: TimelineEntry[] = [
       { label: '3D Printing (FDM & SLA)',
         url: 'https://www.eventbrite.com/e/workshop-introduction-to-3d-printing-with-fdm-sla-technology-tickets-637955049727',
        },
-      { label: 'Würth Elektronik-Lab',
+      { label: 'Electronics Lab',
         url: 'https://www.eventbrite.com/e/intro-to-the-wurth-elektronik-lab-tickets-949795994387',
        },
       { label: 'Wood Lab',
@@ -223,14 +223,14 @@ export const trainingList: TimelineEntry[] = [
 export const residenciesList: TimelineEntry[] = [
   {
     slug: 'experimental-commons-residency',
-    role: 'Working Residency — Sing or Sink',
-    organization: 'Experimental Commons (CCCBerlin × A MAZE.)',
+    role: 'Experimental Commons: Working Residency',
+    organization: 'CCCBerlin × A MAZE',
     start: 2026,
     end: 2026,
   },
   {
     slug: 'art-space-in-exile-hotel-continental',
-    role: 'Artist Residency — The Post Human Shop',
+    role: 'Myths of Tomorrow: Artist Residency',
     organization: 'Art Space in Exile · Hotel Continental',
     start: 2026,
     end: 2026,

@@ -18,6 +18,7 @@ export function Training() {
       command={'> ls -la ./cv --filter=training --sort=date'}
       count={`total ${items.length} entries`}
       items={items}
+      defaultOpen
     />
   )
 }

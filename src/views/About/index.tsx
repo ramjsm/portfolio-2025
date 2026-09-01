@@ -39,8 +39,8 @@ export function About() {
       </div>
       <Bio />
       <div className="border-texture flex w-full flex-col divide-y divide-white/10 px-4 lg:px-6">
-        <Experience />
         <Training />
+        <Experience />
         <Research />
         <Residencies />
       </div>

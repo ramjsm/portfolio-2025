@@ -17,21 +17,6 @@ export function Experience() {
       command={'> ls -la ./cv --filter=experience --sort=date'}
       count={`total ${items.length} entries`}
       items={items}
-      defaultOpen
-      footer={
-        <a
-          href="https://www.linkedin.com/in/ramsessalas/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-cursor-text="OPEN"
-          onMouseEnter={handleScrambleHover}
-          className="font-pp-neue-montreal text-xs tracking-wide text-gray-500 uppercase transition-colors duration-300 hover:text-white"
-        >
-          <span data-scramble="See full CV on LinkedIn →">
-            See full CV on LinkedIn →
-          </span>
-        </a>
-      }
     />
   )
 }
