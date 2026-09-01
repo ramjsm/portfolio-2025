@@ -77,8 +77,11 @@ export const zama: Project = {
     { header: 'Tools', list: ['Next.js', 'GSAP', 'After Effects', 'Figma'] },
     {
       header: 'Type',
+      list: ['Website'],
+    },
+    {
+      header: 'Links',
       list: [
-        'Website',
         <a
           className="underline"
           href="https://www.aboutzama.com/"

@@ -91,7 +91,7 @@ export const asBelowSoAbove: Project = {
       ],
     },
     { header: 'Tech', list: ['TouchDesigner'] },
-    { header: 'Type', list: ['Interactive Installation', 'Performance'] },
+    { header: 'Type', list: ['Exhibition'] },
   ],
   content: <AsBelowSoAbove />,
   credits: [

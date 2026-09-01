@@ -67,8 +67,11 @@ export const radicalTenderness: Project = {
     },
     {
       header: 'Type',
+      list: ['Interactive Installation'],
+    },
+    {
+      header: 'Links',
       list: [
-        'Interactive Installation',
         <a
           className="underline"
           href="https://radicaltenderness.ramsessalas.com/"

@@ -88,8 +88,11 @@ export const soberaniaCreativa: Project = {
     { header: 'Tools', list: ['Wordpress', 'InDesign', 'Figma', 'Photoshop'] },
     {
       header: 'Type',
+      list: ['Website'],
+    },
+    {
+      header: 'Links',
       list: [
-        'Website',
         <a
           className="underline"
           href="https://soberaniacreativa.com/"

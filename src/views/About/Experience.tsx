@@ -1,6 +1,5 @@
 import { IndexList, type IndexListItem } from '../../components/IndexList'
 import { experienceList, formatPeriod } from '../../config/about'
-import { handleScrambleHover } from '../../utils/scrambleText'
 
 export function Experience() {
   const items: IndexListItem[] = experienceList.map((entry) => ({

@@ -8,7 +8,7 @@ export const thePostHumanShop: Project = {
   featured: false,
   date: '2026-02-18',
   thumbnail: {
-    src: '',
+    src: '/projects/the-post-human-shop/screenshot-1.webp',
     thresholdWhite: 0.1,
     thresholdGray: 0.1,
     mediaClass: 'brightness-70 contrast-110',
@@ -112,10 +112,11 @@ export const thePostHumanShop: Project = {
     },
     {
       header: 'Type',
+      list: ['Exhibition'],
+    },
+    {
+      header: 'Links',
       list: [
-        'Exhibition',
-        'Interactive Installation',
-        'Webisite',
         <a
           className="underline"
           href="https://posthumanshop.ramsessalas.com/"

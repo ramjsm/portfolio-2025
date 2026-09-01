@@ -101,7 +101,7 @@ export const singOrSink: Project = {
     { header: 'Tools', list: ['Unity', 'NDI', 'Blender', 'C#'] },
     {
       header: 'Type',
-      list: ['360° Dome Projection', 'Interactive Installation'],
+      list: ['Interactive Installation'],
     },
   ],
   content: <SingOrSink />,

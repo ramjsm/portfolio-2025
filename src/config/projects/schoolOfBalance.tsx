@@ -78,13 +78,16 @@ export const schoolOfBalance: Project = {
       ],
     },
     {
-      header: 'Tech',
+      header: 'Tools',
       list: ['React', 'Three.js', 'R3F', 'GSAP', 'Tailwind CSS'],
     },
     {
       header: 'Type',
+      list: ['Web Experiment'],
+    },
+    {
+      header: 'Links',
       list: [
-        'Web Experiment',
         <a
           className="underline"
           href="https://schoolofbalance.netlify.app"

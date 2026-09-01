@@ -1,9 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { Link } from 'react-router-dom'
 import { getProjectsByCategory } from '../../config/projects'
 import { InstallationLinkThumbnail } from './InstallationLinkThumbnail'
-import { handleScrambleHover } from '../../utils/scrambleText'
 
 // This collage is a fixed-coordinate grid (see the grid-cols/grid-rows below
 // and each project's thumbnail.className) with exactly 5 hand-placed slots
@@ -78,18 +76,6 @@ export function Installations() {
               CREATIONS
             </div>
           </div>
-        </div>
-      </div>
-      <div className="font-pp-neue-montreal flex w-full justify-center">
-        <div className="flex w-[930px] justify-end">
-          <Link
-            to="/archive"
-            data-cursor-text="ARCHIVE"
-            onMouseEnter={handleScrambleHover}
-            className="text-l tracking-[0.2em] text-gray-500 uppercase transition-colors duration-300 hover:text-white"
-          >
-            <span data-scramble="View full archive →">View full archive →</span>
-          </Link>
         </div>
       </div>
     </>

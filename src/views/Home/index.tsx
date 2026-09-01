@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Web } from './Web'
 import { Installations } from './Installations'
 import { Landing } from './Landing'
@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet'
 import { Playground } from './Playground'
 import { UpcomingEvents } from './UpcomingEvents'
 import { getUpcomingEvents } from '../../config/events'
+import { handleScrambleHover } from '../../utils/scrambleText'
 
 export function Home() {
   const location = useLocation()
@@ -30,6 +31,18 @@ export function Home() {
       {hasUpcomingEvents && <UpcomingEvents />}
       <Installations />
       <Web />
+      <div className="font-pp-neue-montreal -mt-28 flex w-full justify-center lg:-mt-40">
+        <div className="flex w-[930px] justify-end">
+          <Link
+            to="/archive"
+            data-cursor-text="ARCHIVE"
+            onMouseEnter={handleScrambleHover}
+            className="text-l tracking-[0.2em] text-gray-500 uppercase transition-colors duration-300 hover:text-white"
+          >
+            <span data-scramble="View full archive →">View full archive →</span>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

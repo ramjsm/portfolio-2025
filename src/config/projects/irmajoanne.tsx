@@ -66,8 +66,11 @@ export const irmajoanne: Project = {
     { header: 'Tools', list: ['Figma', 'React', 'Three.js', 'Contentful CMS'] },
     {
       header: 'Type',
+      list: ['Website'],
+    },
+    {
+      header: 'Links',
       list: [
-        'Website',
         <a
           className="underline"
           href="https://www.irmajoanne.com/"

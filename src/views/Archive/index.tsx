@@ -6,12 +6,12 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import {
   getProjectsSortedByDate,
-  formatProjectDate,
   getProjectCategoryLabel,
   type Project,
 } from '../../config/projects'
 import { handleScrambleHover } from '../../utils/scrambleText'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import { formatFlexibleDateYear } from '../../utils/date'
 
 export function Archive() {
   const isMobile = useIsMobile()
@@ -73,10 +73,7 @@ export function Archive() {
       </Helmet>
 
       <div className="mt-20 flex flex-col gap-4">
-        <h1 className="font-syne text-stroke-gray-100 text-stroke-1 text-[14vw] text-transparent uppercase lg:text-8xl">
-          Archive
-        </h1>
-        <p className="font-pp-neue-montreal text-sm text-gray-500">
+        <p className="font-pp-neue-montreal text-xs text-gray-600">
           {'> ls -la ./work --sort=date'}
           <br />
           {`total ${projects.length} projects`}
@@ -97,26 +94,17 @@ export function Archive() {
                 showPreview(project)
               }}
               onMouseLeave={hidePreview}
-              className="archive-row group border-texture-top flex items-center gap-4 py-3 transition-[padding] duration-300 hover:pl-2"
+              className="archive-row group flex items-center gap-4 border-t border-white/10 py-3 transition-[padding] duration-300 hover:pl-2"
             >
-              <span className="w-8 text-xs tracking-widest text-gray-500 uppercase transition-colors duration-300 group-hover:text-white/80">
-                /{num}
+              <span className="font-pp-neue-montreal w-20 text-xs tracking-wide text-gray-600 uppercase transition-colors duration-300 group-hover:text-gray-300">
+                {project.date ? formatFlexibleDateYear(project.date) : '—'}
               </span>
-              <span className="w-20 text-xs tracking-widest text-gray-500 uppercase transition-colors duration-300 group-hover:text-white/80">
-                {project.date ? formatProjectDate(project.date) : '—'}
-              </span>
-              {isMobile && (
-                <img
-                  src={project.thumbnail.src}
-                  alt={project.title}
-                  className="h-10 w-16 flex-shrink-0 object-cover"
-                />
-              )}
               <span className="font-pp-neue-montreal flex-1 text-base font-light text-white lowercase">
                 <span data-scramble={project.slug}>{project.slug}</span>
               </span>
-              <span className="text-xs text-gray-500 uppercase">
-                {getProjectCategoryLabel(project.category)}
+              <span className="font-pp-neue-montreal w-20 text-xs tracking-wide text-gray-600 uppercase transition-colors duration-300 group-hover:text-gray-300 lg:w-auto">
+                {project.info.find((info) => info.header === 'Type')?.list ||
+                  null}
               </span>
             </Link>
           )

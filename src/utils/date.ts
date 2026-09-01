@@ -25,3 +25,18 @@ export function formatFlexibleDate(
     year: 'numeric',
   })
 }
+
+
+/**
+ * Formats a flexible date string for display. Year-only value
+ */
+export function formatFlexibleDateYear(
+  date: string,
+  locale: string = 'en-US'
+): string {
+  if (/^\d{4}$/.test(date)) return date
+  const d = new Date(date)
+  return d.toLocaleDateString(locale, {
+    year: 'numeric',
+  })
+}
