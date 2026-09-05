@@ -84,7 +84,7 @@ export function EventsSection({
 
       <ul
         id={`${id}-list`}
-        className="flex w-full flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]"
+        className="flex w-full flex-col lg:grid lg:grid-cols-[minmax(0,0.5fr)_minmax(0,2fr)_minmax(0,1fr)_auto]"
       >
         {events.map((event) => {
           const rowContent = (
@@ -119,10 +119,6 @@ export function EventsSection({
 
               <span className="font-pp-neue-montreal text-sm uppercase transition-transform duration-500 ease-out group-hover:translate-x-1 lg:text-base">
                 {event.venue ?? ''}
-              </span>
-
-              <span className="font-pp-neue-montreal text-sm uppercase transition-transform duration-500 ease-out group-hover:translate-x-1 lg:text-base">
-                {event.location ?? ''}
               </span>
 
               <span

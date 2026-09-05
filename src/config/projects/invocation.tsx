@@ -6,7 +6,7 @@ export const invocation: Project = {
   category: 'installation',
   title: 'Invocation',
   featured: false,
-  date: '2019',
+  date: '2020',
   thumbnail: {
     src: '/projects/invocation/thumbnail.webp',
     thresholdWhite: 0.16,
