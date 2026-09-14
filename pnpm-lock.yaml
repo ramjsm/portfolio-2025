@@ -29,6 +29,9 @@ importers:
       '@types/three':
         specifier: ^0.178.0
         version: 0.178.0
+      colormap:
+        specifier: ^2.3.2
+        version: 2.3.2
       gsap:
         specifier: ^3.13.0
         version: 3.13.0
@@ -1371,6 +1374,9 @@ packages:
 
   colord@2.9.3:
     resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
+
+  colormap@2.3.2:
+    resolution: {integrity: sha512-jDOjaoEEmA9AgA11B/jCSAvYE95r3wRoAyTf3LEHGiUVlNHJaL1mRkf5AyLSpQBVGfTEPwGEqCIzL+kgr2WgNA==}
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -3976,6 +3982,10 @@ snapshots:
   color-name@1.1.4: {}
 
   colord@2.9.3: {}
+
+  colormap@2.3.2:
+    dependencies:
+      lerp: 1.0.3
 
   concat-map@0.0.1: {}
 

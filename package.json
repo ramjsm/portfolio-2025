@@ -22,6 +22,7 @@
     "@react-three/postprocessing": "^3.0.4",
     "@tailwindcss/vite": "^4.1.11",
     "@types/three": "^0.178.0",
+    "colormap": "^2.3.2",
     "gsap": "^3.13.0",
     "leva": "^0.10.0",
     "motion": "^12.23.12",
