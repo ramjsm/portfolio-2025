@@ -1,5 +1,5 @@
 import { useImageAsTexture } from '@14islands/r3f-scroll-rig'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import ThresholdMaterial from '../shaders/thresholdShader'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -21,9 +21,11 @@ interface WebGLImageProps {
 export function WebGLImage({ imgRef, ...props }: WebGLImageProps) {
   // Check for preloaded texture first
   const src = imgRef.current?.src
-  const preloadedTextures = typeof window !== 'undefined' ? (window as any).__preloadedTextures : null
-  const preloadedTexture = preloadedTextures && src ? preloadedTextures.get(src) : null
-  
+  const preloadedTextures =
+    typeof window !== 'undefined' ? (window as any).__preloadedTextures : null
+  const preloadedTexture =
+    preloadedTextures && src ? preloadedTextures.get(src) : null
+
   // Use preloaded texture if available, otherwise load from img element
   const texture = preloadedTexture || useImageAsTexture(imgRef)
   const materialRef = useRef<any>(null)
@@ -87,6 +89,8 @@ export function WebGLImage({ imgRef, ...props }: WebGLImageProps) {
     }
   })
 
+  const mouse = useMemo(() => new THREE.Vector3(0, 0, 0), [])
+
   return (
     <group {...props}>
       <mesh
@@ -94,13 +98,13 @@ export function WebGLImage({ imgRef, ...props }: WebGLImageProps) {
         onPointerOver={() => setIsActive(true)}
         onPointerLeave={() => setIsActive(false)}
       >
-        <planeGeometry args={[1, 1, 16, 16]} />
+        <planeGeometry args={[1, 1, 1, 1]} />
         <thresholdMaterial
           transparent
           ref={materialRef}
           uImage={texture}
           uColor="white"
-          uMouse={new THREE.Vector3(0, 0, 0)}
+          uMouse={mouse}
         />
       </mesh>
     </group>
