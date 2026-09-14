@@ -44,7 +44,7 @@ function App() {
         >
           <ambientLight intensity={1} />
         </GlobalCanvas>
-        <SmoothScrollbar enabled scrollRestoration="auto" />
+        <SmoothScrollbar enabled={!isMobile} scrollRestoration="auto" />
       </SSRSafe>
       <Overlay />
       <div className="mx-auto max-w-[1920px] px-10 md:px-14 lg:w-2/3 lg:px-0">
