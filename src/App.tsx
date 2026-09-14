@@ -34,7 +34,7 @@ function App() {
     <div ref={ref} className="mx-auto w-full antialiased">
       <SSRSafe>
         <GlobalCanvas
-          dpr={[1, 2]}
+          dpr={isMobile ? 1 : [1, 2]}
           eventSource={ref} // rebind event source to a parent DOM element
           eventPrefix="client" // use clientX/Y for a scrolling page
           style={{
@@ -44,7 +44,7 @@ function App() {
         >
           <ambientLight intensity={1} />
         </GlobalCanvas>
-        <SmoothScrollbar enabled={!isMobile} scrollRestoration="auto" />
+        <SmoothScrollbar enabled scrollRestoration="auto" />
       </SSRSafe>
       <Overlay />
       <div className="mx-auto max-w-[1920px] px-10 md:px-14 lg:w-2/3 lg:px-0">

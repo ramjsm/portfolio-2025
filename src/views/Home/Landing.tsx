@@ -54,7 +54,7 @@ export function Landing() {
           {(props) => (
             <GameOfLife
               {...props}
-              cellSize={isMobile ? 14 : 10}
+              cellSize={isMobile ? 40 : 10}
               generationsPerSecond={isMobile ? 7 : 9}
               opacity={0.5}
               colorMap="bone"
