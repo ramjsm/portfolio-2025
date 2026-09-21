@@ -105,7 +105,7 @@ export const experienceList: TimelineEntry[] = [
   },
   {
     slug: 'nit-organizing-committee',
-    role: 'Organizing Committee Member',
+    role: 'Member of the NIT Organizing Committee',
     organization:
       'Natural Information Technologies VII & VIII International Conference',
     start: 2016,
@@ -113,14 +113,14 @@ export const experienceList: TimelineEntry[] = [
   },
   {
     slug: 'dance-technology-laboratory',
-    role: 'Member, Dance and Technology Laboratory',
+    role: 'Member of the Dance and Technology Laboratory',
     organization: 'Universidad Carlos III de Madrid',
     start: 2016,
     end: 2017,
   },
   {
     slug: 'natural-computing-researcher',
-    role: 'Researcher, Natural Computing Department',
+    role: 'Member of the Group of Natural Computing, AI Department',
     organization: 'Polytechnic University of Madrid',
     start: 2015,
     end: 2017,

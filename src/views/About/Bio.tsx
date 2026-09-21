@@ -14,13 +14,13 @@ interface BioBlock {
 
 const blocks: BioBlock[] = [
   {
-    label: 'practice',
+    label: 'background',
     paragraphs: [
-      'My interest in interactive systems began while studying Computer Science and Engineering at the Universidad Carlos III de Madrid. Through my thesis, I became a member of the Dance and Technology Laboratory, where I started exploring the relationship between computation, movement, and artistic expression.',
-      'From 2015 to 2017, I worked as a researcher in the Natural Computing Department at the Polytechnic University of Madrid, focusing on genetic algorithms, evolutionary systems, and computational models inspired by natural processes.',
-      'Since then, I have continued working across artistic and technical projects, alongside professional work in software development. Creative Technology has remained part of my work since 2018, and in 2024 I began dedicating myself fully to the practice.',
+      'My interest in interactive systems began while studying Computer Science and Engineering at the Universidad Carlos III de Madrid. My thesis brought me to the Dance and Technology Laboratory, where I began exploring the relationship between computation, movement, and artistic expression.',
+      'From 2015 to 2017, I was a member of the Natural Computing Group within the AI Department at the Polytechnic University of Madrid, where I collaborated on research focusing on genetic algorithms, evolutionary systems, and computational models inspired by natural processes.',
+      'Since then, I have worked across artistic and technical projects alongside professional work in web development. Creative Technology became a central part of my work in 2018, and in 2024 I began focusing fully on the practice.',
     ],
-    link: { label: 'View full archive →', to: '/archive' },
+    link: { label: 'View all projects →', to: '/archive' },
   },
   {
     label: 'exploration',

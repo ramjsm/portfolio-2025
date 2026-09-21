@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { Info } from './Info'
 import {
   getProjectBySlug,
@@ -21,6 +21,7 @@ import { useIsMobile } from '../hooks/useIsMobile'
 
 export function ProjectTemplate() {
   const { slug } = useParams<{ slug: string }>()
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const filterParam = searchParams.get('filter')
   const filter: ProjectsListFilter = isProjectsListFilter(filterParam)
@@ -92,7 +93,9 @@ export function ProjectTemplate() {
   })
 
   if (!project) {
-    return <div>Project not found</div>
+    // Return to home page
+    navigate('/')
+    return
   }
 
   return (
