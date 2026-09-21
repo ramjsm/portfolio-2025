@@ -14,17 +14,17 @@ export function Landing() {
   useGSAP(
     () => {
       document.fonts.ready.then(() => {
-        SplitText.create('.font-ark-es', {
+        SplitText.create('.landing-text', {
           type: 'words',
           wordsClass: 'word++',
           onSplit: (self) => {
             gsap.from(self.words, {
-              y: 'random([-100, 100])',
+              x: 'random([-100, 100])',
               autoAlpha: 0,
               stagger: 0.15,
               delay: 1,
               scrollTrigger: {
-                trigger: '.font-ark-es',
+                trigger: '.landing-text',
               },
             })
           },
@@ -40,11 +40,12 @@ export function Landing() {
       <div
         ref={gameOfLife}
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        /* className="border-texture relative aspect-video min-h-[50%] w-full cursor-pointer" */
+        className="absolute inset-0"
       />
       {/* The global canvas is fixed and unlayered, so the copy needs its own
           stacking context to sit on top of the simulation. */}
-      <h1 className="font-ark-es text-stroke-gray-100 text-stroke-1 relative z-10 mt-30 mb-20 text-left text-[7.2vw]/[7.5vw] text-transparent uppercase lg:-ml-[4vw] lg:text-[4.5vw]/[4.5vw] landscape:text-[4.2vw]/[4.5vw]">
+      <h1 className="landing-text font-pp-neue-montreal pointer-events-none absolute bottom-0 left-10 z-10 mb-10 text-left text-xl text-gray-100 uppercase opacity-50 lg:text-xl">
         technology <br></br>
         as a medium for <br></br>
         creative expression
@@ -57,7 +58,7 @@ export function Landing() {
               cellSize={isMobile ? 40 : 10}
               generationsPerSecond={isMobile ? 7 : 9}
               opacity={0.5}
-              colorMap="bone"
+              colorMap="salinity"
             />
           )}
         </ScrollScene>

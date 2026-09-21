@@ -77,7 +77,6 @@ export const projectsList: Project[] = [
   thePostHumanShop,
   singOrSink,
   organismus,
-  theTimeMachine,
   soberaniaCreativa,
   irmajoanne,
 ]
