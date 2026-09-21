@@ -14,6 +14,12 @@ interface BioBlock {
 
 const blocks: BioBlock[] = [
   {
+    label: 'exploration',
+    paragraphs: [
+      'I am currently exploring questions of consciousness, language, and human experience, with a growing interest in ritual, embodiment, and the ways technology might intersect with these areas.',
+    ],
+  },
+  {
     label: 'background',
     paragraphs: [
       'My interest in interactive systems began while studying Computer Science and Engineering at the Universidad Carlos III de Madrid. My thesis brought me to the Dance and Technology Laboratory, where I began exploring the relationship between computation, movement, and artistic expression.',
@@ -21,12 +27,6 @@ const blocks: BioBlock[] = [
       'Since then, I have worked across artistic and technical projects alongside professional work in web development. Creative Technology became a central part of my work in 2018, and in 2024 I began focusing fully on the practice.',
     ],
     link: { label: 'View all projects →', to: '/archive' },
-  },
-  {
-    label: 'exploration',
-    paragraphs: [
-      'I am currently exploring questions of consciousness, language, and human experience, with a growing interest in ritual, embodiment, and the ways technology might intersect with these areas.',
-    ],
   },
 ]
 
