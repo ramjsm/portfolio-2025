@@ -79,6 +79,7 @@ export const projectsList: Project[] = [
   organismus,
   soberaniaCreativa,
   irmajoanne,
+  theTimeMachine,
 ]
 
 export const getProjectsByCategory = (category: ProjectCategory): Project[] =>

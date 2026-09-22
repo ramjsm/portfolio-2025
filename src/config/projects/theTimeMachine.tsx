@@ -26,14 +26,13 @@ export const theTimeMachine: Project = {
     <>
       <p>
         {' '}
-        <em>The Time Machine</em> is a permanent immersive dining installation
-        aboard{' '}
+        <em>The Time Machine</em> is a restaurant aboard{' '}
         <a className="underline" href="https://aida.de/schiffe/aidanova">
           AIDAnova
         </a>
-        , where 100 synchronized monitors form a continuous visual environment
-        around the restaurant. The displays show shifting environments that
-        evolve throughout the dining experience, creating the illusion of
+        , where several synchronized monitors form a continuous visual
+        environment around the space. The displays show shifting environments
+        that evolve throughout the dining experience, creating the illusion of
         looking out from inside a machine traveling through different worlds and
         eras.{' '}
       </p>
@@ -41,12 +40,10 @@ export const theTimeMachine: Project = {
       <p>
         {' '}
         The visual environments were built in Unreal Engine and synchronized
-        across the installation using{' '}
-        <a className="underline" href="https://www.twoloox.de/">
-          Pandoras Box
-        </a>
-        . The production combined real time 3D workflows with experiments in
-        bringing AI generated content directly into the scenes.{' '}
+        across the installation using custom media server integration. The
+        production combined 3D rendering workflows with a custom production
+        pipeline developed to support the requirements of the multi display
+        setup.{' '}
       </p>
 
       <p>
@@ -56,10 +53,9 @@ export const theTimeMachine: Project = {
           ZiggyNova
         </a>{' '}
         to handle the virtual production, 3D environment design, and motion
-        graphics for the installation. The work involved creating custom
-        production pipelines using Python to adapt the Unreal Engine workflow to
-        the technical requirements of the Pandoras Box system, preparing the
-        content for integration into the final installation.{' '}
+        graphics for the installation. This included developing the environments
+        and creating Python tools to prepare the content for integration into
+        the system.{' '}
       </p>
     </>
   ),
@@ -74,19 +70,6 @@ export const theTimeMachine: Project = {
           rel="noopener noreferrer"
         >
           ZiggyNova
-        </a>,
-      ],
-    },
-    {
-      header: 'For',
-      list: [
-        <a
-          className="underline"
-          href="https://aida.de/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          AIDA Cruises
         </a>,
       ],
     },
@@ -121,14 +104,14 @@ export const theTimeMachine: Project = {
     },
     {
       header: 'Tools',
-      list: ['Unreal Engine', 'Premiere Pro', 'Blender', 'Python'],
+      list: ['Unreal Engine', 'Blender', 'Premiere Pro', 'Python'],
     },
     { header: 'Type', list: ['Immersive Installation'] },
   ],
   content: <TheTimeMachine />,
   credits: [
     <>
-      Dinning Experience at{' '}
+      Currently presented at <em>The Time Machine</em> restaurant aboard{' '}
       <a className="underline" href="https://aida.de/schiffe/aidanova">
         AIDAnova
       </a>

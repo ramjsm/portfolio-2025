@@ -5,7 +5,7 @@ export const thePostHumanShop: Project = {
   slug: 'the-post-human-shop',
   category: 'installation',
   title: 'The Post Human Shop',
-  featured: true,
+  featured: false,
   date: '2026-02-18',
   thumbnail: {
     src: '/projects/the-post-human-shop/screenshot-1.webp',

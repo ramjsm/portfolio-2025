@@ -42,26 +42,6 @@ export function TheTimeMachine() {
         thresholdGray={0.3}
         className="flex-1"
       />
-      <div className="flex gap-2">
-        <div className="flex flex-1 flex-col gap-2">
-          <Image
-            src="/projects/the-time-machine/screenshot-16.webp"
-            thresholdWhite={0.3}
-            thresholdGray={0.3}
-          />
-          <Image
-            src="/projects/the-time-machine/screenshot-17.webp"
-            thresholdWhite={0.3}
-            thresholdGray={0.3}
-          />
-        </div>
-        <Image
-          src="/projects/the-time-machine/screenshot-18.webp"
-          thresholdWhite={0.3}
-          thresholdGray={0.3}
-          className="flex-1"
-        />
-      </div>
     </div>
   )
 }
