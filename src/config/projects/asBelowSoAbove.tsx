@@ -5,7 +5,7 @@ export const asBelowSoAbove: Project = {
   slug: 'as-below-so-above',
   category: 'installation',
   title: 'As Below So Above',
-  featured: true,
+  featured: false,
   date: '2021',
   thumbnail: {
     src: '/projects/as-below-so-above/thumbnail.webp',
