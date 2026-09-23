@@ -27,39 +27,67 @@ export const schoolOfBalance: Project = {
         {' '}
         <em>The School of Balance</em> is a web based experiment exploring
         flocking behavior through sound and interaction. Inspired by{' '}
-        <a className="underline" href="https://www.red3d.com/cwr/boids/">
+        <a
+          className="underline"
+          href="https://www.red3d.com/cwr/boids/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Reynolds' 1986 Boids algorithm
         </a>
         , the project uses the three basic rules of separation, alignment, and
-        cohesion to create a school of koi fish swimming together on
-        screen.{' '}
+        cohesion to create a school of koi fish swimming together on screen,
+        with{' '}
+        <a
+          className="underline"
+          href="https://wawasensei.dev/tuto/boid-flocking-simulation-threejs-and-react"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Wawa Sensei’s Boid tutorial
+        </a>{' '}
+        as a starting point.{' '}
       </p>
 
       <p>
         {' '}
-        The fish respond to sound picked up through the visitor's microphone,
-        scattering when noise disturbs the group. At the same time, an evolving
-        soundscape responds to both the movement of the fish and the surrounding
-        audio, creating a feedback loop between sound and behavior. Visitors can
-        adjust the flocking parameters in real time and explore how small
-        changes affect the collective movement.{' '}
+        The fish respond to audio captured through the visitor's microphone,
+        scattering when noise disturbs the group. In collaboration with{' '}
+        <a
+          className="underline"
+          href="https://www.karde.me/thibautbournazac"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Thibaut Bournazac
+        </a>
+        , we developed an evolving soundscape that explored states of tension
+        and release, shaped by the movement of the flock and the the audio
+        input.{' '}
       </p>
 
       <p>
         {' '}
-        <em>The School of Balance</em> was created for the{' '}
+        <em>The School of Balance</em> was submitted as an entry to the{' '}
         <a
           className="underline"
           href="https://threejs-journey.com/challenges/019-aquarium#"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Aquarium Challenge
         </a>
-        , a project challenge organized by{' '}
-        <a className="underline" href="https://threejs-journey.com/">
+        , part of the{' '}
+        <a
+          className="underline"
+          href="https://threejs-journey.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Three.js Journey
-        </a>
-        . The project was an experiment in combining real time graphics,
-        procedural behavior, and interactive sound in the browser.{' '}
+        </a>{' '}
+        student challenges. The project explores balance as a process of
+        returning to harmony after disruption.{' '}
       </p>
     </>
   ),
@@ -112,6 +140,6 @@ export const schoolOfBalance: Project = {
         Thibaut Bournazac
       </a>
     </>,
-    <>Concept, Design & Development / Ramses Salas</>,
+    <>Interaction, Design & Development / Ramses Salas</>,
   ],
 }
