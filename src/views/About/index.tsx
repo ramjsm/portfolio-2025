@@ -49,8 +49,8 @@ export function About() {
       <div className="border-texture flex w-full flex-col divide-y divide-white/10 px-4 lg:px-6">
         <Training />
         <Experience />
-        <Research />
         <Residencies />
+        <Research />
       </div>
       <div className="mt-4 mb-16 flex items-end justify-end text-right">
         <Link to="/events">

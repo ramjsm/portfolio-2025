@@ -12,9 +12,9 @@ export function Research() {
 
   return (
     <IndexList
-      id="research"
+      id="papers"
       title="Academic Research"
-      command={'> ls -la ./research --sort=date'}
+      command={'> ls -la ./papers --sort=date'}
       count={`total ${items.length} entries`}
       cursorText="READ"
       items={items}

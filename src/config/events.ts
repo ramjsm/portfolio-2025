@@ -28,6 +28,14 @@ export const getEventDates = (date: Event['date']): string[] =>
 
 export const eventsList: Event[] = [
   {
+    slug: 'to-inhabit-the-yes',
+    title: 'To Inhabit the Yes — Possible Worlds',
+    date: '2026-12-14',
+    location: 'Berlin, DE',
+    venue: 'PIP Studio',
+    link: 'https://www.instagram.com/p/Daw1VakjesQ/?img_index=1'
+  },
+  {
     slug: 'organism-sehsuechte-2026',
     title: 'Organism',
     date: ['2026-04-23', '2026-04-25'],

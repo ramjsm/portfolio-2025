@@ -28,7 +28,7 @@ export function Home() {
       </Helmet>
       <Landing />
       <Services />
-      {hasUpcomingEvents && <UpcomingEvents />}
+
       <Installations />
       <Web />
       <div className="font-pp-neue-montreal -mt-28 flex w-full justify-center lg:-mt-40">
@@ -39,7 +39,20 @@ export function Home() {
             onMouseEnter={handleScrambleHover}
             className="text-l tracking-[0.2em] text-gray-500 uppercase transition-colors duration-300 hover:text-white"
           >
-            <span data-scramble="View full archive →">View full archive →</span>
+            <span data-scramble="All projects →">All projects →</span>
+          </Link>
+        </div>
+      </div>
+      {hasUpcomingEvents && <UpcomingEvents />}
+      <div className="font-pp-neue-montreal -mt-28 flex w-full justify-center lg:-mt-40">
+        <div className="flex w-[930px] justify-end">
+          <Link
+            to="/events"
+            data-cursor-text="EVENTS"
+            onMouseEnter={handleScrambleHover}
+            className="text-l tracking-[0.2em] text-gray-500 uppercase transition-colors duration-300 hover:text-white"
+          >
+            <span data-scramble="All events →">All events →</span>
           </Link>
         </div>
       </div>

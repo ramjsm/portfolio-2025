@@ -1,13 +1,13 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { useRef } from 'react'
+import { useRef, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { handleScrambleHover } from '../../utils/scrambleText'
 
 interface BioBlock {
   /** Rail label, rendered as `/label` in the boxed mono style. */
   label: string
-  paragraphs: string[]
+  paragraphs: ReactNode[]
   /** Optional CTA rendered below the paragraphs. */
   link?: { label: string; to: string }
 }
@@ -17,6 +17,19 @@ const blocks: BioBlock[] = [
     label: 'exploration',
     paragraphs: [
       'I am currently exploring questions of consciousness, language, and human experience, with a growing interest in ritual, embodiment, and the ways technology might intersect with these areas.',
+      <>
+        As part of this exploration, I am currently studying ontological and
+        spiritual coaching through the{' '}
+        <a
+          className="underline"
+          href="https://www.yangounframed.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Escuela para la Vida Consciente (EVC)
+        </a>
+        .
+      </>,
     ],
   },
   {
