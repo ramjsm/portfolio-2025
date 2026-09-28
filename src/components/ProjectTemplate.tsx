@@ -2,10 +2,10 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { Info } from './Info'
 import {
   getProjectBySlug,
-  getProjectCategoryLabel,
   getProjectInfo,
   type InfoSection,
   getNextProjectBySlug,
@@ -37,6 +37,7 @@ export function ProjectTemplate() {
   const { scrollTo } = useScrollbar()
   const isMobile = useIsMobile()
   const locale = useLocale()
+  const { t } = useTranslation()
   // Projects migrated to MDX render from content/projects/<slug>/<locale>.mdx;
   // the rest still use their legacy TSX fields.
   const mdx = slug ? getProjectContent(slug, locale) : undefined
@@ -115,7 +116,9 @@ export function ProjectTemplate() {
       <div className="relative flex min-h-screen w-full flex-col justify-center">
         {isMobile && (
           <div className="mt-20 -mr-2 mb-5 flex flex-col items-end justify-end text-right lg:hidden">
-            <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
+            <div className="text-l opacity-50">
+              {t(`categories.${project.category}`)}
+            </div>
             <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${title}`}</h1>
           </div>
         )}
@@ -210,7 +213,7 @@ export function ProjectTemplate() {
         <div className="mt-4 mb-16 flex items-end justify-end text-right">
           <Link to={`/project/${nextProject.slug}?filter=${filter}`}>
             <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${nextProject.title}`}</div>
-            <div className="text-l opacity-50">{`Up Next / ${getProjectCategoryLabel(nextProject.category)}`}</div>
+            <div className="text-l opacity-50">{`${t('project.upNext')} ${t(`categories.${nextProject.category}`)}`}</div>
           </Link>
         </div>
       )}

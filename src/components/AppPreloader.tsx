@@ -1,6 +1,7 @@
 import { Suspense, useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { useProgress } from '@react-three/drei'
+import { useTranslation } from 'react-i18next'
 import { useImagePreloader, preloadImages } from '../hooks/useImagePreloader'
 import {
   getCriticalHomePageAssets,
@@ -58,6 +59,7 @@ function ProgressiveAssetLoader() {
  * compete with the Overlay's hero logo reveal.
  */
 function LoadingIndicator({ visible }: { visible: boolean }) {
+  const { t } = useTranslation()
   const { progress } = useProgress()
   const clamped = Math.min(100, Math.max(0, Math.round(progress)))
 
@@ -74,7 +76,7 @@ function LoadingIndicator({ visible }: { visible: boolean }) {
         />
       </div>
       <div className="text-[10px] tracking-[0.3em] text-white/60 uppercase">
-        Loading {clamped.toString().padStart(3, '0')}
+        {t('preloader.loading')} {clamped.toString().padStart(3, '0')}
       </div>
     </div>
   )

@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next'
 import { IndexList, type IndexListItem } from '../../components/IndexList'
 import { experienceList, formatPeriod } from '../../config/about'
 
 export function Experience() {
+  const { t } = useTranslation()
   const items: IndexListItem[] = experienceList.map((entry) => ({
     slug: entry.slug,
     meta: formatPeriod(entry),
@@ -12,9 +14,10 @@ export function Experience() {
   return (
     <IndexList
       id="experience"
-      title="Experience"
+      label={t('about.sections.experience.label')}
+      title={t('about.sections.experience.title')}
       command={'> ls -la ./cv --filter=experience --sort=date'}
-      count={`total ${items.length} entries`}
+      count={t('about.total', { n: items.length })}
       items={items}
     />
   )

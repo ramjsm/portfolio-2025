@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef, type ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import { handleScrambleHover } from '../utils/scrambleText'
 import { AccordionContent, useAccordion } from './Accordion'
 
@@ -29,8 +30,10 @@ export interface IndexListItem {
 }
 
 interface IndexListProps {
-  /** Used for the anchor, the GSAP triggers, and the `/id` folder label. */
+  /** Used for the anchor and the GSAP triggers; also the folder label unless `label` is set. */
   id: string
+  /** Text of the `/label` folder header. Defaults to `id`. */
+  label?: string
   /** Accessible name only (e.g. for the toggle's aria-label) — not rendered. */
   title: string
   /** Terminal-style caption shown once expanded, e.g. "> ls -la ./research". */
@@ -55,6 +58,7 @@ interface IndexListProps {
  */
 export function IndexList({
   id,
+  label = id,
   title,
   command,
   count,
@@ -65,6 +69,7 @@ export function IndexList({
 }: IndexListProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const { isOpen, toggle } = useAccordion(defaultOpen)
+  const { t } = useTranslation()
 
   useGSAP(
     () => {
@@ -91,12 +96,12 @@ export function IndexList({
         type="button"
         onClick={toggle}
         aria-expanded={isOpen}
-        aria-label={`Toggle ${title} list`}
+        aria-label={t('about.toggleList', { title })}
         id={`${id}-header`}
         className={`${id}-header-line group flex w-full items-center justify-between gap-4 py-5 text-left`}
       >
         <span className="font-pp-neue-montreal text-xl text-gray-300 lowercase transition-colors duration-300 group-hover:text-white lg:text-base">
-          /{id}
+          /{label}
         </span>
         <span className="flex items-center gap-4">
           <span className="font-pp-neue-montreal text-xs tracking-wide text-gray-600 uppercase">

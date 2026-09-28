@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Logo from '../assets/logo_white.svg?react'
 import Menu from '../assets/menu.svg?react'
 import { useState, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Navigation } from './Navigation'
+import { LanguageSwitcher } from './LanguageSwitcher'
 import { handleScrambleHover } from '../utils/scrambleText'
 import { useIntro } from '../contexts/IntroContext'
 
@@ -17,6 +19,7 @@ export function Overlay() {
   const menuOpenTl = useRef<gsap.core.Timeline | null>(null)
   const tl = useRef<gsap.core.Timeline | null>(null)
   const { markIntroComplete } = useIntro()
+  const { t } = useTranslation()
 
   const toggleMenu = () => setIsMenuVisible(!isMenuVisible)
 
@@ -252,17 +255,22 @@ export function Overlay() {
   return (
     <>
       <div className="font-pp-neue-montreal fixed z-[10000] flex w-full justify-between bg-linear-to-b from-[#101010] to-transparent px-5 py-5 text-xs tracking-[0.3em] text-gray-500 uppercase">
-        <Link
-          ref={leftElementsRef}
-          to="/"
-          className="overlay-stack flex-1 text-nowrap transition-colors duration-300 hover:text-white"
-          data-cursor-text="HOME"
-          onMouseEnter={handleScrambleHover}
-          onClick={closeMenuIfOpen}
-        >
-          <div data-scramble="Ramses Salas">Ramses Salas</div>
-          <div data-scramble="Creative Technologist">Creative Technologist</div>
-        </Link>
+        <div className="overlay-stack flex flex-1 flex-col text-nowrap">
+          <Link
+            ref={leftElementsRef}
+            to="/"
+            className="transition-colors duration-300 hover:text-white"
+            data-cursor-text="HOME"
+            onMouseEnter={handleScrambleHover}
+            onClick={closeMenuIfOpen}
+          >
+            <div data-scramble="Ramses Salas">Ramses Salas</div>
+            <div data-scramble="Creative Technologist">
+              Creative Technologist
+            </div>
+          </Link>
+          <LanguageSwitcher className="mt-2" />
+        </div>
         <Link
           to="/"
           className="flex flex-1 justify-center"
@@ -279,7 +287,7 @@ export function Overlay() {
           className="overlay-stack flex-1 text-right text-nowrap"
         >
           <div className="flex items-center justify-end gap-2">
-            <span>Available for Projects</span>
+            <span>{t('header.available')}</span>
             <span className="relative">
               <span className="absolute h-2 w-2 animate-ping rounded-full bg-green-500 opacity-75"></span>
               <span className="relative block h-2 w-2 rounded-full bg-green-500"></span>
@@ -293,8 +301,8 @@ export function Overlay() {
             onMouseEnter={handleScrambleHover}
             className="transition-colors duration-300 hover:text-white"
           >
-            <span data-scramble="Schedule a Call →">
-              Schedule a Call &#8594;
+            <span data-scramble={t('header.schedule')}>
+              {t('header.schedule')}
             </span>
           </a>
         </div>

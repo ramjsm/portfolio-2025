@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next'
 import { IndexList, type IndexListItem } from '../../components/IndexList'
 import { trainingList, formatPeriod } from '../../config/about'
 
 export function Training() {
+  const { t } = useTranslation()
   const items: IndexListItem[] = trainingList.map((entry) => ({
     slug: entry.slug,
     meta: formatPeriod(entry),
@@ -14,9 +16,10 @@ export function Training() {
   return (
     <IndexList
       id="training"
-      title="Education & Training"
+      label={t('about.sections.training.label')}
+      title={t('about.sections.training.title')}
       command={'> ls -la ./cv --filter=training --sort=date'}
-      count={`total ${items.length} entries`}
+      count={t('about.total', { n: items.length })}
       items={items}
       defaultOpen
     />

@@ -7,6 +7,7 @@ import { Residencies } from './Residencies'
 import { Research } from './Research'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { getPageContent } from '../../content/loader'
 import { useLocale } from '../../i18n/useLocale'
 import { useDocumentHead } from '../../i18n/useDocumentHead'
@@ -14,6 +15,7 @@ import { useDocumentHead } from '../../i18n/useDocumentHead'
 export function About() {
   const { scrollTo } = useScrollbar()
   const locale = useLocale()
+  const { t } = useTranslation()
   useDocumentHead(getPageContent('about', locale)?.frontmatter.seo)
 
   useLayoutEffect(() => {
@@ -56,9 +58,9 @@ export function About() {
       <div className="mt-4 mb-16 flex items-end justify-end text-right">
         <Link to="/events">
           <div className="font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">
-            Events
+            {t('about.eventsHeading')}
           </div>
-          <div className="text-l opacity-50">See Upcoming & Past Events</div>
+          <div className="text-l opacity-50">{t('about.eventsLink')}</div>
         </Link>
       </div>
     </div>

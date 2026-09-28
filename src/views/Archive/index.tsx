@@ -2,11 +2,11 @@ import { useLayoutEffect, useRef } from 'react'
 import type { MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import {
   getProjectsSortedByDate,
-  getProjectCategoryLabel,
   getProjectInfo,
   type Project,
 } from '../../config/projects'
@@ -16,6 +16,7 @@ import { formatFlexibleDateYear } from '../../utils/date'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 
 export function Archive() {
+  const { t } = useTranslation()
   const isMobile = useIsMobile()
   const previewRef = useRef<HTMLDivElement>(null)
   const previewImgRef = useRef<HTMLImageElement>(null)
@@ -83,7 +84,7 @@ export function Archive() {
         <p className="font-pp-neue-montreal text-xs text-gray-600">
           {'> ls -la ./work --sort=date'}
           <br />
-          {`total ${projects.length} projects`}
+          {t('archive.total', { n: projects.length })}
         </p>
       </div>
 

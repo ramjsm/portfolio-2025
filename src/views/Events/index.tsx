@@ -1,12 +1,14 @@
 import { Helmet } from 'react-helmet'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { EventsSection } from '../../components/EventsSection'
 import { getPastEvents, getUpcomingEvents } from '../../config/events'
 
 export function Events() {
   const location = useLocation()
+  const { t } = useTranslation()
   const { scrollTo } = useScrollbar()
 
   const upcoming = getUpcomingEvents()
@@ -27,7 +29,7 @@ export function Events() {
         <EventsSection
           id="upcoming-events"
           events={upcoming}
-          heading={{ front: 'EVENTS', back: 'UPCOMING' }}
+          heading={{ front: t('events.front'), back: t('events.upcoming') }}
           headingAlign="left"
         />
       )}
@@ -36,7 +38,7 @@ export function Events() {
         <EventsSection
           id="past-events"
           events={past}
-          heading={{ front: 'EVENTS', back: 'PAST' }}
+          heading={{ front: t('events.front'), back: t('events.past') }}
           headingAlign="left"
         />
       )}

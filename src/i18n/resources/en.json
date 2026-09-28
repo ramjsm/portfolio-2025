@@ -6,5 +6,67 @@
     "links": "Links",
     "client": "Client",
     "tech": "Tech"
+  },
+  "header": {
+    "available": "Available for Projects",
+    "schedule": "Schedule a Call →"
+  },
+  "nav": {
+    "home": "home",
+    "about": "about",
+    "projects": "projects",
+    "events": "events"
+  },
+  "footer": {
+    "contact": "Contact",
+    "rights": "All Rights Reserved"
+  },
+  "home": {
+    "allProjects": "All projects →",
+    "allEvents": "All events →"
+  },
+  "installations": {
+    "prefix": "CO-",
+    "title": "CREATIONS"
+  },
+  "web": {
+    "front": "WEB",
+    "back": "SITES"
+  },
+  "events": {
+    "front": "EVENTS",
+    "upcoming": "UPCOMING",
+    "past": "PAST"
+  },
+  "project": {
+    "upNext": "Up Next /",
+    "watch": "watch"
+  },
+  "categories": {
+    "installation": "Installation",
+    "web": "Web"
+  },
+  "archive": {
+    "total": "total {{n}} projects"
+  },
+  "about": {
+    "eventsHeading": "Events",
+    "eventsLink": "See Upcoming & Past Events",
+    "total": "total {{n}} entries",
+    "toggleList": "Toggle {{title}} list",
+    "sections": {
+      "experience": { "label": "experience", "title": "Experience" },
+      "training": { "label": "training", "title": "Education & Training" },
+      "residencies": { "label": "residencies", "title": "Residencies" },
+      "papers": { "label": "papers", "title": "Academic Research" }
+    }
+  },
+  "preloader": {
+    "loading": "Loading"
+  },
+  "language": {
+    "label": "Language",
+    "banner": "View this page in English",
+    "dismiss": "Dismiss"
   }
 }

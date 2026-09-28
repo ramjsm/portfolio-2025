@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next'
 import { IndexList, type IndexListItem } from '../../components/IndexList'
 import { residenciesList, formatPeriod } from '../../config/about'
 
 export function Residencies() {
+  const { t } = useTranslation()
   const items: IndexListItem[] = residenciesList.map((entry) => ({
     slug: entry.slug,
     meta: formatPeriod(entry),
@@ -12,9 +14,10 @@ export function Residencies() {
   return (
     <IndexList
       id="residencies"
-      title="Residencies"
+      label={t('about.sections.residencies.label')}
+      title={t('about.sections.residencies.title')}
       command={'> ls -la ./cv --filter=residencies --sort=date'}
-      count={`total ${items.length} entries`}
+      count={t('about.total', { n: items.length })}
       items={items}
     />
   )

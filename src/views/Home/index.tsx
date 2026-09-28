@@ -5,6 +5,7 @@ import { Landing } from './Landing'
 import { Services } from './Services'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Playground } from './Playground'
 import { UpcomingEvents } from './UpcomingEvents'
 import { getUpcomingEvents } from '../../config/events'
@@ -18,6 +19,7 @@ export function Home() {
   const { scrollTo } = useScrollbar()
   const hasUpcomingEvents = getUpcomingEvents().length > 0
   const locale = useLocale()
+  const { t } = useTranslation()
   useDocumentHead(getPageContent('home', locale)?.frontmatter.seo)
 
   useEffect(() => {
@@ -40,7 +42,9 @@ export function Home() {
             onMouseEnter={handleScrambleHover}
             className="text-l tracking-[0.2em] text-gray-500 uppercase transition-colors duration-300 hover:text-white"
           >
-            <span data-scramble="All projects →">All projects →</span>
+            <span data-scramble={t('home.allProjects')}>
+              {t('home.allProjects')}
+            </span>
           </Link>
         </div>
       </div>
@@ -53,7 +57,9 @@ export function Home() {
             onMouseEnter={handleScrambleHover}
             className="text-l tracking-[0.2em] text-gray-500 uppercase transition-colors duration-300 hover:text-white"
           >
-            <span data-scramble="All events →">All events →</span>
+            <span data-scramble={t('home.allEvents')}>
+              {t('home.allEvents')}
+            </span>
           </Link>
         </div>
       </div>

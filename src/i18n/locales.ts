@@ -58,3 +58,28 @@ export function localizePath(path: string, locale: Locale): string {
 export function basenameFor(locale: Locale): string | undefined {
   return locale === DEFAULT_LOCALE ? undefined : `/${locale}`
 }
+
+const INTL_LOCALES: Record<Locale, string> = {
+  en: 'en-US',
+  es: 'es-419', // neutral Latin American Spanish, like the copy
+}
+
+/** BCP 47 tag to pass to `Intl` / `toLocaleDateString` for a locale. */
+export function intlLocale(locale: Locale): string {
+  return INTL_LOCALES[locale]
+}
+
+/**
+ * The first supported locale in a browser language list such as
+ * `navigator.languages`, matched on the language subtag (`es-MX` -> `es`).
+ */
+export function preferredLocale(
+  languages: readonly string[]
+): Locale | undefined {
+  for (const tag of languages) {
+    const language = tag.toLowerCase().split('-')[0]
+    const match = LOCALES.find((locale) => locale === language)
+    if (match) return match
+  }
+  return undefined
+}

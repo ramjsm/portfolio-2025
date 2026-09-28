@@ -2,9 +2,11 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { Image } from '../../components/Image'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { getProjectsByCategory } from '../../config/projects'
 
 export function Web() {
+  const { t } = useTranslation()
   const projects = getProjectsByCategory('web')
 
   useGSAP(() => {
@@ -42,12 +44,12 @@ export function Web() {
         <div className="web-header relative z-10 h-[16vw] lg:h-50">
           <div className="absolute top-[40%] right-0">
             <div className="web-work-shadow font-syne text-stroke-gray-300 text-stroke-1 text-right text-[8vw]/[8.2vw] text-transparent lg:text-8xl">
-              SITES
+              {t('web.back')}
             </div>
           </div>
           <div className="absolute top-[0%] right-0">
             <div className="web-work font-syne text-right text-[8vw]/[8.2vw] lg:text-8xl">
-              WEB
+              {t('web.front')}
             </div>
           </div>
         </div>

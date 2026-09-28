@@ -1,5 +1,6 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { useTranslation } from 'react-i18next'
 import { getProjectsByCategory } from '../../config/projects'
 import { InstallationLinkThumbnail } from './InstallationLinkThumbnail'
 
@@ -13,6 +14,8 @@ const featuredInstallations = getProjectsByCategory('installation').filter(
 )
 
 export function Installations() {
+  const { t } = useTranslation()
+
   useGSAP(() => {
     gsap.from('.header1', {
       y: '-20%',
@@ -41,13 +44,13 @@ export function Installations() {
           <div className="justify relative col-span-2 flex justify-items-start">
             <div id="header1" className="relative flex-1">
               <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-[40%] left-[50%] -translate-x-1/2 text-[8vw] text-transparent xl:text-8xl">
-                CO-
+                {t('installations.prefix')}
               </div>
               <div className="header1 font-syne text-stroke-gray-100 text-stroke-1 absolute bottom-[15%] left-[50%] -translate-x-1/2 text-[8vw] text-transparent lg:text-8xl">
-                CO-
+                {t('installations.prefix')}
               </div>
               <div className="header1 font-syne absolute -bottom-[10%] left-[50%] -translate-x-1/2 text-[8vw] lg:text-8xl">
-                CO-
+                {t('installations.prefix')}
               </div>
             </div>
             <div className="relative flex-1">
@@ -67,13 +70,13 @@ export function Installations() {
             className="relative col-start-1 col-end-4 row-start-6 row-end-6"
           >
             <div className="header2 font-syne absolute top-[20%] left-[50%] z-3 -translate-x-1/2 -translate-y-1/2 text-[8vw] lg:text-8xl">
-              CREATIONS
+              {t('installations.title')}
             </div>
             <div className="header2 font-syne text-stroke-gray-100 text-stroke-1 absolute top-[45%] left-[50%] z-2 -translate-x-1/2 -translate-y-1/2 text-[8vw] text-transparent lg:text-8xl">
-              CREATIONS
+              {t('installations.title')}
             </div>
             <div className="header2 font-syne text-stroke-gray-300 text-stroke-1 absolute top-[70%] left-[50%] z-1 -translate-x-1/2 -translate-y-1/2 text-[8vw] text-transparent lg:text-8xl">
-              CREATIONS
+              {t('installations.title')}
             </div>
           </div>
         </div>

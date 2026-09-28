@@ -6,5 +6,67 @@
     "links": "Enlaces",
     "client": "Cliente",
     "tech": "Tecnología"
+  },
+  "header": {
+    "available": "Disponible para proyectos",
+    "schedule": "Agenda una llamada →"
+  },
+  "nav": {
+    "home": "inicio",
+    "about": "sobre-mí",
+    "projects": "proyectos",
+    "events": "eventos"
+  },
+  "footer": {
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados"
+  },
+  "home": {
+    "allProjects": "Todos los proyectos →",
+    "allEvents": "Todos los eventos →"
+  },
+  "installations": {
+    "prefix": "CO-",
+    "title": "CREACIONES"
+  },
+  "web": {
+    "front": "WEB",
+    "back": "SITIOS"
+  },
+  "events": {
+    "front": "EVENTOS",
+    "upcoming": "PRÓXIMOS",
+    "past": "PASADOS"
+  },
+  "project": {
+    "upNext": "Siguiente /",
+    "watch": "ver"
+  },
+  "categories": {
+    "installation": "Instalación",
+    "web": "Web"
+  },
+  "archive": {
+    "total": "total {{n}} proyectos"
+  },
+  "about": {
+    "eventsHeading": "Eventos",
+    "eventsLink": "Ver eventos próximos y pasados",
+    "total": "total {{n}} entradas",
+    "toggleList": "Alternar lista de {{title}}",
+    "sections": {
+      "experience": { "label": "experiencia", "title": "Experiencia" },
+      "training": { "label": "formación", "title": "Educación y formación" },
+      "residencies": { "label": "residencias", "title": "Residencias" },
+      "papers": { "label": "publicaciones", "title": "Investigación académica" }
+    }
+  },
+  "preloader": {
+    "loading": "Cargando"
+  },
+  "language": {
+    "label": "Idioma",
+    "banner": "Ver esta página en español",
+    "dismiss": "Cerrar"
   }
 }

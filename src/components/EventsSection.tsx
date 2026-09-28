@@ -2,6 +2,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useRef } from 'react'
 import { formatEventDate, getEventDates, type Event } from '../config/events'
+import { intlLocale } from '../i18n/locales'
+import { useLocale } from '../i18n/useLocale'
 
 interface EventsSectionProps {
   /** Unique id used for anchors and GSAP targets to avoid collisions between sections. */
@@ -23,6 +25,7 @@ export function EventsSection({
   headingAlign = 'left',
 }: EventsSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const locale = useLocale()
 
   useGSAP(
     () => {
@@ -101,7 +104,7 @@ export function EventsSection({
                     dateTime={d}
                     className="font-pp-neue-montreal text-sm uppercase lg:text-base"
                   >
-                    {formatEventDate(d)}
+                    {formatEventDate(d, intlLocale(locale))}
                   </time>
                 ))}
                 {event.time && (

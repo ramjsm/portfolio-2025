@@ -73,7 +73,9 @@ pnpm format
 
 ## 🌍 Languages and content
 
-English lives at the bare path (`/about`), Spanish under `/es` (`/es/about`). The language is read once from the URL when the page loads (`src/i18n/initialLocale.ts`), and the router is mounted with a matching basename (`main.tsx`). So links are written without any prefix: `<Link to="/about">` renders `/es/about` on Spanish pages and `/about` on English ones, and `navigate()` behaves the same way. Changing language is a full page load to the other language's URL. The language switcher and the "Ver en español" banner aren't built yet.
+English lives at the bare path (`/about`), Spanish under `/es` (`/es/about`). The language is read once from the URL when the page loads (`src/i18n/initialLocale.ts`), and the router is mounted with a matching basename (`main.tsx`). So links are written without any prefix: `<Link to="/about">` renders `/es/about` on Spanish pages and `/about` on English ones, and `navigate()` behaves the same way.
+
+Changing language is a full page load to the same page in the other language. The `EN / ES` switcher (`LanguageSwitcher`, in the menu and the footer) does this with plain links. Visitors are never redirected automatically. Instead, `LanguageBanner` shows a small dismissible "Ver esta página en español" message on English pages when the browser's language list prefers Spanish. It appears after the intro animation and isn't part of the prerendered HTML. Using the switcher or closing the banner remembers the choice in `localStorage`.
 
 ### Content files
 
@@ -106,6 +108,10 @@ Paragraphs shown next to the info column.
 `Intro`, `Gallery`, `Credits`, `Row`, `Col`, `Image` and `Video` are available without imports (`src/content/mdxComponents.ts`). Links in project content always open in a new tab.
 
 If a locale has no file for a project, the English document is used.
+
+### UI strings
+
+Text that isn't page copy (menu, footer, section headings, buttons, `total N entries` captions) lives in `src/i18n/resources/{en,es}.json` and is read with `t('some.key')` from `react-i18next`. Both files must have the same keys. Terminal-style commands such as `> ls -la ./work` stay in English on purpose. Month names in event and publication dates follow the language.
 
 ### Info labels
 

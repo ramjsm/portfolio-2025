@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { handleScrambleHover } from '../utils/scrambleText'
 
 interface FooterLink {
@@ -106,13 +107,15 @@ function FooterColumn({
 }
 
 export function Footer() {
+  const { t } = useTranslation()
+
   return (
     <div className="font-pp-neue-montreal mt-16 mb-2 flex w-full gap-4 px-5 pt-10 pb-5 text-xs tracking-[0.3em] text-gray-500 uppercase">
       <div className="flex flex-1 flex-wrap gap-10">
-        <FooterColumn heading="Contact" links={CONTACT_LINKS} />
+        <FooterColumn heading={t('footer.contact')} links={CONTACT_LINKS} />
       </div>
       <div className="flex flex-1 flex-col items-center justify-end">
-        <div>All Rights Reserved</div>
+        <div>{t('footer.rights')}</div>
         <div>© Ramses Salas 2026</div>
       </div>
       <div className="flex-1"></div>

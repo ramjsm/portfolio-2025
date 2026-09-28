@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { AppPreloader } from './components/AppPreloader'
 import { IntroProvider } from './contexts/IntroContext'
 import { INITIAL_LOCALE } from './i18n/initialLocale'
+import { LocaleProvider } from './i18n/LocaleContext'
 import { basenameFor } from './i18n/locales'
 
 // The app is client-rendered. The per-route HTML files emitted at build time
@@ -14,12 +15,14 @@ import { basenameFor } from './i18n/locales'
 // language (`<Link to="/about">` renders `/es/about` on Spanish pages).
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <IntroProvider>
-      <AppPreloader>
-        <BrowserRouter basename={basenameFor(INITIAL_LOCALE)}>
-          <App />
-        </BrowserRouter>
-      </AppPreloader>
-    </IntroProvider>
+    <LocaleProvider>
+      <IntroProvider>
+        <AppPreloader>
+          <BrowserRouter basename={basenameFor(INITIAL_LOCALE)}>
+            <App />
+          </BrowserRouter>
+        </AppPreloader>
+      </IntroProvider>
+    </LocaleProvider>
   </StrictMode>
 )

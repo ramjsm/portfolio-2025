@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useCallback, memo } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { LanguageSwitcher } from './LanguageSwitcher'
 
 interface NavigationProps {
   isVisible: boolean
@@ -10,6 +12,7 @@ interface NavigationProps {
 }
 
 function NavigationComponent({ isVisible, onClose }: NavigationProps) {
+  const { t } = useTranslation()
   const navigationRef = useRef<HTMLDivElement>(null)
   const menuItemsRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -69,10 +72,10 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
   }, [isVisible, onClose])
 
   const navItems = [
-    { to: '/', slug: '/home', cursor: 'HOME' },
-    { to: '/about', slug: '/about', cursor: 'ABOUT' },
-    { to: '/archive', slug: '/projects', cursor: 'PROJECTS' },
-    { to: '/events', slug: '/events', cursor: 'EVENTS' },
+    { to: '/', key: 'home', cursor: 'HOME' },
+    { to: '/about', key: 'about', cursor: 'ABOUT' },
+    { to: '/archive', key: 'projects', cursor: 'PROJECTS' },
+    { to: '/events', key: 'events', cursor: 'EVENTS' },
   ]
 
   return createPortal(
@@ -115,15 +118,16 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
                 <span className="font-pp-neue-montreal relative text-base leading-none font-light tracking-tight text-white lowercase">
                   <span className="relative inline-block">
                     <span className="text-gray-500 transition-colors duration-300 group-hover:text-white">
-                      {item.slug.split('/')[0]}/
+                      /
                     </span>
-                    <span>{item.slug.slice(1)}</span>
+                    <span>{t(`nav.${item.key}`)}</span>
                   </span>
                 </span>
               </Link>
             ))}
           </div>
         </nav>
+        <LanguageSwitcher className="font-pp-neue-montreal mt-8 pl-8 text-xs tracking-[0.3em] text-gray-500 uppercase" />
       </div>
     </div>,
     document.body

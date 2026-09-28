@@ -5,6 +5,7 @@ import {
   styles,
 } from '@14islands/r3f-scroll-rig'
 import { Suspense, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { LoadingIndicator } from '../LoadingIndicatior'
 import { WebGLVideo } from './WebGLVideo'
 import { VideoDialog, type VideoDialogRef } from './VideoDialog'
@@ -24,6 +25,7 @@ export function Video({
   className,
   children,
 }: VideoProps) {
+  const { t } = useTranslation()
   const el = useRef<HTMLDivElement>(null!)
   const videoRef = useRef<HTMLVideoElement>(null)
   const dialogRef = useRef<VideoDialogRef>(null)
@@ -83,7 +85,7 @@ export function Video({
         <>
           <VideoDialog ref={dialogRef} src={videoURL} />
           <span className="font-pp-neue-montreal absolute bottom-2 left-2 text-base lg:bottom-5 lg:left-5 lg:hidden">
-            /watch
+            /{t('project.watch')}
           </span>
         </>
       )}

@@ -14,7 +14,7 @@ import { RoughEase } from 'gsap/EasePack'
 import { SSRSafe } from './components/SSRSafe'
 import { useIsMobile } from './hooks/useIsMobile'
 import Cursor from './components/Cursor'
-import { LocaleProvider } from './i18n/LocaleContext'
+import { LanguageBanner } from './components/LanguageBanner'
 
 // Only register GSAP plugins on client-side
 if (typeof window !== 'undefined') {
@@ -32,7 +32,7 @@ function App() {
   const isMobile = useIsMobile()
 
   return (
-    <LocaleProvider>
+    <>
       <div ref={ref} className="mx-auto w-full antialiased">
         <SSRSafe>
           <GlobalCanvas
@@ -56,7 +56,8 @@ function App() {
         {/*  <Loader /> */}
         {!isMobile && <Cursor />}
       </div>
-    </LocaleProvider>
+      <LanguageBanner />
+    </>
   )
 }
 

@@ -92,17 +92,6 @@ export const projectsList: Project[] = [
 export const getProjectsByCategory = (category: ProjectCategory): Project[] =>
   projectsList.filter((project) => project.category === category)
 
-export const getProjectCategoryLabel = (category: ProjectCategory): string => {
-  switch (category) {
-    case 'installation':
-      return 'Installation'
-    case 'web':
-      return 'Web'
-    default:
-      return 'Undefined'
-  }
-}
-
 /** Comparable timestamp for sorting; undated projects sort last. */
 export const getProjectTimestamp = (project: Project): number =>
   project.date ? parseFlexibleDate(project.date) : Number.NEGATIVE_INFINITY
