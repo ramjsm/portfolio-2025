@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react'
 import {
   getProjectsSortedByDate,
   getProjectCategoryLabel,
+  getProjectInfo,
   type Project,
 } from '../../config/projects'
 import { handleScrambleHover } from '../../utils/scrambleText'
@@ -109,8 +110,9 @@ export function Archive() {
                 <span data-scramble={project.slug}>{project.slug}</span>
               </span>
               <span className="font-pp-neue-montreal w-20 text-xs tracking-wide text-gray-600 uppercase transition-colors duration-300 group-hover:text-gray-300 lg:w-auto">
-                {project.info.find((info) => info.header === 'Type')?.list ||
-                  null}
+                {getProjectInfo(project).find(
+                  (info) => info.header.toLowerCase() === 'type'
+                )?.list || null}
               </span>
             </Link>
           )

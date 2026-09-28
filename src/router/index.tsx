@@ -5,6 +5,9 @@ import { About } from '../views/About'
 import { Events } from '../views/Events'
 import { Archive } from '../views/Archive'
 
+// One route table for every language: the router is mounted with the locale's
+// basename (`/es` for Spanish, see main.tsx), so these paths match under
+// both `/about` and `/es/about`.
 export default function Router() {
   return (
     <Routes>

@@ -11,17 +11,13 @@ if (existsSync('dist')) {
   rmSync('dist', { recursive: true, force: true })
 }
 
-// Build the SSG version
+// Build the site and the per-route static HTML
 console.log('📦 Building static site...')
-execSync('pnpm build:ssg', { stdio: 'inherit' })
+execSync('pnpm build', { stdio: 'inherit' })
 
-console.log('✅ Build completed! Your static site is ready in dist/client/')
+console.log('✅ Build completed! Your static site is ready in dist/')
 console.log('')
 console.log('📋 Next steps:')
-console.log('  1. Upload the contents of dist/client/ to your hosting provider')
+console.log('  1. Upload the contents of dist/ to your hosting provider')
 console.log('  2. Configure your server for SPA routing (see README.md)')
-console.log(
-  '  3. For Netlify/Vercel: use "dist/client" as your publish directory'
-)
-console.log('')
-console.log('🌟 Your portfolio is now optimized with SSG!')
+console.log('  3. For Netlify/Vercel: use "dist" as your publish directory')

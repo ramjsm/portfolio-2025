@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm build:ssg",
-  "outputDirectory": "dist/client",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",

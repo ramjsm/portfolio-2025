@@ -14,6 +14,8 @@ import { organismus } from './projects/organismus'
 import { theTimeMachine } from './projects/theTimeMachine'
 import type { ReactNode } from 'react'
 import { parseFlexibleDate, formatFlexibleDate } from '../utils/date'
+import { getProjectContent } from '../content/loader'
+import { DEFAULT_LOCALE, type Locale } from '../i18n/locales'
 
 export interface MediaAsset {
   src: string
@@ -59,9 +61,14 @@ export interface Project {
   thumbnail: ThumbnailAsset
   hero: MediaAsset
   videoURL?: string
-  intro: ReactNode
-  info: InfoSection[]
-  content: ReactNode
+  /**
+   * Legacy TSX-authored copy. Projects migrated to MDX (see
+   * `content/projects/<slug>/`) omit these; their text, info and layout live
+   * in the MDX document. Read info through `getProjectInfo`.
+   */
+  intro?: ReactNode
+  info?: InfoSection[]
+  content?: ReactNode
   credits?: Array<ReactNode>
 }
 
@@ -110,6 +117,15 @@ export const getProjectsSortedByDate = (): Project[] =>
 
 export const getProjectBySlug = (slug: string): Project | undefined =>
   projectsList.find((project) => project.slug === slug)
+
+/** Info sections from the project's MDX frontmatter, or its legacy config. */
+export const getProjectInfo = (
+  project: Project,
+  locale: Locale = DEFAULT_LOCALE
+): InfoSection[] =>
+  getProjectContent(project.slug, locale)?.frontmatter.info ??
+  project.info ??
+  []
 
 export const getNextProjectBySlug = (
   slug: string,

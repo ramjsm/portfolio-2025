@@ -1,5 +1,4 @@
 import { AsciiImage } from '../../components/AsciiImage'
-import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { Bio } from './Bio'
 import { Experience } from './Experience'
@@ -8,9 +7,14 @@ import { Residencies } from './Residencies'
 import { Research } from './Research'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
+import { getPageContent } from '../../content/loader'
+import { useLocale } from '../../i18n/useLocale'
+import { useDocumentHead } from '../../i18n/useDocumentHead'
 
 export function About() {
   const { scrollTo } = useScrollbar()
+  const locale = useLocale()
+  useDocumentHead(getPageContent('about', locale)?.frontmatter.seo)
 
   useLayoutEffect(() => {
     ;(scrollTo as any)(0, { immediate: true })
@@ -18,9 +22,6 @@ export function About() {
 
   return (
     <div className="flex min-h-screen w-full flex-col gap-20 lg:gap-30">
-      <Helmet>
-        <title>About | Ramses Salas</title>
-      </Helmet>
       <div className="absolute top-0 right-0 max-h-full max-w-full flex-1">
         <AsciiImage
           src="/about-background.webp"

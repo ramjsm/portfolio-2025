@@ -6,8 +6,8 @@ import { Info } from './Info'
 import {
   getProjectBySlug,
   getProjectCategoryLabel,
+  getProjectInfo,
   type InfoSection,
-  getFeaturedProjectByDate,
   getNextProjectBySlug,
   getFilteredProjects,
   type ProjectsListFilter,
@@ -18,6 +18,10 @@ import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
 import { Video } from './Video'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { getProjectContent } from '../content/loader'
+import { MdxSection } from '../content/MdxSection'
+import { useLocale } from '../i18n/useLocale'
+import { useDocumentHead } from '../i18n/useDocumentHead'
 
 export function ProjectTemplate() {
   const { slug } = useParams<{ slug: string }>()
@@ -32,6 +36,11 @@ export function ProjectTemplate() {
   const nextProject = getNextProjectBySlug(slug!, filter)
   const { scrollTo } = useScrollbar()
   const isMobile = useIsMobile()
+  const locale = useLocale()
+  // Projects migrated to MDX render from content/projects/<slug>/<locale>.mdx;
+  // the rest still use their legacy TSX fields.
+  const mdx = slug ? getProjectContent(slug, locale) : undefined
+  useDocumentHead(mdx?.frontmatter.seo)
 
   useLayoutEffect(() => {
     ;(scrollTo as any)(0, { immediate: true })
@@ -98,19 +107,22 @@ export function ProjectTemplate() {
     return
   }
 
+  const title = mdx?.frontmatter.title ?? project.title
+  const info = getProjectInfo(project, locale)
+
   return (
     <article className="w-full">
       <div className="relative flex min-h-screen w-full flex-col justify-center">
         {isMobile && (
           <div className="mt-20 -mr-2 mb-5 flex flex-col items-end justify-end text-right lg:hidden">
             <div className="text-l opacity-50">{`${getProjectCategoryLabel(project.category)}`}</div>
-            <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${project.title}`}</h1>
+            <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 mb-1 text-5xl text-transparent">{`${title}`}</h1>
           </div>
         )}
         {!isMobile && (
           <>
             <h1 className="header font-syne text-stroke-gray-100 text-stroke-1 absolute top-[50%] left-[50%] mb-1 -translate-x-1/2 -translate-y-1/2 text-7xl text-nowrap text-transparent uppercase">
-              {`${project.title}`}
+              {`${title}`}
             </h1>
           </>
         )}
@@ -122,8 +134,12 @@ export function ProjectTemplate() {
         {/* Responsive Info*/}
         {isMobile && (
           <div className="info-wrapper flex flex-col gap-4 lg:mb-0 lg:hidden lg:flex-col landscape:hidden">
-            {project.info.map((info: InfoSection) => (
-              <Info key={info.header} header={info.header} list={info.list} />
+            {info.map((section: InfoSection) => (
+              <Info
+                key={section.header}
+                header={section.header}
+                list={section.list}
+              />
             ))}
           </div>
         )}
@@ -131,24 +147,44 @@ export function ProjectTemplate() {
       <div className="mt-10 flex w-full flex-col md:mb-10 lg:mt-0 lg:flex-row landscape:flex-row">
         {!isMobile && (
           <div className="info-wrapper flex flex-1 flex-col gap-4">
-            {project.info.map((info: InfoSection) => (
-              <Info key={info.header} header={info.header} list={info.list} />
+            {info.map((section: InfoSection) => (
+              <Info
+                key={section.header}
+                header={section.header}
+                list={section.list}
+              />
             ))}
           </div>
         )}
         <div className="intro flex flex-col gap-2 text-xl font-[100] lg:flex-3 lg:text-base landscape:flex-4">
-          {project.intro}
+          {mdx ? (
+            <MdxSection Content={mdx.Content} section="intro" />
+          ) : (
+            project.intro
+          )}
         </div>
       </div>
-      <div className="mx-auto my-20 lg:w-[80%]">{project.content}</div>
-      <ul className="credits mb-20 text-center font-[100]">
-        {project.credits &&
-          project.credits.map((listItem, index: number) => (
-            <li key={index} className="text-l">
-              {listItem}
-            </li>
-          ))}
-      </ul>
+      <div className="mx-auto my-20 lg:w-[80%]">
+        {mdx ? (
+          <MdxSection Content={mdx.Content} section="gallery" />
+        ) : (
+          project.content
+        )}
+      </div>
+      {mdx ? (
+        <div className="credits mb-20 text-center font-[100]">
+          <MdxSection Content={mdx.Content} section="credits" />
+        </div>
+      ) : (
+        <ul className="credits mb-20 text-center font-[100]">
+          {project.credits &&
+            project.credits.map((listItem, index: number) => (
+              <li key={index} className="text-l">
+                {listItem}
+              </li>
+            ))}
+        </ul>
+      )}
       {isMobile && filter === 'all' ? null : (
         <div className="flex w-full items-center gap-4">
           <div className="page-line border-texture-top h-0 w-full"></div>

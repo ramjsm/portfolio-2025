@@ -5,16 +5,20 @@ import { Landing } from './Landing'
 import { Services } from './Services'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useEffect } from 'react'
-import { Helmet } from 'react-helmet'
 import { Playground } from './Playground'
 import { UpcomingEvents } from './UpcomingEvents'
 import { getUpcomingEvents } from '../../config/events'
 import { handleScrambleHover } from '../../utils/scrambleText'
+import { getPageContent } from '../../content/loader'
+import { useLocale } from '../../i18n/useLocale'
+import { useDocumentHead } from '../../i18n/useDocumentHead'
 
 export function Home() {
   const location = useLocation()
   const { scrollTo } = useScrollbar()
   const hasUpcomingEvents = getUpcomingEvents().length > 0
+  const locale = useLocale()
+  useDocumentHead(getPageContent('home', locale)?.frontmatter.seo)
 
   useEffect(() => {
     if (location.hash) scrollTo(location.hash)
@@ -23,9 +27,6 @@ export function Home() {
 
   return (
     <div className="flex w-full flex-col gap-40 landscape:gap-60">
-      <Helmet>
-        <title>Ramses Salas | Creative Technologist</title>
-      </Helmet>
       <Landing />
       <Services />
 

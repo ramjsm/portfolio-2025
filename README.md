@@ -1,29 +1,29 @@
 # Portfolio 2025
 
-A high-performance portfolio website built with React, Three.js, GSAP animations, and Static Site Generation capabilities for optimal SEO and loading performance.
+The source code of my personal portfolio website, [ramsessalas.com](https://ramsessalas.com). I'm a Creative Technologist based in Berlin, and this site is where I show my work: interactive installations, web projects, events and the story behind them. It's built with React, Three.js and GSAP, and it's available in English and Spanish.
 
 ## ✨ Features
 
-- **Static Site Generation (SSG)** - Pre-rendered HTML for all routes for better SEO and faster loading
+- **English and Spanish** - `/es/*` mirrors every route; prose and project layout are written in MDX
+- **Per-route static HTML** - each route and locale gets its own `index.html` with the right title, description, canonical URL, Open Graph tags and `hreflang` alternates
 - **React 19** with TypeScript support
-- **Three.js & React Three Fiber** for stunning 3D graphics
+- **Three.js & React Three Fiber** for the 3D graphics
 - **GSAP animations** with scroll triggers and advanced effects
-- **TailwindCSS** for modern styling
+- **TailwindCSS** for styling
 - **Responsive design** optimized for all devices
-- **Dynamic project routing** with pre-rendered static pages
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- pnpm (recommended package manager)
+- pnpm
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone git@github.com:ramjsm/portfolio-2025.git
 cd portfolio-2025
 
 # Install dependencies
@@ -42,22 +42,21 @@ pnpm dev
 ### Building
 
 ```bash
-# Regular build (SPA)
+# Production build: bundles the app, then writes the per-route HTML files
 pnpm build
 
-# Static Site Generation build (recommended)
-pnpm build:ssg
+# Type-check (not part of the build)
+pnpm typecheck
 ```
 
 ### Preview
 
 ```bash
-# Preview regular build
+# Preview the production build
 pnpm preview
-
-# Preview SSG build
-pnpm preview:ssg
 ```
+
+`vite preview` falls back to the root `index.html` for paths without a trailing slash, so it doesn't show the per-route HTML files. Check those in `dist/` directly, or on a deploy preview.
 
 ### Code Quality
 
@@ -72,98 +71,103 @@ pnpm lint:fix
 pnpm format
 ```
 
-## 🏗️ Static Site Generation (SSG)
+## 🌍 Languages and content
 
-This portfolio implements a custom SSG solution that pre-renders all pages at build time for optimal performance and SEO.
+English lives at the bare path (`/about`), Spanish under `/es` (`/es/about`). The language is read once from the URL when the page loads (`src/i18n/initialLocale.ts`), and the router is mounted with a matching basename (`main.tsx`). So links are written without any prefix: `<Link to="/about">` renders `/es/about` on Spanish pages and `/about` on English ones, and `navigate()` behaves the same way. Changing language is a full page load to the other language's URL. The language switcher and the "Ver en español" banner aren't built yet.
 
-### Pre-rendered Routes
+### Content files
 
-The following routes are automatically generated as static HTML:
+My copy lives in `content/`, outside `src/`:
 
-- `/` - Home page
-- `/about` - About page
-- Project pages:
-  - `/project/the-magic-box`
-  - `/project/juliette`
-  - `/project/synthara`
-  - `/project/as-below-so-above`
-  - `/project/invocation`
-  - `/project/soberania-creativa`
-  - `/project/irmajoanne`
+- `content/projects/<slug>/{en,es}.mdx` - one document per project and locale
+- `content/pages/{home,about}/{en,es}.mdx` - page-level metadata
+- `src/i18n/resources/{en,es}.json` - shared UI labels, such as the info column headers
 
-### How SSG Works
+Each document starts with frontmatter (`title`, `info`, `seo.title`, `seo.description`) followed by MDX. A project document has three regions that the page template places in different spots:
 
-1. **Client Build**: Creates the standard React bundle
-2. **Server Build**: Creates a server-side rendering bundle
-3. **Pre-rendering**: Each route is rendered to static HTML using the server bundle
-4. **Hydration**: The client bundle takes over for interactivity
+```mdx
+<Intro>
 
-### Adding New Routes
+Paragraphs shown next to the info column.
 
-To add new routes to SSG:
+</Intro>
 
-1. Add the route to your React Router configuration
-2. Update the `routes` array in `scripts/ssg-build.js`
-3. Run `pnpm build:ssg`
+<Gallery>
+  <Image src="/projects/x/a.webp" thresholdWhite={0.3} thresholdGray={0.3} />
+</Gallery>
+
+<Credits>
+
+- One credit per list item
+
+</Credits>
+```
+
+`Intro`, `Gallery`, `Credits`, `Row`, `Col`, `Image` and `Video` are available without imports (`src/content/mdxComponents.ts`). Links in project content always open in a new tab.
+
+If a locale has no file for a project, the English document is used.
+
+### Info labels
+
+In a project's `info` frontmatter, `header` is a key (`team`, `tools`, `type`, `links`, `client`, `tech`), not display text. The text shown comes from `src/i18n/resources/<locale>.json` under `info`, so renaming a label for every project is a one-line change in that file. A header with no entry there is shown as written, which works for a one-off label.
+
+### Migration status
+
+Only `juliette` has been moved to MDX so far. The other projects still keep their copy and gallery in `src/config/projects/*.tsx` and `src/views/Project/content/*.tsx`, and `ProjectTemplate` renders either shape.
+
+### Adding a project or page
+
+1. Add `content/projects/<slug>/en.mdx` (and `es.mdx`). The prerender script discovers project routes from this folder.
+2. Add the asset record (thumbnail, hero, date, category) in `src/config/projects/`.
+3. A new top-level page needs a route in `src/router/index.tsx` and an entry in the `PAGES` list in `scripts/prerender-head.js`.
+
+## 🏗️ Per-route static HTML
+
+The app is client-rendered. After `vite build`, `scripts/prerender-head.js` copies the built `dist/index.html` once per route and locale, rewriting only the head:
+
+- `<html lang>`, `<title>`, description and canonical URL
+- Open Graph and Twitter tags
+- the JSON-LD description
+- `hreflang` alternates (`en`, `es`, `x-default`)
+
+Values come from the `seo` frontmatter of the MDX files. The script fails the build if the template is missing a tag it needs to rewrite. Body content is still rendered in the browser.
+
+At runtime, `useDocumentHead` keeps the title, description and canonical URL in sync during client-side navigation.
 
 ## 🚢 Deployment
 
-### Static Hosting (Recommended)
-
-Since this is a static site, you can deploy to any static hosting provider:
+The site deploys as static files from `dist/`. Netlify's `/* -> /index.html` rewrite stays as the SPA fallback; it doesn't override the per-route files.
 
 #### Netlify
 
 ```bash
 # Build command
-pnpm build:ssg
+pnpm build
 
 # Publish directory
-dist/client
+dist
 ```
 
 #### Vercel
 
 ```bash
 # Build command
-pnpm build:ssg
+pnpm build
 
 # Output directory
-dist/client
+dist
 ```
 
 #### GitHub Pages
 
-1. Run `pnpm build:ssg`
-2. Deploy the `dist/client` folder to your `gh-pages` branch
-
-## 🎯 Performance Benefits
-
-With SSG enabled, your portfolio gets:
-
-- **Faster First Contentful Paint (FCP)** - HTML is ready immediately
-- **Better SEO** - Search engines can crawl pre-rendered content
-- **Improved Lighthouse scores** - Static content loads faster
-- **Better social media sharing** - Meta tags are pre-rendered
-- **Reduced server load** - Static files can be served from CDN
+1. Run `pnpm build`
+2. Deploy the `dist` folder to your `gh-pages` branch
 
 ## 🔧 Technical Details
 
 ### SSR-Safe Components
 
-Components that use browser-specific APIs are wrapped with `SSRSafe` to prevent server-side rendering errors:
-
-```tsx
-import { SSRSafe } from './components/SSRSafe'
-
-function MyComponent() {
-  return (
-    <SSRSafe fallback={<div>Loading...</div>}>
-      <BrowserSpecificComponent />
-    </SSRSafe>
-  )
-}
-```
+Some components are still wrapped with `SSRSafe`, a leftover from the earlier server-rendered build. It's harmless and can be simplified.
 
 ### GSAP Initialization
 

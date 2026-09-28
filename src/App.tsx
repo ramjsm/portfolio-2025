@@ -14,6 +14,7 @@ import { RoughEase } from 'gsap/EasePack'
 import { SSRSafe } from './components/SSRSafe'
 import { useIsMobile } from './hooks/useIsMobile'
 import Cursor from './components/Cursor'
+import { LocaleProvider } from './i18n/LocaleContext'
 
 // Only register GSAP plugins on client-side
 if (typeof window !== 'undefined') {
@@ -31,29 +32,31 @@ function App() {
   const isMobile = useIsMobile()
 
   return (
-    <div ref={ref} className="mx-auto w-full antialiased">
-      <SSRSafe>
-        <GlobalCanvas
-          dpr={isMobile ? 1 : [1, 2]}
-          eventSource={ref} // rebind event source to a parent DOM element
-          eventPrefix="client" // use clientX/Y for a scrolling page
-          style={{
-            pointerEvents: 'none', // delegate events to wrapper
-          }}
-          globalRender={false}
-        >
-          <ambientLight intensity={1} />
-        </GlobalCanvas>
-        <SmoothScrollbar enabled={!isMobile} scrollRestoration="auto" />
-      </SSRSafe>
-      <Overlay />
-      <div className="mx-auto max-w-[1920px] px-10 md:px-14 lg:w-2/3 lg:px-0">
-        <Router />
+    <LocaleProvider>
+      <div ref={ref} className="mx-auto w-full antialiased">
+        <SSRSafe>
+          <GlobalCanvas
+            dpr={isMobile ? 1 : [1, 2]}
+            eventSource={ref} // rebind event source to a parent DOM element
+            eventPrefix="client" // use clientX/Y for a scrolling page
+            style={{
+              pointerEvents: 'none', // delegate events to wrapper
+            }}
+            globalRender={false}
+          >
+            <ambientLight intensity={1} />
+          </GlobalCanvas>
+          <SmoothScrollbar enabled={!isMobile} scrollRestoration="auto" />
+        </SSRSafe>
+        <Overlay />
+        <div className="mx-auto max-w-[1920px] px-10 md:px-14 lg:w-2/3 lg:px-0">
+          <Router />
+        </div>
+        <Footer />
+        {/*  <Loader /> */}
+        {!isMobile && <Cursor />}
       </div>
-      <Footer />
-      {/*  <Loader /> */}
-      {!isMobile && <Cursor />}
-    </div>
+    </LocaleProvider>
   )
 }
 
