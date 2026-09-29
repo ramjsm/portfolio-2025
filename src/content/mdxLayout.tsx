@@ -1,13 +1,21 @@
 import { useContext } from 'react'
 import type { ReactNode } from 'react'
-import { SectionContext, type ProjectSection } from './sectionContext'
+import { SectionContext, type ContentSection } from './sectionContext'
 
 type Children = { children?: ReactNode }
 
-function SectionSlot({ name, children }: Children & { name: ProjectSection }) {
+function SectionSlot({ name, children }: Children & { name: ContentSection }) {
   const active = useContext(SectionContext)
   return active === name ? <>{children}</> : null
 }
+
+/** Generic region for page documents: `<Section name="lead">…</Section>`. */
+export const Section = ({
+  name,
+  children,
+}: Children & { name: ContentSection }) => (
+  <SectionSlot name={name}>{children}</SectionSlot>
+)
 
 export const Intro = ({ children }: Children) => (
   <SectionSlot name="intro">{children}</SectionSlot>

@@ -25,6 +25,14 @@
     "allProjects": "All projects →",
     "allEvents": "All events →"
   },
+  "landing": {
+    "line1": "technology",
+    "line2": "as a medium for",
+    "line3": "creative expression"
+  },
+  "services": {
+    "marquee": "Web - Motion - Interaction - Design"
+  },
   "installations": {
     "prefix": "CO-",
     "title": "CREATIONS"
@@ -54,6 +62,11 @@
     "eventsLink": "See Upcoming & Past Events",
     "total": "total {{n}} entries",
     "toggleList": "Toggle {{title}} list",
+    "bio": {
+      "exploration": "exploration",
+      "background": "background",
+      "viewProjects": "View all projects →"
+    },
     "sections": {
       "experience": { "label": "experience", "title": "Experience" },
       "training": { "label": "training", "title": "Education & Training" },

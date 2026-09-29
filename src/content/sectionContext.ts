@@ -1,12 +1,21 @@
 import { createContext } from 'react'
 
 /**
- * A project's MDX document holds three regions that the page template places
- * in different spots (intro beside the info column, gallery in the middle,
- * credits at the bottom). The template renders the same document once per
- * region; the `<Intro>`, `<Gallery>` and `<Credits>` wrappers only render
- * their children when their region is the active one.
+ * An MDX document holds several regions that the page places in different
+ * spots. The page renders the same document once per region, and only the
+ * wrapper for the active region shows its children.
+ *
+ * Projects use `<Intro>`, `<Gallery>` and `<Credits>` (intro beside the info
+ * column, gallery in the middle, credits at the bottom). Page documents use
+ * the generic `<Section name="...">`.
  */
 export type ProjectSection = 'intro' | 'gallery' | 'credits'
+export type PageSection =
+  | 'services'
+  | 'lead'
+  | 'intro'
+  | 'exploration'
+  | 'background'
+export type ContentSection = ProjectSection | PageSection
 
-export const SectionContext = createContext<ProjectSection | null>(null)
+export const SectionContext = createContext<ContentSection | null>(null)

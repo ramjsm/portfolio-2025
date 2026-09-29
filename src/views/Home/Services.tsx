@@ -2,9 +2,18 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/SplitText'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { getPageContent } from '../../content/loader'
+import { MdxSection } from '../../content/MdxSection'
+import { useLocale } from '../../i18n/useLocale'
 
 export function Services() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const locale = useLocale()
+  const { t } = useTranslation()
+  const home = getPageContent('home', locale)
+  // The marquee repeats its phrase; the track scrolls by half its width.
+  const marquee = `${t('services.marquee')} - ${t('services.marquee')} -`
 
   useGSAP(() => {
     document.fonts.ready.then(() => {
@@ -60,25 +69,17 @@ export function Services() {
   })
   return (
     <div className="relative -mt-40 flex w-full items-center justify-center pb-50">
-      <p className="text w-[80%] text-xl lg:text-xl">
-        I collaborate with artists and creative teams to shape digital
-        experiences that combine creativity and technology. Using interactive
-        and generative systems, I explore and experiment with different ways of
-        expressing ideas and crafting experiences.
-      </p>
+      {/* `.text` is the element split into words by the GSAP animation. */}
+      <div className="text w-[80%] text-xl lg:text-xl">
+        {home && <MdxSection Content={home.Content} section="services" />}
+      </div>
       <div className="absolute bottom-0 left-1/2 w-screen -translate-x-1/2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div
           ref={trackRef}
           className="led-text font-ark-es-dense text-stroke-gray-100 text-stroke-1 flex text-[8vw] whitespace-nowrap text-transparent uppercase opacity-70 will-change-transform lg:text-5xl landscape:text-[4.2vw]/[4.5vw]"
         >
-          <span>
-            Web - Motion - Interaction - Design - Web - Motion - Interaction -
-            Design -
-          </span>
-          <span>
-            Web - Motion - Interaction - Design - Web - Motion - Interaction -
-            Design -
-          </span>
+          <span>{marquee}</span>
+          <span>{marquee}</span>
         </div>
       </div>
     </div>

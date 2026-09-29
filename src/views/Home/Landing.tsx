@@ -2,11 +2,13 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/SplitText'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ScrollScene, UseCanvas } from '@14islands/r3f-scroll-rig'
 import { GameOfLife } from '../../components/GameOfLife'
 import { useIsMobile } from '../../hooks/useIsMobile'
 
 export function Landing() {
+  const { t } = useTranslation()
   const container = useRef<HTMLDivElement>(null)
   const gameOfLife = useRef<HTMLDivElement>(null!)
   const isMobile = useIsMobile()
@@ -46,9 +48,9 @@ export function Landing() {
       {/* The global canvas is fixed and unlayered, so the copy needs its own
           stacking context to sit on top of the simulation. */}
       <h1 className="landing-text font-pp-neue-montreal pointer-events-none absolute bottom-0 left-10 z-10 mb-10 text-left text-xl text-gray-100 uppercase opacity-50 lg:text-xl">
-        technology <br></br>
-        as a medium for <br></br>
-        creative expression
+        {t('landing.line1')} <br />
+        {t('landing.line2')} <br />
+        {t('landing.line3')}
       </h1>
       <UseCanvas>
         <ScrollScene track={gameOfLife} hideOffscreen>

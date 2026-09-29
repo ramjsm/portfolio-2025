@@ -2,10 +2,19 @@ import type { MDXComponents } from 'mdx/types'
 import { Image } from '../components/Image'
 import { Video } from '../components/Video'
 import { MarkdownLink } from '../components/InlineMarkdown'
-import { Col, Credits, Gallery, Intro, ListItem, Row } from './mdxLayout'
+import {
+  Col,
+  Credits,
+  Gallery,
+  Intro,
+  ListItem,
+  Row,
+  Section,
+} from './mdxLayout'
 
-/** Components available to every project `.mdx` document without imports. */
+/** Components available to every `.mdx` document without imports. */
 export const mdxComponents: MDXComponents = {
+  Section,
   Intro,
   Gallery,
   Credits,

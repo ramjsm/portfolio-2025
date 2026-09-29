@@ -75,14 +75,14 @@ pnpm format
 
 English lives at the bare path (`/about`), Spanish under `/es` (`/es/about`). The language is read once from the URL when the page loads (`src/i18n/initialLocale.ts`), and the router is mounted with a matching basename (`main.tsx`). So links are written without any prefix: `<Link to="/about">` renders `/es/about` on Spanish pages and `/about` on English ones, and `navigate()` behaves the same way.
 
-Changing language is a full page load to the same page in the other language. The `EN / ES` switcher (`LanguageSwitcher`, in the menu and the footer) does this with plain links. Visitors are never redirected automatically. Instead, `LanguageBanner` shows a small dismissible "Ver esta página en español" message on English pages when the browser's language list prefers Spanish. It appears after the intro animation and isn't part of the prerendered HTML. Using the switcher or closing the banner remembers the choice in `localStorage`.
+Changing language is a full page load to the same page in the other language. The `EN / ES` switcher (`LanguageSwitcher`, in the top-left header and in the menu) does this with plain links. Visitors are never redirected automatically. Instead, `LanguageBanner` shows a small dismissible "Ver esta página en español" message on English pages when the browser's language list prefers Spanish. It appears after the intro animation and isn't part of the prerendered HTML. Using the switcher or closing the banner remembers the choice in `localStorage`.
 
 ### Content files
 
 My copy lives in `content/`, outside `src/`:
 
 - `content/projects/<slug>/{en,es}.mdx` - one document per project and locale
-- `content/pages/{home,about}/{en,es}.mdx` - page-level metadata
+- `content/pages/{home,about}/{en,es}.mdx` - page metadata plus the Home services paragraph and the About intro and Bio paragraphs, split into regions with `<Section name="...">`
 - `src/i18n/resources/{en,es}.json` - shared UI labels, such as the info column headers
 
 Each document starts with frontmatter (`title`, `info`, `seo.title`, `seo.description`) followed by MDX. A project document has three regions that the page template places in different spots:
@@ -111,7 +111,7 @@ If a locale has no file for a project, the English document is used.
 
 ### UI strings
 
-Text that isn't page copy (menu, footer, section headings, buttons, `total N entries` captions) lives in `src/i18n/resources/{en,es}.json` and is read with `t('some.key')` from `react-i18next`. Both files must have the same keys. Terminal-style commands such as `> ls -la ./work` stay in English on purpose. Month names in event and publication dates follow the language.
+Text that isn't page copy (menu, footer, section headings, buttons, `total N entries` captions) lives in `src/i18n/resources/{en,es}.json` and is read with `t('some.key')` from `react-i18next`. Both files must have the same keys. Short display strings tied to a layout, such as the landing headline lines, the scrolling marquee and the Bio labels, are there too, while the paragraphs around them are in MDX. Terminal-style commands such as `> ls -la ./work` stay in English on purpose. Month names in event and publication dates follow the language.
 
 ### Info labels
 

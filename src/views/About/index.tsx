@@ -9,6 +9,7 @@ import { useScrollbar } from '@14islands/r3f-scroll-rig'
 import { useLayoutEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { getPageContent } from '../../content/loader'
+import { MdxSection } from '../../content/MdxSection'
 import { useLocale } from '../../i18n/useLocale'
 import { useDocumentHead } from '../../i18n/useDocumentHead'
 
@@ -16,7 +17,8 @@ export function About() {
   const { scrollTo } = useScrollbar()
   const locale = useLocale()
   const { t } = useTranslation()
-  useDocumentHead(getPageContent('about', locale)?.frontmatter.seo)
+  const about = getPageContent('about', locale)
+  useDocumentHead(about?.frontmatter.seo)
 
   useLayoutEffect(() => {
     ;(scrollTo as any)(0, { immediate: true })
@@ -36,15 +38,12 @@ export function About() {
       <div className="text-l relative z-10 mt-150 flex w-full flex-col-reverse gap-10 lg:mt-0 lg:flex-row">
         <div className="flex flex-1 flex-col gap-10 text-xl lg:text-base">
           <div className="flex flex-col gap-4 lg:mt-40 lg:gap-3">
-            <p className="font-syne max-w-2xl text-2xl lg:text-3xl">
-              I&apos;m Ramses Salas, a freelance Creative Technologist based in
-              Berlin.
-            </p>
-            <p className="max-w-xl">
-              I work across art, technology, and experimentation, collaborating
-              with artists and creative teams on projects that use technology as
-              a medium for creative expression.
-            </p>
+            <div className="font-syne max-w-2xl text-2xl lg:text-3xl">
+              {about && <MdxSection Content={about.Content} section="lead" />}
+            </div>
+            <div className="max-w-xl">
+              {about && <MdxSection Content={about.Content} section="intro" />}
+            </div>
           </div>
         </div>
       </div>

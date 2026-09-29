@@ -25,6 +25,14 @@
     "allProjects": "Todos los proyectos →",
     "allEvents": "Todos los eventos →"
   },
+  "landing": {
+    "line1": "tecnología",
+    "line2": "como medio de",
+    "line3": "expresión creativa"
+  },
+  "services": {
+    "marquee": "Web - Movimiento - Interacción - Diseño"
+  },
   "installations": {
     "prefix": "CO-",
     "title": "CREACIONES"
@@ -54,6 +62,11 @@
     "eventsLink": "Ver eventos próximos y pasados",
     "total": "total {{n}} entradas",
     "toggleList": "Alternar lista de {{title}}",
+    "bio": {
+      "exploration": "exploración",
+      "background": "trayectoria",
+      "viewProjects": "Ver todos los proyectos →"
+    },
     "sections": {
       "experience": { "label": "experiencia", "title": "Experiencia" },
       "training": { "label": "formación", "title": "Educación y formación" },
