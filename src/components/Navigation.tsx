@@ -76,6 +76,7 @@ function NavigationComponent({ isVisible, onClose }: NavigationProps) {
     { to: '/about', key: 'about', cursor: 'ABOUT' },
     { to: '/archive', key: 'projects', cursor: 'PROJECTS' },
     { to: '/events', key: 'events', cursor: 'EVENTS' },
+    { to: '/devblog', key: 'devblog', cursor: 'DEVBLOG' },
   ]
 
   return createPortal(

@@ -29,6 +29,7 @@ const PAGES = [
   { route: '/about', page: 'about' },
   { route: '/archive', page: 'archive' },
   { route: '/events', page: 'events' },
+  { route: '/devblog', page: 'devblog' },
 ]
 
 const escapeHtml = (value) =>
@@ -73,6 +74,15 @@ async function collectRoutes() {
     entries.push({
       route: `/project/${dirent.name}`,
       directory: path.join(projectsDir, dirent.name),
+    })
+  }
+
+  const articlesDir = path.join(CONTENT, 'articles')
+  for (const dirent of await fs.readdir(articlesDir, { withFileTypes: true })) {
+    if (!dirent.isDirectory()) continue
+    entries.push({
+      route: `/devblog/${dirent.name}`,
+      directory: path.join(articlesDir, dirent.name),
     })
   }
 

@@ -15,7 +15,8 @@
     "home": "inicio",
     "about": "sobre-mí",
     "projects": "proyectos",
-    "events": "eventos"
+    "events": "eventos",
+    "devblog": "devblog"
   },
   "footer": {
     "contact": "Contacto",
@@ -56,6 +57,11 @@
   },
   "archive": {
     "total": "total {{n}} proyectos"
+  },
+  "devblog": {
+    "total": "total {{n}} artículos",
+    "soon": "próximamente",
+    "back": "← devblog"
   },
   "about": {
     "eventsHeading": "Eventos",

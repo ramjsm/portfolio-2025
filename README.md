@@ -1,6 +1,7 @@
 # Portfolio 2025
 
 The source code of my personal portfolio website, [ramsessalas.com](https://ramsessalas.com). I'm a Creative Technologist based in Berlin, and this site is where I show my work: interactive installations, web projects, events and the story behind them. It's built with React, Three.js and GSAP, and it's available in English and Spanish.
+This project is developed with a local first AI assisted workflow.
 
 ## ✨ Features
 
@@ -83,7 +84,8 @@ My copy lives in `content/`, outside `src/`:
 
 - `content/projects/<slug>/{en,es}.mdx` - one document per project and locale
 - `content/pages/{home,about}/{en,es}.mdx` - page metadata plus the Home services paragraph and the About intro and Bio paragraphs, split into regions with `<Section name="...">`
-- `content/pages/{archive,events}/{en,es}.mdx` - frontmatter only (`seo.title`, `seo.description`); the pages themselves are rendered by their views
+- `content/articles/<slug>/{en,es}.mdx` - one devblog article per locale (see below)
+- `content/pages/{archive,events,devblog}/{en,es}.mdx` - frontmatter only
 - `src/i18n/resources/{en,es}.json` - shared UI labels, such as the info column headers
 
 Each document starts with frontmatter (`title`, `info`, `seo.title`, `seo.description`) followed by MDX. A project document has three regions that the page template places in different spots:
@@ -117,6 +119,24 @@ Text that isn't page copy (menu, footer, section headings, buttons, `total N ent
 ### Info labels
 
 In a project's `info` frontmatter, `header` is a key (`team`, `tools`, `type`, `links`, `client`, `tech`), not display text. The text shown comes from `src/i18n/resources/<locale>.json` under `info`, so renaming a label for every project is a one-line change in that file. A header with no entry there is shown as written, which works for a one-off label.
+
+### Devblog articles
+
+`/devblog` lists every folder in `content/articles/`, newest first, and `/devblog/<slug>` renders the article. Each document has this frontmatter, followed by plain MDX prose:
+
+```mdx
+---
+title: My article
+date: '2026-11-15'
+summary: One or two sentences shown in the list.
+status: soon # `soon` is listed but not linked; `published` links to the article
+seo:
+  title: My article | Devblog | Ramses Salas
+  description: Meta description.
+---
+```
+
+Quote the `date` so YAML keeps it as a string. To publish, write the body and set `status: published`. New article folders are picked up by the prerender script automatically.
 
 ### Adding a project or page
 

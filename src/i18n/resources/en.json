@@ -15,7 +15,8 @@
     "home": "home",
     "about": "about",
     "projects": "projects",
-    "events": "events"
+    "events": "events",
+    "devblog": "devblog"
   },
   "footer": {
     "contact": "Contact",
@@ -56,6 +57,11 @@
   },
   "archive": {
     "total": "total {{n}} projects"
+  },
+  "devblog": {
+    "total": "total {{n}} articles",
+    "soon": "coming soon",
+    "back": "← devblog"
   },
   "about": {
     "eventsHeading": "Events",

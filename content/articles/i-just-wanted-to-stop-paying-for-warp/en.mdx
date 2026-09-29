@@ -1,0 +1,324 @@
+---
+title: A Local First AI Coding Experiment
+date: '2026-09-29'
+summary: Setting up a local AI coding environment with Ollama, Qwen3 14B, Cline and VS Code, and establishing a baseline for further experiments.
+status: published
+seo:
+  title: A Local First AI Coding Experiment | Devblog | Ramses Salas
+  description: Setting up a local AI coding environment with Ollama, Qwen3 14B, Cline and VS Code, and establishing a baseline for further experiments with local models and coding agents.
+---
+
+I had been thinking about my use of AI coding tools for a while. Not just whether they were useful, but what I was actually consuming when I used them. How much computation was involved? Where was that computation happening? And at what point was I asking a system to do work simply because it was possible to ask?
+
+The question became harder to ignore when I paid for the service again.
+
+The payment just made something that had been relatively abstract for me more visible. I was using these systems regularly. They were reading repositories, generating code, searching through projects, modifying files, running commands and repeating the process until something worked. I was thinking about the result, but underneath the result there was a considerable amount of computation happening on my behalf.
+
+So I decided to look at that relationship more closely and it became an experiment with local models and coding agents.
+
+## Hardware
+
+The experiments are running on a Windows 10 laptop with:
+
+```text
+CPU
+12th Gen Intel Core i7 12800H
+
+RAM
+64 GB DDR5 4800
+2 × Micron 32 GB
+
+GPU
+NVIDIA GeForce RTX 3070 Ti Laptop GPU
+8 GB VRAM
+
+NVIDIA Driver
+596.21
+
+CUDA
+13.2
+```
+
+The first step was to find out what I could actually run on the machine I already use for development. That also gives me a fairly clear baseline.
+
+This is the basic idea behind the local first approach I am using:
+
+```text
+Local model
+    ↓
+Local agent
+    ↓
+Local development environment
+    ↓
+Human judgement
+    ↓
+External compute only when necessary
+```
+
+## Building the first setup
+
+The initial architecture was something like this:
+
+```text
+Terminal
+   ↓
+AI coding agent
+   ↓
+Ollama
+   ↓
+Local model
+   ↓
+Local GPU
+```
+
+At first, this looked like one system to me.
+
+As I started testing it, it became clear that it was better to think about it as several systems connected together.
+
+There are several different components involved here, and one of the first things I wanted to understand was where the actual capabilities of the system were coming from.
+
+- **Terminal:** the environment where the project and the agent are running.
+- **AI coding agent:** sits between the model and the resources it needs to interact with. It manages the interaction with the model, makes tools available to it, executes tool calls, and sends the results back to the model.
+- **Ollama:** the local runtime that makes the model available.
+- **Local model:** generates the responses, but it does not automatically have access to my files or terminal.
+
+This distinction became useful once I started testing different combinations. Instead of treating the whole setup as one AI system, I started looking at the individual parts and testing how they behaved together.
+
+## Trying different local models
+
+Before settling on a model for the main experiments, I tried several different ones. The point wasn't to find the best model but the one that balanced performance with the hardware constraints. I wanted to get a feeling for what happened when I changed the model while keeping as much of the initial setup as possible.
+
+### Qwen2.5 Coder 7B
+
+_Qwen2.5 Coder 7B_ was the first useful baseline.
+
+It runs entirely on the laptop GPU and is capable of straightforward code generation. For smaller tasks, this was enough.
+
+The problems appeared when the task became more involved. It could produce plausible code while also making concrete technical mistakes, particularly when the task involved several stages, repository manipulation, or following multiple constraints.
+
+That gave me an early distinction that became useful for the rest of the experiment:
+
+```text
+Code generation ability
+≠
+Reliable engineering agency
+```
+
+A model producing valid looking code doesn't necessarily mean that it can reliably work through a real project.
+
+### Gemma 4 26B
+
+_Gemma 4 26B_ produced stronger results on some direct coding tasks. It was able to produce correct TypeScript logic and generally gave concise coding suggestions.
+
+The more interesting behaviour appeared when I used it through the coding agent. The model repeatedly attempted to use tools that were not actually available to the session. It would reach for an action, fail to access what it expected, and continue trying. This made the model itself harder to evaluate in isolation.
+
+_Was the model failing? Or was the environment giving it the wrong set of tools? I needed another way to separate those things._
+
+### Devstral
+
+I also tested Devstral. It performed well on direct coding tasks and was particularly interesting for repository oriented work. But when I connected it through the coding agent, I encountered the same general problem around tool availability.
+
+_This was becoming a pattern._
+
+The model could perform a task when given the right interface, but the coding agent environment was not necessarily exposing that interface correctly.
+
+### Qwen3 14B
+
+_Qwen3 14B_ became the main model for the current setup.
+
+One of the useful tests was to bypass the coding agent completely and communicate with the model through Ollama's OpenAI compatible API. I explicitly provided a tool definition and asked the model to use it.
+
+_It returned a valid tool call._
+
+This was a small test, but it gave me something important. I now had evidence that the model could understand the tool definition and produce the expected tool call when the interface was provided directly. That became the basis for looking more closely at the agent layer.
+
+## Agent 1: OpenCode
+
+At this point I was already testing the model through a coding agent, **_OpenCode_**.
+
+OpenCode communicates with Ollama through an OpenAI-compatible API, which allows OpenCode to use the local model without requiring the OpenAI service itself.
+
+The intended setup was:
+
+```text
+OpenCode
+   ↓
+OpenAI-compatible API
+   ↓
+Ollama
+   ↓
+Qwen3 14B
+   ↓
+Local GPU
+```
+
+The connection itself worked. The problem appeared when I started looking at what the model could actually do inside the session.
+
+The configuration indicated that tools such as these were available:
+
+```text
+read
+glob
+grep
+edit
+write
+bash
+task
+```
+
+But the model session did not consistently receive those filesystem tools. Instead, I could see tools such as:
+
+```text
+task
+todowrite
+webfetch
+write
+```
+
+The model would try to investigate the repository, but the tools it needed were not actually available. This was useful because it gave me a concrete failure to investigate. Rather than saying that the local model was not capable enough, I could test the individual parts.
+
+1. The model had already demonstrated valid tool calling directly through Ollama.
+2. The API connection was working.
+3. The problem was somewhere in the integration between the agent and the model.
+
+That changed the way I was approaching the experiment. I started thinking about the effective capability of the system as something closer to:
+
+```text
+Model
++
+API
++
+Agent framework
++
+Tool definitions
++
+Tool serialization
++
+Permissions
++
+Environment
+```
+
+## Agent 2: Moving the experiment into Cline
+
+After I wasn't able to get the OpenCode setup working the way I expected, I had to rethink the approach.
+
+I came across the Cline extension for VS Code, which made more sense for the next stage of the experiment because VS Code is already the IDE I normally use for development. Rather than introducing another development environment, I could connect the local model directly to the environment where I already work.
+
+The resulting setup was:
+
+```text
+VS Code
+   ↓
+Cline
+   ↓
+localhost:11434
+   ↓
+Ollama
+   ↓
+Qwen3 14B
+```
+
+The first integration test returned:
+
+```text
+LOCAL CLINE + OLLAMA OK
+```
+
+That established that the basic local workflow was working. The next step was to stop testing isolated examples and let the agent interact with an actual repository.
+
+## Testing what the agent can actually do
+
+Once Cline was connected to Ollama, I started testing the tools themselves.
+
+The repository I am using for these experiments is my working portfolio repository. It contains a mixture of application code, project content and supporting material, using technologies including:
+
+```text
+React
+TypeScript
+Three.js
+React Three Fiber
+GSAP
+TailwindCSS
+MDX
+Vite
+pnpm
+react-i18next
+Netlify
+Vercel
+GitHub Pages
+```
+
+This matters because I don't want to test the agent only against artificial coding exercises. The repository has existing structure, dependencies, conventions and content. There are also things in it that the agent needs to understand before changing anything.
+
+That makes the interaction closer to the kind of work I would actually ask a coding agent to do. It also meant that I needed to be careful with permissions and repository state.
+
+The first tests were deliberately simple:
+
+```
+| Capability              | Result |
+| ----------------------- | ------ |
+| Read files              | Passed |
+| Search codebase         | Passed |
+| Edit files              | Passed |
+| Read after modification | Passed |
+| Execute shell command   | Passed |
+```
+
+These tests moved the experiment from asking whether _the model can generate code_ to seeing whether _the agent can actually interact with a development environment_.
+
+I will expand on these tests individually as the experiment develops, but for now they establish that the basic tool interaction is working.
+
+## What the first experiments established
+
+At this point I had a working baseline:
+
+```text
+VS Code
+   ↓
+Cline
+   ↓
+Ollama
+   ↓
+Qwen3 14B
+   ↓
+Local GPU
+```
+
+And the agent could:
+
+```text
+Read files
+Search the repository
+Modify files
+Read modifications
+Execute shell commands
+```
+
+More importantly, the earlier OpenCode tests had already shown that these capabilities cannot simply be attributed to the model. The same general model capability can behave differently depending on how the agent exposes tools and how those tools are passed into the model session.
+
+The system was working, but I also noticed that some interactions took a significant amount of time before the model produced an answer or took an action. At this stage I don't want to assume where that time is coming from. It could be the model, the amount of context being processed, tool interaction, or the local hardware.
+
+This means that further benchmarking will be necessary to understand the timing and find out where the workflow can be improved.
+
+That is probably the most useful thing I learned from setting up the baseline. I started the experiment thinking mainly about local models and now I'm more interested in the whole system around the model.
+
+## Local first, not local only
+
+The setup is also giving me a practical way to test the limits of inference on my local machine. The point of this approach is not to pretend that my local hardware can do everything, but to start with what is already available and understand where its limits are.
+
+The philosophy I am using is roughly:
+
+```text
+Try local
+   ↓
+Measure what happens
+   ↓
+Understand the limitation
+   ↓
+Decide whether escalation is necessary
+   ↓
+Use external compute when it actually helps
+```
+
+That could mean a larger local model, rented GPU time, or a cloud model. The important part for me is having a closer relationship with the technology itself and increasing my awareness of how I use it.
