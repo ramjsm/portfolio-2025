@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import type { MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -13,10 +12,15 @@ import {
 import { handleScrambleHover } from '../../utils/scrambleText'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { formatFlexibleDateYear } from '../../utils/date'
+import { getPageContent } from '../../content/loader'
+import { useLocale } from '../../i18n/useLocale'
+import { useDocumentHead } from '../../i18n/useDocumentHead'
 import { useScrollbar } from '@14islands/r3f-scroll-rig'
 
 export function Archive() {
   const { t } = useTranslation()
+  const locale = useLocale()
+  useDocumentHead(getPageContent('archive', locale)?.frontmatter.seo)
   const isMobile = useIsMobile()
   const previewRef = useRef<HTMLDivElement>(null)
   const previewImgRef = useRef<HTMLImageElement>(null)
@@ -76,10 +80,6 @@ export function Archive() {
       className="flex min-h-screen w-full flex-col gap-10"
       onMouseMove={trackPreview}
     >
-      <Helmet>
-        <title>Archive | Ramses Salas</title>
-      </Helmet>
-
       <div className="mt-20 flex flex-col gap-4">
         <p className="font-pp-neue-montreal text-xs text-gray-600">
           {'> ls -la ./work --sort=date'}

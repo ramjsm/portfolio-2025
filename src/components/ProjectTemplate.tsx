@@ -38,8 +38,8 @@ export function ProjectTemplate() {
   const isMobile = useIsMobile()
   const locale = useLocale()
   const { t } = useTranslation()
-  // Projects migrated to MDX render from content/projects/<slug>/<locale>.mdx;
-  // the rest still use their legacy TSX fields.
+  // Every project renders from content/projects/<slug>/<locale>.mdx, falling
+  // back to the default language when a translation is missing.
   const mdx = slug ? getProjectContent(slug, locale) : undefined
   useDocumentHead(mdx?.frontmatter.seo)
 
@@ -102,13 +102,13 @@ export function ProjectTemplate() {
     })
   })
 
-  if (!project) {
+  if (!project || !mdx) {
     // Return to home page
     navigate('/')
     return
   }
 
-  const title = mdx?.frontmatter.title ?? project.title
+  const title = mdx.frontmatter.title
   const info = getProjectInfo(project, locale)
 
   return (
@@ -160,34 +160,15 @@ export function ProjectTemplate() {
           </div>
         )}
         <div className="intro flex flex-col gap-2 text-xl font-[100] lg:flex-3 lg:text-base landscape:flex-4">
-          {mdx ? (
-            <MdxSection Content={mdx.Content} section="intro" />
-          ) : (
-            project.intro
-          )}
+          <MdxSection Content={mdx.Content} section="intro" />
         </div>
       </div>
       <div className="mx-auto my-20 lg:w-[80%]">
-        {mdx ? (
-          <MdxSection Content={mdx.Content} section="gallery" />
-        ) : (
-          project.content
-        )}
+        <MdxSection Content={mdx.Content} section="gallery" />
       </div>
-      {mdx ? (
-        <div className="credits mb-20 text-center font-[100]">
-          <MdxSection Content={mdx.Content} section="credits" />
-        </div>
-      ) : (
-        <ul className="credits mb-20 text-center font-[100]">
-          {project.credits &&
-            project.credits.map((listItem, index: number) => (
-              <li key={index} className="text-l">
-                {listItem}
-              </li>
-            ))}
-        </ul>
-      )}
+      <div className="credits mb-20 text-center font-[100]">
+        <MdxSection Content={mdx.Content} section="credits" />
+      </div>
       {isMobile && filter === 'all' ? null : (
         <div className="flex w-full items-center gap-4">
           <div className="page-line border-texture-top h-0 w-full"></div>

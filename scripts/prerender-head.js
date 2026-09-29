@@ -27,6 +27,8 @@ const DEFAULT_LOCALE = 'en'
 const PAGES = [
   { route: '/', page: 'home' },
   { route: '/about', page: 'about' },
+  { route: '/archive', page: 'archive' },
+  { route: '/events', page: 'events' },
 ]
 
 const escapeHtml = (value) =>

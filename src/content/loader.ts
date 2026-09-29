@@ -23,7 +23,7 @@ export interface PageFrontmatter {
   seo: SeoFrontmatter
 }
 
-export type PageName = 'home' | 'about'
+export type PageName = 'home' | 'about' | 'archive' | 'events'
 
 interface MdxModule<Frontmatter> {
   default: ComponentType<MDXProps>
@@ -59,8 +59,7 @@ function resolve<Frontmatter>(
 
 /**
  * The MDX document for a project, falling back to the default locale when the
- * requested translation is missing. `undefined` for projects that have not been
- * migrated to MDX yet.
+ * requested translation is missing. `undefined` for a slug with no document.
  */
 export function getProjectContent(
   slug: string,

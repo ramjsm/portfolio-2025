@@ -83,6 +83,7 @@ My copy lives in `content/`, outside `src/`:
 
 - `content/projects/<slug>/{en,es}.mdx` - one document per project and locale
 - `content/pages/{home,about}/{en,es}.mdx` - page metadata plus the Home services paragraph and the About intro and Bio paragraphs, split into regions with `<Section name="...">`
+- `content/pages/{archive,events}/{en,es}.mdx` - frontmatter only (`seo.title`, `seo.description`); the pages themselves are rendered by their views
 - `src/i18n/resources/{en,es}.json` - shared UI labels, such as the info column headers
 
 Each document starts with frontmatter (`title`, `info`, `seo.title`, `seo.description`) followed by MDX. A project document has three regions that the page template places in different spots:
@@ -117,15 +118,11 @@ Text that isn't page copy (menu, footer, section headings, buttons, `total N ent
 
 In a project's `info` frontmatter, `header` is a key (`team`, `tools`, `type`, `links`, `client`, `tech`), not display text. The text shown comes from `src/i18n/resources/<locale>.json` under `info`, so renaming a label for every project is a one-line change in that file. A header with no entry there is shown as written, which works for a one-off label.
 
-### Migration status
-
-Only `juliette` has been moved to MDX so far. The other projects still keep their copy and gallery in `src/config/projects/*.tsx` and `src/views/Project/content/*.tsx`, and `ProjectTemplate` renders either shape.
-
 ### Adding a project or page
 
 1. Add `content/projects/<slug>/en.mdx` (and `es.mdx`). The prerender script discovers project routes from this folder.
 2. Add the asset record (thumbnail, hero, date, category) in `src/config/projects/`.
-3. A new top-level page needs a route in `src/router/index.tsx` and an entry in the `PAGES` list in `scripts/prerender-head.js`.
+3. A new top-level page needs `content/pages/<page>/{en,es}.mdx` with `seo` frontmatter, a `PageName` entry in `src/content/loader.ts`, a route in `src/router/index.tsx`, an entry in the `PAGES` list in `scripts/prerender-head.js`, and `useDocumentHead(getPageContent('<page>', locale)?.frontmatter.seo)` in its view.
 
 ## 🏗️ Per-route static HTML
 

@@ -9,7 +9,7 @@ type InfoProps = InfoSection & {
 export function Info({ header, list, children }: InfoProps) {
   const { t } = useTranslation()
   // `header` is a label key (e.g. "tools") looked up in the i18n resources.
-  // Headers without an entry, such as legacy display text, render as written.
+  // A header without an entry renders as written, for one-off labels.
   const label = t(`info.${header.toLowerCase()}`, { defaultValue: header })
 
   return (
@@ -17,19 +17,13 @@ export function Info({ header, list, children }: InfoProps) {
       <h3 className="info font-pp-neue-montreal text-xl lowercase lg:text-base">
         <div className="border-texture inline px-3 py-1">{`/${label}`}</div>
       </h3>
-      {list && (
-        <ul className="mb-1 flex flex-col gap-1 lg:mb-2">
-          {list.map((listItem, index) => (
-            <li key={index} className="info text-base lg:text-sm">
-              {typeof listItem === 'string' ? (
-                <InlineMarkdown>{listItem}</InlineMarkdown>
-              ) : (
-                listItem
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="mb-1 flex flex-col gap-1 lg:mb-2">
+        {list.map((listItem, index) => (
+          <li key={index} className="info text-base lg:text-sm">
+            <InlineMarkdown>{listItem}</InlineMarkdown>
+          </li>
+        ))}
+      </ul>
       {children}
     </div>
   )

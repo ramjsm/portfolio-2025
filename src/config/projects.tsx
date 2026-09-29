@@ -12,7 +12,6 @@ import { thePostHumanShop } from './projects/thePostHumanShop'
 import { singOrSink } from './projects/singOrSink'
 import { organismus } from './projects/organismus'
 import { theTimeMachine } from './projects/theTimeMachine'
-import type { ReactNode } from 'react'
 import { parseFlexibleDate, formatFlexibleDate } from '../utils/date'
 import { getProjectContent } from '../content/loader'
 import { DEFAULT_LOCALE, type Locale } from '../i18n/locales'
@@ -32,14 +31,20 @@ export interface ThumbnailAsset extends MediaAsset {
 }
 
 export interface InfoSection {
+  /** A label key such as `tools` (see `info` in the i18n resources). */
   header: string
-  list: Array<string | ReactNode>
+  /** Entries may use `[label](url)` links and `*emphasis*`. */
+  list: string[]
 }
 
 export type ProjectCategory = 'installation' | 'web'
 
 export type ProjectsListFilter = 'all' | 'featured' | 'non-featured'
 
+/**
+ * The asset and listing record for a project. Its copy, info, credits and
+ * gallery layout live in `content/projects/<slug>/{en,es}.mdx`.
+ */
 export interface Project {
   slug: string
   category: ProjectCategory
@@ -61,15 +66,6 @@ export interface Project {
   thumbnail: ThumbnailAsset
   hero: MediaAsset
   videoURL?: string
-  /**
-   * Legacy TSX-authored copy. Projects migrated to MDX (see
-   * `content/projects/<slug>/`) omit these; their text, info and layout live
-   * in the MDX document. Read info through `getProjectInfo`.
-   */
-  intro?: ReactNode
-  info?: InfoSection[]
-  content?: ReactNode
-  credits?: Array<ReactNode>
 }
 
 export const projectsList: Project[] = [
@@ -107,14 +103,12 @@ export const getProjectsSortedByDate = (): Project[] =>
 export const getProjectBySlug = (slug: string): Project | undefined =>
   projectsList.find((project) => project.slug === slug)
 
-/** Info sections from the project's MDX frontmatter, or its legacy config. */
+/** Info sections from the project's MDX frontmatter. */
 export const getProjectInfo = (
   project: Project,
   locale: Locale = DEFAULT_LOCALE
 ): InfoSection[] =>
-  getProjectContent(project.slug, locale)?.frontmatter.info ??
-  project.info ??
-  []
+  getProjectContent(project.slug, locale)?.frontmatter.info ?? []
 
 export const getNextProjectBySlug = (
   slug: string,
